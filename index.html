@@ -19,6 +19,59 @@
   h6 {
     font-family: "Work Sans", sans-serif
   }
+
+  .accordion {
+    background-color: #d0cbaf;
+    color: black;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+
+  .active,
+  .accordion:hover {
+    background-color: darkgrey;
+    color: white;
+  }
+
+  .accordion:after {
+    content: '\002B';
+    color: black;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+
+  .active:after {
+    content: "\2212";
+    color: white;
+  }
+
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      text-align: center;
+      padding: 5px;
+    }
 </style>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -44,23 +97,27 @@
     <hr>
     <!-- Media Icons *need to add links -->
     <div class="w3-panel w3-large">
-      <a href="https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity" style="font-size: 22px; margin-right: 4px""></i></a> 
-      <a href="https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity" style="font-size: 24px; margin-right: 4px""></i></a>
-      <a href="#" target="_blank"><i class=" fa fa-file-pdf-o w3-hover-opacity" style="font-size: 18px; margin-right: 4px""></i></a>
-      <a href="https://facebook.com/sadhika.akula" target="_blank"><i class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px; margin-right: 4px""></i></a>
+      <a href="https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity"
+          style="font-size: 22px; margin-right: 4px""></i></a> 
+      <a href=" https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity"
+            style="font-size: 24px; margin-right: 4px""></i></a>
+      <a href="https://drive.google.com/file/d/1zD43CYQzkZ21JQKfOoId6ZBFYq0wjRg_/view?usp=sharing" target="_blank"><i class=" fa fa-file-pdf-o w3-hover-opacity"
+              style="font-size: 18px; margin-right: 4px""></i></a>
+      <a href=" https://facebook.com/sadhika.akula" target="_blank"><i
+                class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px; margin-right: 4px""></i></a>
   </div>
   <hr>
 </nav>
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class=" w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
-        title="close side menu" id="myOverlay"></div>
+                title="close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:250px">
 
       <!-- Header -->
       <header>
-        <a href="#"><img src="images/profile.png" style="width:65px;"
+        <a href="index.html"><img src="images/profile.png" style="width:65px;"
             class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
         <span class="w3-button w3-hide-large w3-xlarge w3-hover-text-grey" onclick="w3_open()"><i
             class="fa fa-bars"></i></span>
@@ -98,184 +155,244 @@
           <div class="w3-container w3-white">
             <p><b>Samsung Solve for Tomorrow 2020</b></p>
             <i>Flameless</i> - A wildfire sensor built for Samsung Solve for Tomorrow 2020.
-            <p><span class="w3-tag w3-dark-grey">Hardware</span>
+            <p><span class="w3-tag w3-dark-grey">Hardware</span> <span class="w3-tag w3-dark-grey">ML</span></p>
           </div>
         </div>
         <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/alert.png" alt="Alert Ninja" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>Superposition III</b></p>
-            <i>Alert Ninja</i> - A child safety app that won 1st Place for Best Hack at Superposition III.
-            <p><span class="w3-tag w3-dark-grey">App Dev</span> <span class="w3-tag w3-dark-grey">Design</span></p>
-          </div>
-        </div>
-        <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/helping.png" alt="CodeLabs" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>CodeLabs</b></p>
-            <i>A Helping Hand</i> - A website that connects volunteers to complete tasks for seniors.
-            <p><span class="w3-tag w3-dark-grey">Web Dev</span> <span class="w3-tag w3-dark-grey">Database</span> <span
-                class="w3-tag w3-dark-grey">Node.js</span></p>
-          </div>
-        </div>
-        <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/title.png" alt="Change the Game" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>Google Design Challenge Winner</b></p>
-            <i>Horizon's End</i> - A mobile game that demonstrates the importance of climate change.
-            <p><span class="w3-tag w3-dark-grey">Game Dev</span> <span class="w3-tag w3-dark-grey">Design</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Second Photo Grid-->
-      <div class="w3-row-padding">
-
-        <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/tennisfront.png" alt="Tournament" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>USTA & UTR</b></p>
-            <i>Tournament Search</i> - A website that immediately retrieves list of players based on tournament ID.
-            <p><span class="w3-tag w3-dark-grey">Web Dev</span> <span class="w3-tag w3-dark-grey">JSP, Maven</span>
-          </div>
-        </div>
-        <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/nrs.png" alt="Alert Ninja" style="width:100%"
+          <a href="superposition.html"><img src="images/alert.png" alt="Alert Ninja" style="width:100%"
               class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>XR EDU</b></p>
-            <i>The New Reality Summit 2020</i> - An international hackathon hosted by XR EDU.
-            <p><span class="w3-tag w3-dark-grey">Leadership</span></p>
-          </div>
-        </div>
-        <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/stressless.png" alt="StressLess" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>Samsung Solve for Tomorrow 2019</b></p>
-            <i>StressLess</i> - A virtual reality app that reduces stress build for Samsung Solve for Tomorrow 2019.
-            <p><span class="w3-tag w3-dark-grey">App Dev</span> <span class="w3-tag w3-dark-grey">Design</span>
-          </div>
-        </div>
-        <div class="w3-quarter w3-container w3-margin-bottom">
-          <img src="images/journal.png" alt="Change the Game" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>Youth Science Connection</b></p>
-            <i>Journal</i>- A productivity website and digital bullet journal to keep track of tasks and times.
-            <p><span class="w3-tag w3-dark-grey">Web Dev</span> <span class="w3-tag w3-dark-grey">Design</span> <span
-                class="w3-tag w3-dark-grey">Database</span>
-          </div>
+            <div class="w3-container w3-white">
+          </a>
+          <p><b>Superposition III</b></p>
+          <i>Alert Ninja</i> - A child safety app that won 1st Place for Best Hack at Superposition III.
+          <p><span class="w3-tag w3-dark-grey">App Dev</span> <span class="w3-tag w3-dark-grey">Design</span></p>
         </div>
       </div>
+      <div class="w3-quarter w3-container w3-margin-bottom">
+        <a href="codelabs.html"><img src="images/helping.png" alt="CodeLabs" style="width:100%"
+            class="w3-hover-opacity"></a>
+        <div class="w3-container w3-white">
+          <p><b>CodeLabs</b></p>
+          <i>A Helping Hand</i> - A website that connects volunteers to complete tasks for seniors.
+          <p><span class="w3-tag w3-dark-grey">Web Dev</span> <span class="w3-tag w3-dark-grey">Database</span> <span
+              class="w3-tag w3-dark-grey">Node.js</span></p>
+        </div>
+      </div>
+      <div class="w3-quarter w3-container w3-margin-bottom">
+        <a href="changethegame.html"><img src="images/title.png" alt="Change the Game" style="width:100%"
+            class="w3-hover-opacity"></a>
+        <div class="w3-container w3-white">
+          <p><b>Google Design Challenge Winner</b></p>
+          <i>Horizon's End</i> - A mobile game that demonstrates the importance of climate change.
+          <p><span class="w3-tag w3-dark-grey">Game Dev</span> <span class="w3-tag w3-dark-grey">Design</span></p>
+        </div>
+      </div>
+    </div>
 
-      <div id="activities" class="w3-container w3-padding-large">
-        <h4><b>Activities</b></h4>
-      </div>
+    <!-- Second Photo Grid-->
+    <div class="w3-row-padding">
 
-      <div class="w3-row-padding w3-margin">
-        <div class="w3-dark-grey" style="width:100%">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block">Tennis Racquet Journey <i class="fa fa-sort-desc w3-large"></i>
-          </button>
-          <div id="Demo1" class="w3-hide w3-container" style="color:black; background-color:white;">
-            <p>Place all text here</p>
-            <table style="width:100%">
-              <tr>
-                <th>Control Power Index</th>
-                <th>100</th>
-                <th>200</th>
-                <th>300</th>
-                <th>400</th>
-                <th>500</th>
-                <th>600</th>
-                <th>700</th>
-                <th>800</th>
-                <th>900</th>
-                <th>1000</th>
-              </tr>
-              <tr>
-                <td>GRAVITY</td>
-                <td></td>
-                <td style="background: #eaeaf7">PRO</td>
-                <td>TOUR</td>
-                <td>MP</td>
-                <td>MP L</td>
-                <td>S</td>
-                <td>LITE</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>RADICAL</td>
-                <td></td>
-                <td style="background: #eaeaf7">PRO</td>
-                <td></td>
-                <td style="background:  #eaeaf7">MP</td>
-                <td>MP L</td>
-                <td></td>
-                <td style="background:  #eaeaf7">S</td>
-                <td>LITE</td>
-                <td>PWR</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>EXTREME</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>PRO</td>
-                <td style="background:  #eaeaf7">MP</td>
-                <td>S</td>
-                <td>LITE</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>INSTINCT</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td style="background:  #eaeaf7">MP</td>
-                <td>MP L</td>
-                <td>S</td>
-                <td>LITE</td>
-                <td>PWR</td>
-              </tr>
-          
-            </table>
-          </div>
+      <div class="w3-quarter w3-container w3-margin-bottom">
+        <a href="tennisapp.html"><img src="images/tennis.png" alt="Tournament" style="width:100%"
+            class="w3-hover-opacity"></a>
+        <div class="w3-container w3-white">
+          <p><b>USTA & UTR</b></p>
+          <i>Tournament Search</i> - A website that immediately retrieves list of players based on tournament ID.
+          <p><span class="w3-tag w3-dark-grey">Java</span> <span class="w3-tag w3-dark-grey">Maven</span> <span
+              class="w3-tag w3-dark-grey">JSP</span>
         </div>
       </div>
-
-      <div class="w3-row-padding w3-margin">
-        <div class="w3-dark-grey" style="width:100%">
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block">The New Reality Summit <i class="fa fa-sort-desc w3-large"></i></button>
-          <div id="Demo2" class="w3-hide w3-container" style="color:black; background-color:white;">
-            <p>Place all text here</p>
-          </div>
+      <div class="w3-quarter w3-container w3-margin-bottom">
+        <img src="images/soon.png" alt="Alert Ninja" style="width:100%" class="w3-hover-opacity">
+        <div class="w3-container w3-white">
+          <p><b>The Purple Hydrangea Project</b></p>
+          <i>PHP Website</i> - Revamped the global nonprofit's entire website as part of my internship.
+          <p><span class="w3-tag w3-dark-grey">Leadership</span></p>
         </div>
       </div>
-
-      <div class="w3-row-padding w3-margin">
-        <div class="w3-dark-grey" style="width:100%">
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block">Bharatanatyam Indian Classical Dance <i class="fa fa-sort-desc w3-large"></i></button>
-          <div id="Demo3" class="w3-hide w3-container" style="color:black; background-color:white;">
-            <p>Place all text here</p>
-          </div>
+      <div class="w3-quarter w3-container w3-margin-bottom">
+        <a href="stressless.html"><img src="images/stressless.png" alt="StressLess" style="width:100%"
+            class="w3-hover-opacity"></a>
+        <div class="w3-container w3-white">
+          <p><b>Samsung Solve for Tomorrow 2019</b></p>
+          <i>StressLess</i> - A virtual reality app that reduces stress build for Samsung Solve for Tomorrow 2019.
+          <p><span class="w3-tag w3-dark-grey">App Dev</span> <span class="w3-tag w3-dark-grey">Design</span> <span
+              class="w3-tag w3-dark-grey">VR</span>
         </div>
       </div>
-
-      <div class="w3-grey w3-center w3-padding-16">
-        <p style="font-size: 18px; color:white;">&#169; 2020 Sadhika Akula</p>
-        <!-- Media Icons *need to add links -->
-        <div class="w3-panel w3-large">
-          <i class="fa fa-github w3-hover-opacity" style="font-size: 22px; color:white; margin-right: 4px""></i> 
-          <i class=" fa fa-linkedin w3-hover-opacity" style="font-size: 24px; color:white; margin-right: 4px""></i>
-          <i class=" fa fa-file-pdf-o w3-hover-opacity" style="font-size: 18px; color:white; margin-right: 4px""></i> 
-          <i class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px; color:white; margin-right: 4px""></i>
+      <div class="w3-quarter w3-container w3-margin-bottom">
+        <img src="images/soon.png" alt="Change the Game" style="width:100%" class="w3-hover-opacity">
+        <div class="w3-container w3-white">
+          <p><b>Avatar</b></p>
+          <i>Website</i> - As the CTO of Avatar, created and manage the Avatar website.
+          <p><span class="w3-tag w3-dark-grey">Web Dev</span> <span class="w3-tag w3-dark-grey">Design</span> <span
+              class="w3-tag w3-dark-grey">Database</span>
+        </div>
       </div>
+    </div>
+
+    <div id="activities" class="w3-container w3-padding-large">
+      <h4><b>Activities</b></h4>
+    </div>
+
+    <div class="w3-row-padding w3-margin">
+      <button class="accordion">Tennis Racquet Journey</button>
+      <div class="panel">
+        <div >
+
+        </div>
+        <table style="width:100%">
+          <tr>
+            <th>Control Power Index</th>
+            <th>100</th>
+            <th>200</th>
+            <th>300</th>
+            <th>400</th>
+            <th>500</th>
+            <th>600</th>
+            <th>700</th>
+            <th>800</th>
+            <th>900</th>
+            <th>1000</th>
+          </tr>
+          <tr>
+            <td>GRAVITY</td>
+            <td></td>
+            <td style="background: #eaeaf7">PRO</td>
+            <td>TOUR</td>
+            <td>MP</td>
+            <td>MP L</td>
+            <td>S</td>
+            <td>LITE</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>RADICAL</td>
+            <td></td>
+            <td style="background: #eaeaf7">PRO</td>
+            <td></td>
+            <td style="background:  #eaeaf7">MP</td>
+            <td>MP L</td>
+            <td></td>
+            <td style="background:  #eaeaf7">S</td>
+            <td>LITE</td>
+            <td>PWR</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>EXTREME</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>PRO</td>
+            <td style="background:  #eaeaf7">MP</td>
+            <td>S</td>
+            <td>LITE</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>INSTINCT</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="background:  #eaeaf7">MP</td>
+            <td>MP L</td>
+            <td>S</td>
+            <td>LITE</td>
+            <td>PWR</td>
+          </tr>
+      
+        </table>
+      </div>
+    </div>
+
+    <div class="w3-row-padding w3-margin">
+      <button class="accordion">Bharatanatyam</button>
+      <div class="panel">
+        <p>Text here.</p>
+      </div>
+    </div>
+
+    <div class="w3-row-padding w3-margin">
+      <button class="accordion">The New Reality Summit</button>
+      <div class="panel">
+          <div>
+            <p>As the Vice President of the XR EDU club, I hosted an international hackathon called The New Reality
+              Summit. Our successful event connected hackers across the world with guest speakers from companies and
+              amazing prizes. We raised 700 dollars to fund our wildfire prevention device through the hackathon. I also
+              led a Web Design workshop for the attendees.</p>
+            <div class="w3-third w3-container w3-margin-bottom">
+              <img src="images/nrs.png" style="width:100%">
+            </div>
+            <div class="w3-third w3-container w3-margin-bottom">
+              <a href="https://www.youtube.com/watch?v=bTu0pq5vKW8&list=PL2YgyrflkdWNeyqX39ZBW9SUTafi7Ydun&index=4"
+                target="_blank"><img src="images/outside.png" style="width:100%"></a>
+            </div>
+            <div class="w3-third w3-container w3-margin-bottom">
+              <img src="images/cnrs.png" style="width:100%">
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding w3-margin">
+      <button class="accordion">Youth Science Connection</button>
+      <div class="panel">
+        <p>As part of the Youth Science Connection 2020 Summer Cohort, I worked with a Cornell computer science
+          undergrad student to create and complete a research project for my app: Bullet, a productivity website and
+          digital bullet journal. It implements mutiple features such as tasks, to-do lists, calender, and notes all
+          on one platform.</p>
+        <div class="w3-third w3-container w3-margin-bottom">
+          <img src="images/bfigma.png" style="width:100%">
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom">
+          <a href="https://www.canva.com/design/DAEDajRfHCw/uzBQsR5dwcA7LcVNiLd7Sw/view?utm_content=DAEDajRfHCw&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton"
+            target="_blank"><img src="images/ysc.png" style="width:100%"></a>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom">
+          <img src="images/slide.png" style="width:100%">
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding w3-margin">
+      <button class="accordion">Envision Research Competition</button>
+      <div class="panel">
+        <p>As part of the Envision Research Competition hosted by WiSTEM, I submitted my article on the issue of
+          Algorithmic Bias and the potential ways to stop it. My article was recorgnized by professors from
+          Northwestern University and UC Irvine.</p>
+        <div class="w3-third w3-container w3-margin-bottom">
+          <img src="images/envisionc.png" style="width:100%">
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom">
+          <a href="https://docs.google.com/document/d/1jYYFXx1DBZ91Hqcbr19oVodPL2ID7kbs19twJUK59pU/edit?usp=sharing"
+            target="_blank"><img src="images/algo.png" style="width:100%"></a>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom">
+          <img src="images/home.png" style="width:100%">
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-grey w3-center w3-padding-16">
+      <p style="font-size: 18px; color:white;">&#169; 2020 Sadhika Akula</p>
+      <!-- Media Icons -->
+      <div class="w3-panel w3-large">
+        <a href="https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity"
+            style="font-size: 22px; color:white; margin-right: 4px""></i></a> 
+        <a href=" https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity"
+              style="font-size: 24px; color:white; margin-right: 4px""></i></a>
+        <a href="https://drive.google.com/file/d/1zD43CYQzkZ21JQKfOoId6ZBFYq0wjRg_/view?usp=sharing" target="_blank"><i class=" fa fa-file-pdf-o w3-hover-opacity"
+                style="font-size: 18px; color:white; margin-right: 4px""></i></a>
+        <a href=" https://facebook.com/sadhika.akula" target="_blank"><i
+                  class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px;color:white;  margin-right: 4px""></i></a>
+    </div>
      </div>
 
   </div>
@@ -296,7 +413,14 @@
         x = document.getElementById(id); if (x.className.indexOf("w3-show") == -1) { x.className += " w3-show"; } else {
           x.className = x.className.replace(" w3-show", "");
         }
-      }</script>
+      } var acc = document.getElementsByClassName("accordion");
+      var i; for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active"); var panel = this.nextElementSibling; if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else { panel.style.maxHeight = panel.scrollHeight + "px"; }
+        });
+      } </script>
 
 </body>
 
