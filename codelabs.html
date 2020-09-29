@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
   body,
   h1,
@@ -16,7 +17,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Work Sans", sans-serif
+    font-family: "Inter", sans-serif
   }
 
   ul {
@@ -26,38 +27,77 @@
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-  <!-- Sidebar/menu -->
+  <!--Sidebar/menu-->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:250px;" id="mySidebar"><br>
     <div class="w3-container">
       <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-padding w3-hover-grey" title="close menu">
         <i class="fa fa-remove"></i>
       </a>
-      <img src="images/profile.png" style="width:45%;" class="w3-round"><br><br>
-      <h4><b>Sadhika Akula</b></h4>
+      <img src="images/profile.png" style="width:45%;" class="w3-round">
+      
     </div>
-    <div class="w3-bar-block">
-      <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-user fa-fw w3-margin-right"></i>ABOUT ME</a>
-      <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-black"><i
-          class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a>
-      <a href="mailto:insadhikabox@gmail.com" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+        <!-- Media Icons *need to add links -->
+        <div class="w3-panel w3-medium">
+          <a href=" https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity"
+              style="font-size: 22px; margin-right: 4px"></i></a>
+          <a href="mailto:insadhikabox@gmail.com" class="w3-hover-opacity" style="font-size: 18px; margin-right: 4px"><i
+              class="fa fa-envelope fa-fw"></i></a>
+          <a href=" https://facebook.com/sadhika.akula" target="_blank"><i class=" fa fa-facebook-official w3-hover-opacity"
+              style="font-size: 20px; margin-right: 4px"></i></a>
+          <a href="https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity"
+              style="font-size: 20px; margin-right: 4px"></i></a>
+          <a href="https://drive.google.com/file/d/1bLjH2twUxUvUznB0u_armXYSOBD4WRxw/view?usp=sharing" target="_blank"><i
+              class=" fa fa-file-pdf-o w3-hover-opacity" style="font-size: 18px; margin-right: 4px"></i></a>
+          <a href="https://app.myutr.com/profiles/191755" target="_blank"><span class="material-icons"
+              style="font-size:17px;">sports_tennis</span></a>
+        </div>
+    <div class="w3-bar-block w3-medium">
+      <a href="index.html#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="font-family: Inter, sans-serif; font-size: 14px;"><i
+          class="fa fa-user fa-fw w3-margin-right" ></i>ABOUT ME</a>
+      <a href="index.html#experience" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="font-family: Inter, sans-serif; font-size: 14px;"><i
+          class="fa fa-th-large fa-fw w3-margin-right"></i>EXPERIENCE</a>
+      <a href="index.html#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding" style="font-family: Inter, sans-serif; font-size: 14px;"><i
+          class="fa fa-folder w3-margin-right"></i>PORTFOLIO</a>
     </div>
-
-    <hr>
-    <!-- Media Icons *need to add links -->
-    <div class="w3-panel w3-large">
-      <a href="https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity"
-          style="font-size: 22px; margin-right: 4px""></i></a> 
-        <a href=" https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity"
-            style="font-size: 24px; margin-right: 4px""></i></a>
-        <a href="https://drive.google.com/file/d/1zD43CYQzkZ21JQKfOoId6ZBFYq0wjRg_/view?usp=sharing" target="_blank"><i class=" fa fa-file-pdf-o w3-hover-opacity"
-              style="font-size: 18px; margin-right: 4px""></i></a>
-        <a href=" https://facebook.com/sadhika.akula" target="_blank"><i
-                class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px; margin-right: 4px""></i></a>
+    <div class="w3-panel w3-small">
+      <a style="font-family: Inter, sans-serif; font-size: 14px;"><i class="fa fa-book"></i> &nbsp;&nbsp;COURSES</a>
+      <p><span class="w3-tag w3-light-grey">AP Calculus</span>
+        <span class="w3-tag w3-light-grey">VS.Net</span>
+        <span class="w3-tag w3-light-grey">AP Computer Science A</span>
+        <span class="w3-tag w3-light-grey">AP Statistics</span>
+        <span class="w3-tag w3-light-grey">Calculus III</span>
+        <span class="w3-tag w3-light-grey">AP Physics C</span>
+        <span class="w3-tag w3-light-grey">AP Spanish</span>
+        <span class="w3-tag w3-light-grey">AP English Language</span>
+        <span class="w3-tag w3-light-grey">AP English Literature</span>
+        <span class="w3-tag w3-light-grey">AP World History</span>
+        <span class="w3-tag w3-light-grey">AP Economics</span>
+        <span class="w3-tag w3-light-grey">AP US Government</span>
+      </p>
     </div>
-  <hr>
-</nav>
+    <div class="w3-panel w3-small">
+      <a style="font-family: Inter, sans-serif; font-size: 14px;"><i class="fa fa-certificate"></i>
+        &nbsp;&nbsp;CERTIFICATES</a>
+      <p><span class="w3-tag w3-light-grey">Advanced C++ Programming</span> <span class="w3-tag w3-light-grey">Google Code-In 2019</span></p>
+    </div>
+    <div class="w3-panel w3-small">
+      <a style="font-family: Inter, sans-serif; font-size: 14px;"><i class="fa fa-tasks"></i> &nbsp;&nbsp;SKILLS</a>
+      <p><span class="w3-tag w3-light-grey">C++</span> <span class="w3-tag w3-light-grey">Java</span> <span
+          class="w3-tag w3-light-grey">Python</span> <span class="w3-tag w3-light-grey">HTML</span>
+        <span class="w3-tag w3-light-grey">CSS</span> <span class="w3-tag w3-light-grey">JavaScript</span>
+        <span class="w3-tag w3-light-grey">Unity</span> <span class="w3-tag w3-light-grey">Node.js</span> <span class="w3-tag w3-light-grey">Canva</span> <span class="w3-tag w3-light-grey">Figma</span>
+        <span class="w3-tag w3-light-grey">Cloud Firestore</span>
+         <span
+          class="w3-tag w3-light-grey">Construct 3</span></p>
+    </div>
+    <div class="w3-panel w3-small">
+      <a style="font-family: Inter, sans-serif; font-size: 14px;"><i class="fa fa-language"></i>
+        &nbsp;&nbsp;LANGUAGES</a>
+      <p><span class="w3-tag w3-light-grey">English</span> <span class="w3-tag w3-light-grey">Spanish</span> <span
+          class="w3-tag w3-light-grey">Hindi</span> <span class="w3-tag w3-light-grey">Telugu</span> <span
+          class="w3-tag w3-light-grey">Kannada</span></p>
+    </div>
+  </nav>
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class=" w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
                 title="close side menu" id="myOverlay"></div>
@@ -72,91 +112,77 @@
         <span class="w3-button w3-hide-large w3-xlarge w3-hover-text-grey" onclick="w3_open()"><i
             class="fa fa-bars"></i></span>
         <div class="w3-container">
-          <h1><b>Sadhika Akula</b></h1>
+          <h2>Helping Hand - Task App for the Elderly</h2>
           <div class="w3-section w3-bottombar"></div>
         </div>
       </header>
 
-
-      <div class="w3-container w3-padding-large">
-        <h4>HELPING HAND - TASK APP FOR THE ELDERLY</h4>
-      </div>
-
-      <!-- Flameless Content -->
-      <div class="w3-row-padding">
-        <div class="w3-container w3-margin-bottom w3-padding-large">
-          <p><b>Summary</b></p>
-          <p>Helping Hand is a task website that allows seniors and volunteers to connect and complete tasks with each
-            other. There is a volunteer profile as well as a senior profile that displays the tasks that the senior
-            wants completed. The UI is designed to be clear and simple for older individuals to use.
-          </p>
+      <!--  Content -->
+      <div class="w3-row w3-container">
+        <div class="w3-quarter">
+          <a href="https://labs.codeday.org/gallery" target="_blank" class="w3-hover-opacity"><img src="images/codelabsorange.png" style="width:100%;"></a>
+        </div>
+        <div class="w3-threequarter w3-container">
+          <h4><b>Summary</b></h4>
+          <p>Helping Hand is a web app to help elderly members of the community get tasks/errands/chores completed that they cannot do themselves, with volunteers' help. The website allows senior citizens to add tasks that need to be completed, mark them as done, and allow volunteers to browse tasks and connect with seniors they would like to help. The UX is designed to be simple, beautiful, and accessible for seniors and utilizes a Node.js and open source database for the backend.</p>
           <a href="https://github.com/eatlunchnow/CodeLabs2020" target="_blank" class=" w3-hover-opacity">View Project
             on Github</a>
-          <p><b>CodeLabs Internship</b></p>
+        </div>
+      </div>
+      <div class="w3-row w3-container">
+          <h4><b>CodeLabs Internship</b></h4>
           <ul>
-            <li>Selected to participate in CodeLabs Advanced Track internship for college students and highly skilled
-              high school students</li>
-            <li>Mentored by Jessi Thompson, Software Engineer 2 at Microsoft</li>
+            <li>Selected to participate in CodeDay Labs Advanced Track internship, given to highly skilled high school students</li>
+            <li>Mentored by Software Engineer at Microsoft</li>
             <li>Worked with college students from NYU and NSC</li>
           </ul>
-          <p><b>Media</b></p>
-          <div class="w3-third w3-container w3-margin-bottom">
-            <a href="#" target="_blank"><img src="images/soon.png" alt="STEM"
-                style="width:100%"></a>
-            <div class="w3-container w3-white">
-              <p>
-                <center>Presentation of Helping Hand</center>
-              </p>
-            </div>
+      </div>
+      <div class="w3-row w3-container">
+          <h4><b>Media</b></h4>
+          <div class="w3-half w3-hover-opacity w3-margin-bottom">
+            <a href="https://youtu.be/Zd76yEkV-Xw" target="_blank"><img src="images/techtalk.png" style="width:100%"></a>
           </div>
-          <div class="w3-third w3-container w3-margin-bottom">
-            <a href="#" target="_blank"><img src="images/soon.png" alt="STEM"
-                style="width:100%"></a>
-            <div class="w3-container w3-white">
-              <p>
-                <center>Our CodeLabs Tech Talk</center>
-              </p>
-            </div>
-          </div>
-          <div class="w3-third w3-container w3-margin-bottom">
-            <p><b>Tools Used</b></p>
+          <div class="w3-half w3-container w3-margin-bottom">
+            <h4><b>Tools Used</b></h4>
             <ul>
               <li>Designed using Adobe XD</li>
-              <li>Data is stored on Cloud Firestore from Google Firebase</li>
-              <li>Server is Node.js</li>
+              <li>Senior, volunteer, and task data is stored on Cloud Firestore</li>
+              <li>Includes JavaScript functions that perform CRUD operations</li>
             </ul>
+            <img src="images/CodeLabsArchitecture.png" style="width:72%">
           </div>
-          <div class="w3-container w3-margin-bottom">          <p><b>Project</b></p>
-          </div>
-          <div class="w3-quarter w3-container w3-margin-bottom">
+      </div>
+      <div class="w3-row w3-container">
+          <h4><b>Project</b></h4>
+          <div class="w3-third w3-container w3-margin-bottom">
             <img src="images/firestore.png" alt="STEM" style="width:100%">
           </div>
-          <div class="w3-quarter w3-container w3-margin-bottom">
+          <div class="w3-third w3-container w3-margin-bottom">
             <img src="images/nodejs.png" alt="STEM" style="width:100%">
           </div>
-          <div class="w3-quarter w3-container w3-margin-bottom">
+          <div class="w3-third w3-container w3-margin-bottom">
             <img src="images/codelabs.png" alt="STEM" style="width:100%">
           </div>
-          <div class="w3-quarter w3-container w3-margin-bottom">
-            <img src="images/CodeLabsArchitecture.png" alt="STEM" style="width:100%">
-          </div>
-        </div>
+      </div>
 
-        <div class="w3-grey w3-center w3-padding-16">
-          <p style="font-size: 18px; color:white;">&#169; 2020 Sadhika Akula</p>
-          <!-- Media Icons *need to add links -->
-          <div class="w3-panel w3-large">
-            <a href="https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity"
-                style="font-size: 22px; color:white; margin-right: 4px""></i></a> 
-            <a href=" https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity"
-                  style="font-size: 24px; color:white; margin-right: 4px""></i></a>
-            <a href="https://drive.google.com/file/d/1zD43CYQzkZ21JQKfOoId6ZBFYq0wjRg_/view?usp=sharing" target="_blank"><i class=" fa fa-file-pdf-o w3-hover-opacity"
-                    style="font-size: 18px; color:white; margin-right: 4px""></i></a>
-            <a href=" https://facebook.com/sadhika.akula" target="_blank"><i
-                      class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px;color:white;  margin-right: 4px""></i></a>
+      <div class="w3-grey w3-center w3-padding-small">
+        <p style="font-size: 18px; color:white;">&#169; 2020 Sadhika Akula</p>
+        <!-- Media Icons -->
+        <div class="w3-panel w3-large">
+          <a href=" https://linkedin.com/in/sadhika-akula" target="_blank"><i class=" fa fa-linkedin w3-hover-opacity"
+              style="font-size: 24px; color:white; margin-right: 4px""></i></a>
+              <a href="mailto:insadhikabox@gmail.com" class="w3-hover-opacity" style="font-size: 18px; margin-right: 4px; color:white"><i
+                class="fa fa-envelope fa-fw"></i></a>
+          <a href=" https://facebook.com/sadhika.akula" target="_blank"><i
+                class=" fa fa-facebook-official w3-hover-opacity" style="font-size: 22px;color:white;  margin-right: 4px""></i></a>            
+          <a href=" https://github.com/SadhikaA" target="_blank"><i class="fa fa-github w3-hover-opacity"
+                  style="font-size: 22px; color:white; margin-right: 4px""></i></a> 
+          <a href="https://drive.google.com/file/d/1bLjH2twUxUvUznB0u_armXYSOBD4WRxw/view?usp=sharing" target="_blank"><i
+                    class=" fa fa-file-pdf-o w3-hover-opacity" style="font-size: 18px; color:white; margin-right: 4px""></i></a>
+          <a href=" https://app.myutr.com/profiles/191755" target="_blank"><span class="material-icons"
+                      style="color: white; font-size:18px;">sports_tennis</span></a>
         </div>
-  </div>
-  </div>
+      </div>
 
       <!-- End page content -->
     </div>
