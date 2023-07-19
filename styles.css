@@ -36,7 +36,6 @@ h2 {
     color: #3B37FC;
     font-family: IBM Plex Mono;
     font-size: 24px;
-    font-style: italic;
     font-weight: 400;
     line-height: normal;
 }
@@ -78,6 +77,15 @@ h3 {
     height: auto;
     border-radius: 10px;
     justify-items: center;
+}
+
+.racquet-image {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 10px;
+    align-content: center;
 }
 
 .writing-img {
@@ -563,7 +571,7 @@ button:focus {
 
 .left-section {
     flex: 1;
-    height: 28vh;
+    height: 32vh;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     width: 22.5vw;
@@ -579,7 +587,7 @@ button:focus {
     flex: 2;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    height: 28vh;
+    height: 32vh;
     padding: 20px;
     white-space: nowrap;
     overflow-x: scroll;
