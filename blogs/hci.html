@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html>
+<title>Sadhika Akula</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+<body>
+    <div> 
+        <div class="icons-row">
+            <div class="button-container">
+                <button class="arrow"><a class="navlinks" href="../writing.html">⬅ Back</a></button>
+            </div>
+          </div>
+        <h2 class="blog-header">Human-Computer Interaction: Foundation and Frontiers</h2>
+        <p class="subtitle">This course is an introduction to human-computer interaction (HCI). It surveys the major
+            topics
+            in HCI, including: historical perspectives, human information processing, interaction design, user interface
+            software and hardware, and the impact of computing and technology on society. The course emphasizes design
+            and evaluation of user interfaces.</p>
+        <div class="container">
+            <div class="outline-outer">
+                <div class="outline hide-outline">
+                <ol>
+                    <li><a class="outline-links" href="#lecture1">Ubiquitous and Tangible Computing</a></li>
+                    <li><a class="outline-links" href="#lecture2">Input/Output</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper1">The Computer for the 21st Century</a></li>
+                        <li><a class="outline-links" href="#paper2">Tangible Bits</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture3">Activity, Health, and Behavior</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper3">BeWell</a></li>
+                        <li><a class="outline-links" href="#paper4">Designing Interfaces for Physical Activity</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture4">Design Cognition</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper5">Yours is Better</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture5">Design Process</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper6">Towards Equitable Design Engagements</a></li>
+                        <li><a class="outline-links" href="#paper7">The Promise of Empathy</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture6">Design Tools</a></li>
+                    <li><a class="outline-links" href="#lecture7">Social Media</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper8">Beyond Being There</a></li>
+                        <li><a class="outline-links" href="#paper9">Groupware and Social Dynamics</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture8">Collaboration</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper10">Distance Matters</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture9">Social Computing in Society</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper11">Feminist HCI</a></li>
+                        <li><a class="outline-links" href="#paper12">Promise of Sharing Economy</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture10">Human-Centered AI</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper12">Principle of Mixed-Initiative User Interfaces</a>
+                        </li>
+                        <li><a class="outline-links" href="#paper13">Why Human-AI interaction is difficolt to design</a>
+                        </li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture11">Software, Tools, and Toolkits</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper14">Debugging Reinvented</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture12">Content Creation</a></li>
+                    <li><a class="outline-links" href="#lecture13">Information Visualization</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper16">Chapter 1</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture14">Cognitive Models</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper17">Psychology of HCI</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture15">Methodology</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper18">Sciences of the Artificial</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture16">Accessibility</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper19">Ability-Based Design</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture17">ICT for Development</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper20">Designing Mobile Interfaces</a></li>
+                    </ol>
+                    <li><a class="outline-links" href="#lecture18">Something Old, Something New</a></li>
+                    <ol>
+                        <li><a class="outline-links" href="#paper21">As We May Think</a></li>
+                    </ol>
+                </ol>
+            </div>
+        </div>
+            <div class="content add-inter">
+                <div id="top"></div>
+                <h3 id="lecture1" style="color: #3B37FC;">Lecture 1: Ubiquitous and Tangible Computing</h3>
+                <ul>
+                    <li><mark>memex</mark> = first idea of a "desktop"</li>
+                    <li>things that have been accurately predicted/have not changed much from their original inception
+                    </li>
+                    <ul>
+                        <li>"encyclopedias .. with mesh of associative trails" => wikipedia</li>
+                        <li>XEROX Alto from XEROX PARC => Modern MacOS desktop</li>
+                        <li>more: computer mouse, QR codes (AR markers), swipe keyboards, AI-powered screen reader,
+                            filtering
+                            recommendation systems, fitness trackers, multi-touch interfaces</li>
+                    </ul>
+                    <li>tangible user interfaces/haptic feedback => adjusts to the 3D world around is</li>
+                    <li><mark>ubiquitous computing</mark> = computers vanish into the background rather than focus our
+                        attention on a
+                        single
+                        box, this requires them to be:</li>
+                    <ul>
+                        <li><mark>context-aware:</mark> collect information about the user's environment and use it
+                            customize their
+                            computing
+                            experience</li>
+                        <li>reactive: example is a wide-screen projector that needs to be able to map the room's surface
+                        </li>
+                        <li>programmable, ambient, and embedded</li>
+                    </ul>
+                    <li>ubiquitous computing: tabs (like watches), pads (like iPads), and boards</li>
+                    <li>tangible computing: directly-manipulable physical interfaces to data and comparison</li>
+                </ul>
+                <h3 id="lecture2" style="color: #3B37FC">Lecture 2: Input/Output</h3>
+                <ul>
+                    <li>inputs over the years: on-body input, voice input, gesture, environmental audio, muscle</li>
+                    <li>step 1: sensor input is: audio, video, accelerometers, vibration sensors, EM waves</li>
+                    <li>step 2: featurization: transform sensor input into a form that is informative for an ML
+                        algorithm</li>
+                    <li>step 3: train a classifier, operate under power and speed constraints</li>
+                    <li>midas touch problem: always listening means false positives can occur</li>
+                    <li>new ideas of displays for ubicomp: novel displays (textiles, body, tactiles, drones), augmented
+                        reality
+                        (lay virtual information onto the real world, projector-based, head-mounted displays), virtual
+                        reality
+                        (head-worn that occludes surrounding world and embeds you in a fully digital world)</li>
+                    <li>novel displays are embedded in objects and the environment</li>
+                    <li>tradeoffs:</li>
+                    <ul>
+                        <li>novel displays require special hardware and devices, so difficult to generalize, but
+                            flexible design space</li>
+                        <li>AR extends local environment with new behaviors and objects, but seams can show between
+                            physical and digital</li>
+                        <li>VR: fully immersive, but illusion breaks when you run into your couch</li>
+                    </ul>
+                    <li>HCI combines social sciences, engineering, and design</li>
+                </ul>
+                <h3 id="paper1" style="color: #7a5132;">The Computer for the 21st Century - Mark Weiser, 1991
+                </h3>
+                <ul>
+                    <li>the most profound technologies are the ones that disappear</li>
+                    <li>first information technology can be thought of as writing</li>
+                    <li>personal computer "focuses our attention on just a simple box"</li>
+                </ul>
+            </div>
+            <div class="rest-of-text add-inter">
+                <li>virtual reality is only a map, not a territory</li>
+                <li>tabs, pads, and boards instead - hundreds of these in a room, used unconsciously</li>
+                <li>"no revolution in artificial intelligence is needed"</li>
+                    <li>"Most important, ubiquitous computers will help overcome the problem of information
+                        overload.There is more information available at our fingertips during a walk in the woods than
+                        in any computer system,yet people find a walk among trees relaxing and computers
+                        frustrating.Machines that fit the human environment,instead of forcing humans to enter
+                        theirs,will make using a computer as refreshing as taking a walk in the woods."</li>
+                    <li>What do you think about Weiser's differentiation between calm computation that recedes into
+                        infrastructure, and simply spreading computers around everywhere in the environment? What are
+                        the implications of such a vision?</li>
+                    <blockquote>Weiser describes the fact that we shouldn't be subject to a single area - that our ideas
+                        should move along with us in the form of pads and tabs. However, since he also wants it to blend
+                        into the environment, Weiser proposes computers everywhere so that they can interact with you
+                        without you noticing that there are computers.</blockquote>
+                <h3 id="paper2" style="color: #7a5132;">Tangible Bits - Hiroshi Ishii and Brygg Ulmer, 1997
+                </h3>
+                <ul>
+                    <li>personal computers make us lose the grasping and manipulation that is so embued in human history
+                        - so we need to create haptic tech</li>
+                    <li>goal: rejoin richness of physical world in HCI</li>
+                    <li>bits and atoms: divide between our physical environment and cyberspace, constrained to just the
+                        GUI</li>
+                    <li>"lack of diversity of input/output media" + "bias towards graphical output at the expense of
+                        input from the real world"</li>
+                    <li>GUIs: WYSIWYG and seeing and pointing</li>
+                    <li>tangible user interface (TUI): the world becomes the interface</li>
+                    <ul>
+                        <li>interactive surfaces: transform surfaces in architectural space into active interface
+                            between physical and virtual worlds</li>
+                        <li>coupling of bits and atoms: couple everyday graspable objects with the digital information
+                            that pertains to them</li>
+                        <li>ambient media: use sound, light, airflow, water to create background interfaces with
+                            cyberspace at the periphery of human perception</li>
+                    </ul>
+                    <li>augmented reality as visual overlay but with graspable objects</li>
+                    <li>examples of existing </li>
+                    <ul>
+                        <li>ClearBoard - changing a "wall" into a board and back and forth</li>
+                        <li>3D neurosurgical visualization - users are given physical props as a mechanism for
+                            manipulating 3D models on a screen</li>
+                        <li>Marble Answering Machine - when you get a phone call you take the marble and drop it to play
+                            the message, placing into a telephone would call the person</li>
+                        <li>LiveWire - plastic cord that causes twitch when data passes through Ethernet network</li>
+                    </ul>
+                    <li>metaDESK - horizontal back-projected graphical surface, have to actually move things around to
+                        see them move around in real-time, example rotating a 3D dome, rotates the map as well</li>
+                    <li>ambientROOM - uses ambient media as a means for communicating information</li>
+                    <li>digital shadows - illuminated objects cast shadows reflecting their physical substance</li>
+                    <li>ex of bits and atoms: abacus</li>
+                    <li>What tradeoffs does Tangible Bits make through its strict adherence to input/output colocation?
+                    </li>
+                    <blockquote>The tradeoffs include more limited functionality, constrained ability to be able to
+                        produce results as fast as GUI since it factors in environment as input as well.</blockquote>
+                </ul>
+                <h3 id="lecture3" style="color: #3B37FC;">Lecture 3: Activity, Health, and Behavior</h3>
+                <ul>
+                    <li>traditional frame: focused on improving usability for well-defined tasks, especially tasks of
+                        short duration and focused attention</li>
+                    <li>app-ification is limiting and against ubicomp</li>
+                    <li>can we create technologies that track public health? in a clinic for example</li>
+                    <li>can we solve problems without using commodity smartphones</li>
+                    <li>can we detect __ using a SINGLE point of sensing, avoids instrumenting people, use ML, leverage
+                        existing infrastructure</li>
+                    <ul>
+                        <li>goal: avoid needing to instrument people in any way</li>
+                        <li>use machine learning classification pipeline</li>
+                        <li>leverage infrastructure already available in the environment aka
+                            <mark>infrastructure-mediated sensing</mark></li>
+                        <ul>
+                            <li>ex: wifi doppler shifts, pressure changes in HVAC system</li>
+                        </ul>
+                    </ul>
+                    <li>ideas: physical health, mental health, elder care, neurodiversity, etc</li>
+                    <li>tradeoffs: privacy, autonomy, consent, ethics</li>
+                    <li>identify a long-lived activity or resilient societal challenge - ask whether computing can help
+                        produce the data or intervention necessary to move the needle in a meaningful way - answer may
+                        be no!</li>
+                </ul>
+                <h3 id="paper3" style="color: #7a5132;">BeWell - Lane, Mohammod, Lin, Yang, Lu, Ali, Doryab, Berke,
+                    Choudhury, Campbell, 2012</h3>
+                <ul>
+                    <li>envision a new class of "personal wellbeing applications" that are capable of monitoring
+                        multiple dimensions of human behavior, encompassing physical, mental, and social dimensions of
+                        wellbeing</li>
+                    <li>what enables this vision are recent advances in smartphones: accelerometer, digital compass,
+                        gyroscope, GPS, microphone, camera</li>
+                    <li>can infer a range of behaviors on the phone in real-time, allowing users to receive feedback in
+                        response to everyday life choices</li>
+                    <li>current shortcomings: only focused on 1 health dimension - diet, exercise, stress, etc and/or
+                        require manual input (tedious)</li>
+                    <li>bewell infers behavioral patterns using sensors embedded in smartphones</li>
+                    <li>using existing guidelines provided by healthcare professionals, estimate multi-dimensional
+                        wellbeing scores that capture the relationship between behavioral patterns and health outcomes
+                    </li>
+                    <li>ex: uses gaussian function to calculate sleep score</li>
+                    <li>sensing daemon: network interface, GUI, storage, sleep model, ML library (classification models,
+                        feature extraction), sensors</li>
+                    <li>cloud infrastructure: restful interface for wellbeing model that connects to MySQL DB</li>
+                </ul>
+                <h3 id="paper4" style="color: #7a5132;">Designing Ambient Narrative-Based Interfaces to Reflect and
+                    Motivate Physical Activity - Murnane, Jiang, Kong, Park, Shi, Soohoo, Vink, Xia, Xin,
+                    Yang-Sammataro, Young, Zhi, Moya, Landay, 2020</h3>
+                <ul>
+                    <li>current technologies for active lifestyles are quantitative data representations (charts,
+                        graphs, etc)</li>
+                    <li>goal is to find alternative, qualitative <mark>schemes for encoding personal information</mark>
+                    </li>
+                    <li>specifically, through comic-like stories delivered through ambient smartphone wallpapers</li>
+                    <li>central idea: <mark>narratology</mark> aka using narrative and storytelling to promote healthy
+                        behavior</li>
+                    <li>ambiently displaying as wallpaper means people can just glance at them</li>
+                    <li>supports both automated and manual logging, activity inference using Google Fit API</li>
+                    <li>multi-chapter graphic narratives that have a central character</li>
+                    <li>indicating and celebrating milestones, visually encoding activity</li>
+                    <li>research included user testing and study groups on factors such as interface glances, narrative
+                        engagement, psychological attitudes and shifts</li>
+                    <li>appreciated that the feedback was imagery-based, difference in aesthetic preferences,
+                        intelligent notification delivery routines, historical data views are important</li>
+                    <li></li>
+                </ul>
+                <h3 id="lecture4" style="color: #3B37FC;">Lecture 4: Design Cognition</h3>
+                <ul>
+                    <il>design cycle: design (brainstorming process, early-stage design tools) > implement (programming
+                        tools, WYSIWYG design tools, rapid prototyping tools) > evaluate (study strategies, cognitive
+                        modeling)</il>
+                    <li>design cognition: how our thinking shapes our design process, and how our thinking shapes
+                        others' reactions to our designs</li>
+                    <li>4 major themes: design fixation, analogical transfer, gulfs of execution and evaluation, demand
+                        characteristics</li>
+                    <li>design fixation: self-imposed barriers to problem solving, limiting our breadth of design
+                        process</li>
+                    <li>IKEA effect: we fall in love with our own ideas, and place high value on things we helped create
+                    </li>
+                    <li><mark>analogical transfer</mark> = transfer across analogies, abstract problems and solutions
+                        we've encountered into schemes</li>
+                    <li>ex: VR is focused on "being there" and recreating realistic experiences, but we could go beyond
+                        this</li>
+                    <li><mark>gulfs of execution and evaluation</mark>: a cognitive account of why a design is poor</li>
+                    <li><mark>gulf of evaluation:</mark> what is the system telling me</li>
+                    <li><mark>gulf of execution:</mark> how do I tell the system</li>
+                    <li>always know which gap you're dealing with and at what distance</li>
+                    <li>modern GUIs adopt metaphor of acting directly on object of interest using direct manipulation -
+                        which reduces gulf, ex: trash on your computer</li>
+                    <li>AI+HCI gaps: how do I interpret errors / tweak model</li>
+                    <li>cognitive accounts explain challenges we face in design: design fixation, demand characteristics
+                        (influences that drive study participants to behave in ways that make our system look good) and
+                        can also help us be precise about how to improve design using gulfs of execution and evaluation
+                        and analogical transfer</li>
+                </ul>
+                <h3 id="paper5" style="color: #7a5132;">Yours is Better - Dell, Vaidyanathan, Medhi, Cutrell, Thies,
+                    2012</h3>
+                <ul>
+                    <il>discuss where investigators have higher social status and social power than the people they
+                        investigate</il>
+                    <li>investigating the connection between demand characteristics and the tendency for participants to
+                        respond in ways confirming the experimenter's hypothesis</li>
+                    <li>field study in Bangalore, India that comprised of two main experiments</li>
+                    <li>used local and foreign interviewers to interview rickshaw drivers where a large number of
+                        participants refused to accept compensation, next interviewed university students</li>
+                    <li>recommendation: researchers should pay more attention to the types of response bias that may
+                        result from working with any participant population and take steps to minimize this bias</li>
+                </ul>
+                <h3 id="lecture5" style="color: #3B37FC;">Lecture 5: Design Process</h3>
+                <ul>
+                    <li>aside on writing good commentaries on papers: what is the point the paper is trying to make; how
+                        effectively does it convince you of that argument, how could the argument be even more
+                        persuasive, on its own terms; what are the implications of the argument, what future frontier
+                        projects might be suggested by this, to push the idea farther?</li>
+                    <li><mark>design</mark>= the transformation of existing conditions into preferred ones</li>
+                    <li>wicked problems: problems whose requirements are contradictory or unknown - no global optimum
+                    </li>
+                    <li>traditional engineering methods will often fail because design must solve wicked problems</li>
+                    <li>enlightened trial and error succeeds over the planning of the lone genius (for design)</li>
+                    <li>what do we do? don't reinvent the wheel and focus on getting the right perspectives</li>
+                    <li><mark>participatory design:</mark> involve stakeholders in all phases of the design process</li>
+                    <li>needfinding, problem definition, develop and focus ideas, evaluation</li>
+                    <li><mark>design patterns=</mark> a problem that occurs over and over again in our environment, and
+                        then describes the core of a solution to that problem, in such a way, that you can use this
+                        solution many times over</li>
+                    <li><mark>dark design patterns: </mark>strategies that designs use to coerce, steer, or deceive you
+                        into making a decision that its creators want</li>
+                    <li>make yourself try out different options to combat fixation and produce better designs</li>
+                    <li>parallel prototyping and comparing multiple designs can be helpful</li>
+                </ul>
+                <h3 id="paper6" style="color: #7a5132;">Deconstructing Community-Based Collaborative Design -
+                    Harrington, Erete, Medhi, Piper, 2019</h3>
+                <ul>
+                    <li>CBPR: community-based participatory research</li>
+                    <li>essential to understand the systemic barriers that have led to certain populations being
+                        underserved in the U.S. and we must integrate this into design engagements</li>
+                    <li>use of photos and visuals to create asset mapping and allow for respect and rapport among
+                        participants and also generate ideas</li>
+                    <li>after the workshop, there was more engagement to discuss with the community and sent the reports
+                        and responses out to create actual change</li>
+                    <li>participatory design challenges corporate thinking</li>
+                    <li>What do you think we ought to do about this problem? Does it suggest deeper issues with
+                        participatory design and its goals? Does it suggest alternative design processes that we might
+                        consider?</li>
+                    <blockquote></blockquote>
+                </ul>
+                <h3 id="paper7" style="color: #7a5132;">The Promise of Empathy: Design, Disability, and Knowing the
+                    "Other" - Bennett, Rosner, 2019</h3>
+                <ul>
+                    <li><mark>empathy</mark>= initial phase of the human-centered design process where designers seek to
+                        understand their intended users in order to inform technology development</li>
+                    <li>goal: designers should seek to make the "idea" of empathy less important by trying to "recreate"
+                        the experiences of their users and instead seek to get their users' own words and experiences
+                    </li>
+                    <li>critiques: design savior complex and simulations that don't fully capture disabilities and
+                        differences</li>
+                    <li>instead, acceptance is first needed</li>
+                    <li>ex: "It is impossible for a person without disability to ever truly understand what it means to
+                        be disabled. Period. True empathy, however, can often take the form of human connection over a
+                        shared emotion or experience."</li>
+                    <li>commitment 1: rather than seek to represent another's experience, we seek partnerships in
+                        imagining the design encounter</li>
+                    <li>commitment 2: rather than achieve an understanding, we seek a process of ongoing attunement</li>
+                    <li>commitment 3: rather than attempt symmetry, we recognize and work with asymmetry</li>
+                </ul>
+                <h3 id="lecture6" style="color: #3B37FC;">Lecture 6: Design Tools</h3>
+                <ul>
+                    <li><mark>the reflective practitioner</mark>: the theory of the how and the why that has remained
+                        influential (how professionals think in action)</li>
+                    <li>improve the tools we have in reflection</li>
+                    <li>the tighter we can tune the loop of design, implement, evaluate the more reflection we are doing
+                        and the better our designs are</li>
+                    <li><mark>design tools</mark> should decrease UI construction time, isolate designers from
+                        implementation details, enable designers to explore an interface technology previously reserved
+                        to engineers or other technology experts</li>
+                    <li>early stage design tools <mark>lo-fidelity sketching</mark></li>
+                    <li><mark>computational sketches</mark>: where the designer sketches and the system helps visualize
+                        potential physical constraints</li>
+                    <li>goal of prototyping tools: get to reflection stage faster but decreasing construction time</li>
+                    <li>ex: $1 gesture recognizer (100 lines of code with 97% accuracy), arduinos to make simple
+                        controls - plug and play hardware, replace electronics with cameras - and use computer vision
+                        instead, design with different materials, </li>
+                    <li>goal of comparison tools: facilitate exploration - if we can generate many alternatives quickly,
+                        we can more rapidly explore a design space, design galleries to quickly compare, procedural
+                        modeling, </li>
+                    <li></li>
+                </ul>
+                <h3 id="lecture7" style="color: #3B37FC;">Lecture 7: Social Media</h3>
+                <ul>
+                    <li><mark>social computing</mark> describes computational systems that mediate our interactions with
+                        each other</li>
+                    <li>major goals of social computing has been to make interactions more and more like real in-person
+                        ones: slack is like talking in person, zoom improved, etc</li>
+                    <li>but, "being there" is the wrong goal - impossible to achieve - instead it should be about design
+                        for experiences that are <mark>beyond being there</mark> - experiences that could have never
+                        been created face-to-face</li>
+                    <li>ex: connect with experts anywhere, intermix brainstorming, combat censorship</li>
+                    <li><mark>collaborative filtering</mark>: learning from one user's behavior to predict another
+                        user's behavior</li>
+                    <li>general idea: identify rows that behave similarly to the one you're trying to predict, and
+                        identify columns that behave similarly to the one you're trying to predict</li>
+                    <li><mark>grudin's paradox</mark>: aka why social media fails</li>
+                    <li>1. disparity between who puts in the work and who benefits</li>
+                    <li>2. failure to reach critical mass: "cold start" - tragedy of the commons, it is not in a single
+                        user's best interest to use a new social computing system</li>
+                    <li>how to not fail? draw from <mark>social and behavioral sciences</mark></li>
+                    <li>in what ways do online interactions create new forms of social behavior that require new theory
+                    </li>
+                    <li>in what ways do online interactions allow us to observe social behavior in new ways, allowing us
+                        to extend or complement offline theories</li>
+                    <li>social loafing: why should I contribute if many others could as well, but calling out uniqueness
+                        can increase participation</li>
+                    <li>social media increases bridging social capital</li>
+                    <li>social media fosters more varied online news diets</li>
+                    <li>compared with algorithmic ranking, individuals' choices played a stronger role in limiting
+                        exposure to cross-cutting content</li>
+                    <li>we take in a broader diet, but democracies struggle with polarization under social media</li>
+                </ul>
+                <h3 id="paper8" style="color: #7a5132;">Beyond Being There - Hollan, Stornetta, 1992</h3>
+                <ul>
+                    <li>we currently measure progress towards face-to-face interaction/"being there" using 2 measures:
+                        <mark>social presence</mark> and <mark>information richness</mark></li>
+                    <li>we can rank our options on an axis with this criteria (going down): face-to-face, audio/visual
+                        communication, audio only, email</li>
+                    <li>"when you have the choice between face-to-face and an imitation, no matter how good, it is
+                        natural to choose the real thing"</li>
+                    <li>"viewing physical proximity as a medium might at first seem odd but it is of central importance
+                        to our argument since the way it has come to mediate face-to-face interactions serves as the
+                        model for communication</li>
+                    <li>don't focus on the technology part (tele), work on the communication part</li>
+                    <li>email communication is a paramount success of computationally-mediated informal communication
+                    </li>
+                    <li>asynchronous nature of interactions increases potentially available time for informal
+                        interaction to approximate something proportional to the fraction of time available to each
+                        person considered separately</li>
+                    <li>an important characteristic of electronic mediums compared to face-to-face interaction is
+                        anonymity</li>
+                    <li>ways we can go beyond face-to-face</li>
+                    <ul>
+                        <li>improved clarity: ASL pronoun reference is location-based, so no reference ambiguity</li>
+                        <li>tablet gestures that provide feedback on speaker's speech that go beyond facial expressions,
+                            head nodding, and verbal cues</li>
+                        <li>recording and making transcriptions, automatic archival of spoken words</li>
+                    </ul>
+                    <li>to create tools, we suggest framing the problem in terms of needs, media, and mechanisms</li>
+                </ul>
+                <h3 id="paper9" style="color: #7a5132;">Groupware and Social Dynamics - Grudin, 1994</h3>
+                <ul>
+                    <li><mark>groupware</mark> is the new name for social computing that developed</li>
+                    <li>8 challenges:</li>
+                    <ul>
+                        <li><mark>disparity in work and benefit</mark> - benefits are different across all group
+                            members, some people adjust more than others, ex: people not maintaining their own personal
+                            calendars defeats the purpose of automatic scheduler</li>
+                        <li><mark>critical mass and prisoner's dilemma problems</mark> - only useful to a high
+                            percentage of users, but we want a "critical mass" to use it, esp if its a communication
+                            tool > reduce the work required of all users</li>
+                        <li><mark>disruption of social processes</mark> - computer exists in a world of explicit,
+                            concrete information but we have social, motivational, political factors that are not stable
+                            or explicit</li>
+                        <li><mark>exception handling</mark> - software should not just support standard procedures,
+                            should also have a wide range of error handling, exception handling, and improvisation to
+                            match human activity</li>
+                        <li><mark>unobtrusive accessibility</mark> - increase in size can lead to a decrease in
+                            efficiency, accessibility should be effective</li>
+                        <li><mark>difficulty of evaluation</mark> - almost insurmountable obstacles to meaningful,
+                            generalizable, analysis and evaluation of groupware prevent us from learning from experience
+                            (varying backgrounds, individual vs group)</li>
+                        <li><mark>failure of intuition</mark> - intuitions in product development environments are
+                            especially poor for multiuser applications, resulting in bad management decisions and an
+                            error-prone design process</li>
+                        <li><mark>adoption process</mark> - groupware requires more careful implementation
+                            (introduction) in the workplace than product developers have confronted, identify problems
+                            and use cases</li>
+                    </ul>
+                    <li>"developers need sophisticated understandings of prospective users' workplaces. Working with
+                        representative users whenever possible is standard advice for developing interactive systems"
+                    </li>
+                    <li>successful systems: email, databases, code management systems (work because they equally support
+                        both sides)</li>
+                </ul>
+                <h3 id="lecture8" style="color: #3B37FC;">Lecture 8: Collaboration</h3>
+                <ul>
+                    <li><mark>CSCW</mark> = computer-supported cooperative work, technology mediates the conversation of
+                        coordinating people in work-related tasks</li>
+                    <li><mark>Johansen matrix</mark> - time (synchronous vs asynchronous) and space (colocated vs
+                        remote) - design looks different based on the quadrant you're in</li>
+                    <li><mark>synchronous, colocated</mark> - managing shared, simultaneous ownership, backchannels</li>
+                    <li><mark>asynchronous, colocated</mark> - visibility and permission controls</li>
+                    <li><mark>synchronous, remote</mark> - awareness indicators, presentation controls</li>
+                    <li><mark>asynchronous, remote</mark> - tools for managing inbox overload, filters, tools for
+                        managing your self-presentation</li>
+                    <li>"if, as it is said to be not unlikely in the near future, the principle of sight is applied to
+                        the telephone as well as that of sound, earth will be in truth a paradise, and distance will
+                        lose its enchantment by being abolished altogether." - arthur mee, 1898</li>
+                    <li>however, colocated teams outperform remote by 2x</li>
+                    <li><mark>media richness theory</mark> - ability of the media to transfer and recreate the signals
+                        that the person is sending, richer media are more effective for collaboration and working
+                        through challenging issues</li>
+                    <li>remote teams experience more conflict because less homogeneous, distance reduces familiarity and
+                        friendship, uneven information</li>
+                    <li><mark>social-technical gap</mark> - divide between what we know we must support socailly and
+                        what we can support technically</li>
+                    <li><mark>socio-technical gap in collaboration tools</mark> - live feeds, activity indicators
+                        (slack, github), like, heart, emojis</li>
+                    <li>socio-technical gap in virtual reality, how can we make this smoother</li>
+                    <li><mark>crowdsourcing</mark> - a good example of "beyond being there", gives up on having high
+                        common ground in favor of structured activities that scale, ex: writing an encyclopedia becomes
+                        fix this typo, create an OS becomes try to fix this issues, train an ML algo becomes label this
+                        image</li>
+                </ul>
+                <h3 id="paper10" style="color: #7a5132;">Distance Matters - Olson and Olson, 2000</h3>
+                <ul>
+                    <li>distance will always persist as an important element of human experience</li>
+                    <li>4 key concepts: common ground, coupling (dependencies) of group work, collaboration readiness,
+                        collaboration technology readiness</li>
+                    <li>being colocated increases productivity, why? ability to work in subgroups, spontaneous meetings,
+                        fluidity of participation, spatiality of human interaction is key</li>
+                    <li>more characteristics of colocated spaces: rapid feedback, shared local context, multiple
+                        channels, nuanced information w/ implicit cues</li>
+                    <li>in a remote setting, new behaviors emerge to even achieve levels of understanding (e.g.: air
+                        traffic control rules)</li>
+                    <li>video is better than audio as a form of remote communication, but doesn't line up to
+                        face-to-face</li>
+                    <li>effective communication between people requires that the communicative exchange take place with
+                        respect to some level of <mark>common ground</mark> (knowledge that the participants have in
+                        common and are aware that they have it in common)</li>
+                    <li>characteristics needed for common ground: copresence, visibility, audibility, cotemporality,
+                        simultaneity, reviewability, revisability</li>
+                    <li><mark>tightly coupled work</mark> means it strongly depends on the talents of collections of
+                        workers, how much do people need to work together</li>
+                    <li>even as technology improves, "there will always be things about the remote situation that make
+                        it qualitatively different than colocation, including aspects of common ground and context, the
+                        effects of differing time zones, cultural differences, and various interactions among these and
+                        technology"</li>
+                </ul>
+                <h3 id="lecture9" style="color: #3B37FC;">Lecture 9: Social Computing in Society</h3>
+                <ul>
+                    <li>the goal of design is design for society, but often, it is misplaced</li>
+                    <li>HCI's role: raise empirical and conceptual critiques before the tech is widespread, offer
+                        guidance on how to guide the technology toward pro-social outcomes</li>
+                    <li>integrate policy and design, let design provide a tool for imagining alternative futures</li>
+                    <li>ex: <mark>feminist HCI</mark>: what are we assuming about what sensors people can wear or what
+                        is desirable that may not apply to non-males?</li>
+                    <li>refocus our intention from the default user to the marginalized</li>
+                    <li>when we cannot form mental models, we instead form folk theories (informal, intuitive)</li>
+                    <li><mark>algorithm aversion</mark> - we prefer human decision-making to AIs, even if the algorithm
+                        is better than the task (especially after seeing the algorithm make an error)</li>
+                    <li>errors create harm but we can use <mark>algorithm audits</mark> to make the problems visible
+                        (systematically querying an algorithm and observing its outputs to draw inferences about its
+                        opaque inner workings)</li>
+                    <li>can we design alternative metaphors? use <mark>algorithmic design as a jury decision</mark>
+                        specify a jury of members and articulate what proportion of the jury should represent each group
+                        and intersectional identity, then let them decide whether or not the information is toxic</li>
+                    <ul>
+                        <li>compose a jury by selecting from characteristics in the dataset, system selects matching
+                            annotators from the dataset as jurors, AI predicts how each jury would vote</li>
+                    </ul>
+                </ul>
+                <h3 id="paper11" style="color: #7a5132;">Feminist HCI: Taking Stock and Outlining and Agenda for Design
+                    - Bardzell, 2010</h3>
+                <ul>
+                    <li>history of feminism: suffragette movement => intellectual freedom and emancipation from
+                        patriarchal structures => construction of gender in media, institutions, etc</li>
+                    <li>importance of considering other viewpoints: "we live in a world designed by men. it is not for
+                        nothing that the expression 'man-made' refers to a vast range of objects that have been
+                        fashioned from physical material"</li>
+                    <li>omission of women's viewpoints in design leads to less women using the product as well, however
+                        we see things like gendered advertising pop up, so it is possible to invest</li>
+                    <li>increased feminism can contribute to HCI in the following ways: theory, methodology, user
+                        research, evaluation</li>
+                    <li>notion of the user can be updated to reflect gender in a way that noticeably and directly
+                        affects design</li>
+                </ul>
+                <h3 id="paper12" style="color: #7a5132;">The Promise of the Sharing Economy among Disadvantaged
+                    Communities - Dillahunt, Malone, 2015</h3>
+                <ul>
+                    <li><mark>digital sharing economy</mark> - provides opportunities for individuals to find temporary
+                        employment, generate extra income, enhance social interaction, and access resources not
+                        otherwise attainable</li>
+                    <li>example platforms: craiglist, lyft, airbnb - individuals can both buy and share services among
+                        people</li>
+                    <li>4 principles for collaborative consumption in the sharing economy are: trust between strangers,
+                        idling capacity (ex: unused seats in lyft), critical mass, and belief in the commons (social
+                        proof, customers feel there are enough choices to be satisfied)</li>
+                    <li>sharing economy has potential to remove perceived barriers to employment, but many of the people
+                        from the disadvantaged community did not know about the platforms</li>
+                    <li>trust between strangers is higher than the entire United States, but idling capacity is lower
+                    </li>
+                    <li>achieving critical mass is also a key concern because of the need to remain independent from
+                        others</li>
+                    <li>belief in the commons was high among those surveyed</li>
+                    <li>safety is a concern that can be resolved with safe physical spaces and two-way background
+                        checks, more regulations</li>
+                    <li>increased collective efficacy, the belief and trust in the neighborhood is much lower</li>
+                </ul>
+                <h3 id="lecture10" style="color: #3B37FC;">Lecture 10: Human-Centered Artificial Intelligence</h3>
+                <ul>
+                    <li>"don't let your UI write a check that your AI can't cash" - eytan adar, 2018</li>
+                    <li><mark>AI vs IA</mark> - IA is intelligence augmentation, instead of artificial intelligence
+                        replacing human intelligence, instead we want to augment human intelligence with artificial
+                        intelligence</li>
+                    <li>examples: where am I using water in my household? turn my sketched mechanical design into rough
+                        functional system? connect me with jobs / movies that I want to see? behavior patterns that are
+                        influencing my health?</li>
+                    <li>how much control should we yield to the AI</li>
+                    <li><mark>software agents</mark>: delegate to proactive artificial intelligence systems</li>
+                    <li><mark>direct manipulation</mark>: users should always have full control, even as automation
+                        increases</li>
+                    <li>balancing act between control and automation (is it possible to maintain high levels of both)
+                    </li>
+                    <li><mark>mixed-initiative interaction</mark>: don't decide between full control and full
+                        automation, instead, suggest an action to the user, and let them confirm it ("it looks like
+                        you're working out"), envisioned using economic utility based ideas and can take expected
+                        values, line which represents utility of action and also utility of inaction</li>
+                    <li>strategies for user-authoring AI: interactive training, prompting, camera-based interaction</li>
+                    <li>why designing is hard: how does AI behave, what does rapid prototyping look like, unpredictable
+                        outputs</li>
+                    <li>where are the human-AI interaction design guidelines</li>
+                </ul>
+                <h3 id="paper13" style="color: #7a5132;">Principles of Mixed-Initiative User Interfaces - Horvitz, 1999
+                </h3>
+                <ul>
+                    <li>goal: don't limit HCI to direct manipulation when automated reasoning has greater power, but
+                        also balance the amount of automation</li>
+                    <li>key factors for effective integration of automation and direct manipulation are: genuine value
+                        in automated services, consider uncertainty of user's goals, consider status of user's attention
+                        in the timing of services, infer ideal action in light of costs, benefits, uncertainties, employ
+                        dialog, allow efficient direct invocation and termination, minimize cost of poor guesses, scope
+                        precision of service to match uncertainty, variation in goals, provide mechanisms for efficient
+                        agent-user collaboration to refine results, employ socially-acceptable behaviors for agent-user
+                        interactions, maintain working memory of recent interactions, continue to learn by observing
+                    </li>
+                    <li>current examples: google docs highlighting autocomplete sentences, "didn't add attachment", rain
+                        starting soon, current traffic conditions, calendaring and focus modes, etc</li>
+                    <li>determine expected utility of taking autonomous action and expected utility of not taking
+                        autonomous action</li>
+                    <li>use dialogs to create options for action</li>
+                </ul>
+                <h3 id="paper14" style="color: #7a5132;">Re-examining Why, Whether, and How Human-AI Interaction is
+                    Uniquely Difficult to Design - Yang, Steinfeld, Rose, Zimmerman, 2020</h3>
+                <ul>
+                    <li>challenges in design:</li>
+                    <ul>
+                        <li>difficult to articulate what AI can/cannot do</li>
+                        <li>technical feasibility of idea is highly dependent on data</li>
+                        <li>cannot fast prototype AI interactions or sketch divergent AI behavior</li>
+                        <li>difficult to foresee potential effects of AI</li>
+                        <li>difficult to explain AI behaviors to users, to design shared control between the AI and
+                            users</li>
+                        <li>difficult to design interactions that constantly improve AI performance</li>
+                        <li>difficult to communicate AI system evolvement over time to users</li>
+                        <li>do not know whom to hold accountable for AI errors</li>
+                    </ul>
+                    <li>iterative prototyping is difficult and so is working with AI engineers</li>
+                    <li>there is also not much agreement among why this is difficult, ideas: unpredictable system
+                        behavior of AI, new technology</li>
+                    <li>how can we work towards solving this? create designer-faced AI literacy, create design-oriented
+                        data exploration, enable designers to more easily play with AI, aid designers in evaluating AI
+                        outputs, creating AI-specific design processes</li>
+                    <li>4 levels of AI systems: designing probabilistic systems, adaptive systems, evolving
+                        probabilistic systems, evolving adaptive systems - this allows to control output complexity and
+                        capability uncertainty</li>
+                </ul>
+                <h3 id="lecture11" style="color: #3B37FC;">Lecture 11: Software, Tools, and Toolkits</h3>
+                <ul>
+                    <li>making software engineering more accessible could empower millions to customize applications and
+                        write programs</li>
+                    <li>developers struggle to recover others' implicit knowledge by inspecting code, rarely hold all
+                        info needed for the task, often must turn to web, barriers from conceptual</li>
+                    <li>what is the actual goal of the programming intervention? are some programming languages better
+                        than others, is the VSCode plugin helping and with what?</li>
+                    <li><mark>threshold</mark>: difficulty of use</li>
+                    <li><mark>ceiling</mark>: sophistication of what can be created</li>
+                    <li>Are you trying to lower the threshold or raise the ceiling?</li>
+                    <li>How can we lower thresholds: reduce expressiveness in exchange of a smaller gulf of execution
+                        and evaluation, ex: regex is easier than others, but also less expressive; no code tools, data
+                        science jupyter notebooks, etc</li>
+                    <li><mark>programming by demonstration (PBD)</mark>: teach a computer a program by doing it yourself
+                        while it watches, modern PDB: excel flash fill</li>
+                    <li>How can we raise the ceiling: identify opportunities for untapped expressivity in the current
+                        language, and position the software to expose that level of expressivity, ex: Engelbart also had
+                        chorded keyset in original demo for musical expressiveness, attach computational functions to
+                        brushes</li>
+                    <li>by better understanding human cognition, we can design technology that makes us smarter -
+                        automation can help, but the power comes from better representation</li>
+                    <li><mark>domain-specific languages</mark>: programming languages that are tailored to a specific
+                        domain, ex: SQL w/ databases, d3 w/ visualization, pytorch w/ ML - successful DSLs reshape the
+                        cognitive representation of the task</li>
+                    <li><mark>map-reduce</mark>: how can I count the number of times the word "HCI" appears on the web?
+                        first run Map which outputs the number of HCIs over each page in parallel across teh web, then
+                        run Reduce which calculates Map's outputs and aggregates via a sum</li>
+                    <li>constructionist learning: learning happens most effectively when people are making tangible
+                        objects (Scratch, programming for children, pytutor)</li>
+                </ul>
+                <h3 id="paper15" style="color: #7a5132;">Debugging Reinvented: Asking and Answering Why and Why Not
+                    Questions about Program Behavior - Ko, Myers, 2008</h3>
+                <ul>
+                    <li>current debugging tools are inefficient: breakpoint requires choosing line of code, slicing
+                        requires choosing choice of variable, querying tools require some executable expression</li>
+                    <li>work backwards from the error and change in output to ask why did the variable change, then the
+                        user decides what could have gone wrong</li>
+                    <li>works by recording execution trace, loading the trace, creating an I/O history, deriving
+                        questions, answer why did/why didn't questions</li>
+                    <li>ex: why was this instruction not executed? why was this value not used?</li>
+                </ul>
+                <h3 id="lecture12" style="color: #3B37FC;">Lecture 12: Content Creation</h3>
+                <ul>
+                    <li><mark>content creation tools</mark>: photoshop, iMovie, after effects</li>
+                    <li>think of a map of train stations - actual map might be extremely confusing but swapping it for
+                        straight lines and evenly spaced stops can make it much more readable</li>
+                    <li>currently, google maps has entire curves and turns mapped out and just displays time - what if
+                        we combined that with a hand-drawn map and created an application that used lines and showed
+                        highways and more useful information along with distances - combine both ideas</li>
+                    <li>use simulated annealing to determine best way to layout roads and labels</li>
+                    <li>design principles for visual communication</li>
+                    <ul>
+                        <li>1. identify design principles (which are the most effective visualizations within the
+                            domain, connect prior work, how can we emphasize/de-emphasize certain info)</li>
+                        <li>2. instantiate design principles (encode them into algorithms and interfaces, constrained
+                            optimization)</li>
+                        <li>3. evaluate/validate design principles (measure improvements in task performance, quality of
+                            results, etc)</li>
+                    </ul>
+                    <li>visually blend topics (tabasco hot sauce as a fire extinguished, world melting on an ice cream
+                        cone)</li>
+                    <li><mark>ivan sutherland's sketchpad</mark>: first use of light pen and GUI windows,
+                        constraint-based drawing</li>
+                    <li>for example, instead of having editor edit videos by playing through and listening to the entire
+                        thing, show the script and be able to delete portions that match the script</li>
+                    <li><mark>cognitive design principles in assembly instructions:</mark>construct small subassemblies
+                        first, then combine those subassemblies together, annotations that provide detail, changes
+                        should be visible and in the right direction</li>
+                    <li>ex: tourist maps that focus on landmarks</li>
+                    <li>ex: exploded view diagrams for parts in a container</li>
+                    <li><mark>collaborative content creation</mark>: remixing capabilities in scratch</li>
+                </ul>
+                <h3 id="lecture13" style="color: #3B37FC;">Lecture 13: Visualization</h3>
+                <ul>
+                    <li>visualizations are key: same dataset can look completely different and become more readable and
+                        valuable based on how its visualized</li>
+                    <li><mark>anatomy of a visualization</mark>:</li>
+                    <ul>
+                        <li><mark>data:</mark> information to be visualized (can be nominal- category labels, no
+                            inherent ordering, ordinal, or quantitative)</li>
+                        <li><mark>marks:</mark> geometric primitives, e.g. points, lines, areas</li>
+                        <li><mark>visual variables:</mark> transformations on the marks, control the appearance of the
+                            marks, e.g. size, shape, position, color, shape</li>
+                        <li><mark>encodings:</mark> functions that map from data onto marks and visual variables, bar,
+                            point, etc</li>
+                    </ul>
+                    <li>semiology of graphics: our perceptual and cognitive systems are not equally accurate at
+                        reconstructing the underlying data from all mappings - some are better than others</li>
+                    <li>position encodes quantitative data well, color encodes order well, hue encodes nominal data well
+                    </li>
+                    <li><mark>comparing relative magnitude</mark> (most accurate to least): position, size, slope,
+                        angle, area, volume, color hue-saturation-density</li>
+                    <li>conveying uncertainty is much more useful as quantile dot plots over a bell curve</li>
+                    <li>interpreting errors using standard error vs standard deviation can create huge overestimates in
+                        meaning</li>
+                    <li>the above research became tableau</li>
+                    <li>embed rhetorical goals to tell a story</li>
+                    <li><mark>stat distributions:</mark> scatter plot, parallel coordinates</li>
+                    <li><mark>hierarchies:</mark>tree layout algorithm, sunburst diagram, treemap</li>
+                    <li><mark>networks:</mark> force directed layout, arc diagram, adjacency matrix</li>
+                </ul>
+                <h3 id="paper16" style="color: #7a5132;">Information Visualization - Card, Mackinley, Shneiderman, 1999
+                </h3>
+                <ul>
+                    <li>consider mental multiplication vs pencil and paper solving</li>
+                    <li>slide rules: allow for quantities to be represented in logarithmic form so that calculations and
+                        visual computation is done by the rule</li>
+                    <li>other examples: navigation charts, graphing calculator, tidal charts</li>
+                    <li>information visualization improves cognition through: parallel processing, offloading work from
+                        the cognitive to the perceptual system, enhanced abstraction, creates a visual schemata for
+                        organization, graphical computations are easier</li>
+                    <li><mark>ways to map data into visual form:</mark> data tables, select variable types, include
+                        metadata, transform data into what is important</li>
+                    <li>use temporal encoding to encode data based on time (think time series)</li>
+                </ul>
+                <h3 id="lecture14" style="color: #3B37FC;">Lecture 14: Cognitive Models</h3>
+                <ul>
+                    <li>"the scientific base of user technology, is necessary in order to understand why interaction
+                        techniques are (or are not) successful, to help us invent new techniques, and to pave the way
+                        for machines that aid humans in performing significant intellectual tasks."</li>
+                    <li><mark>model human processor</mark> = an engineering model of user task completion</li>
+                    <li>GOMS: GOALS the user seeks to achieve, OPERATORS: low level operations, METHODS which are
+                        compositions of operations together, SELECTION RULES which determine how to decide between
+                        multiple available methods</li>
+                    <li><mark>keystroke level model</mark>: a specific model in the GOMS family, six operators (push
+                        key, point to target, moving hands, drawing a line, decision about next step, waiting for system
+                        response)</li>
+                    <li>formally specified cognitive models not really used anymore because of effort required to
+                        create, but now may be more easier thanks to LLMs</li>
+                    <li>issues with LLMs + GOMS: dependent on details of prompt/setting, can hallucinate or produce
+                        unexpected outputs, can replicate existing cognitive psychology results</li>
+                    <li><mark>embodied cognition</mark>- we learn through interaction with the world, leveraging the
+                        environments around us to make us smarter</li>
+                    <li><mark>limits to cognition</mark> - information overload (decision making gets worse, think bell
+                        curve), multitasking</li>
+                    <li>brain computing interfaces? how does this change current ideas?</li>
+                </ul>
+                <h3 id="paper17" style="color: #7a5132;">The Psychology of Human-Computer Interaction Ch 2 - Card,
+                    Moran, Newell, 1983</h3>
+                <ul>
+                    <li>human mind is also an information processing system so we can describe it using the Model Human
+                        Processor</li>
+                    <li>the MHP has 3 interacting subsystems: perceptual system (visual and sensory), motor system
+                        (carries out the response), cognitive system</li>
+                    <li>sometimes we need a serial operation sometimes parallel between all systems</li>
+                </ul>
+                <h3 id="lecture15" style="color: #3B37FC;">Lecture 15: Methodology</h3>
+                <ul>
+                    <li>HCI is disciplinary - algorithms, design, qualitative, EE, field experiments, critical theory
+                        are all HCI</li>
+                    <li>HCI is bound by not just one method, but by shared interest in a topic</li>
+                    <li><mark>systems</mark>: developing novel interactive systems that expand our frontiers of how
+                        interaction might look, can inspire and invent new visions of interaction</li>
+                    <li><mark>experiments</mark>: HCI is CS and psychology, goal is to demonstrate a causal relationship
+                        underlying behavior</li>
+                    <li><mark>ethnography</mark>: HCI + anthropology, understand, through participation, how people
+                        experience what they do</li>
+                    <li><mark>design</mark>: transforming existing conditions into preferred ones, but we need to
+                        carefully consider if this is a new idea</li>
+                    <li><mark>computational social science</mark>: HCI + data science, draw on data from social
+                        computing to answer questions about human behavior</li>
+                    <li><mark>critical theory</mark>: HCI + humanities, arguments dissecting, probing, and building out
+                        the assumptions, can reframe a complex literature into a clearer light, or identify underlying
+                        issues that need to be addressed</li>
+                </ul>
+                <h3 id="paper18" style="color: #7a5132;">The Sciences of the Artificial Ch 5 - Simon, 1970</h3>
+                <ul>
+                    <li>"design, so construed, is the core of all professional training: it is the principle mark that
+                        distinguishes the professions from the sciences"</li>
+                    <li>goal: contrasting design with traditional engineering subjects leads to the formalization of
+                        optimization objectives</li>
+                    <li>design solutions are sequences of actions that lead to possible worlds satisfying specified
+                        constraints</li>
+                </ul>
+                <h3 id="lecture16" style="color: #3B37FC;">Lecture 16: Accessibility</h3>
+                <ul>
+                    <li>19% of the US population experiences some sort of disability</li>
+                    <li>research usually targets 1 of many groups: visual, hearing, cognitive, speech, mobility, neural
+                    </li>
+                    <li>there is both a medical model of disability and a social model</li>
+                    <li>instead of thinking about disability, think about ability-based interaction, what can we do vs
+                        what can't we do</li>
+                    <li>by designing for extreme users vs common users, you benefit everybody</li>
+                    <li>ex: blind users and touchscreen phones, translate sign language, localize sound, crowdsourcing
+                        labeling google street view</li>
+                    <li>only 0.1% of images on social media have alt-text</li>
+                    <li>can we use AI to improve accessibility?</li>
+                </ul>
+                <h3 id="paper19" style="color: #7a5132;">Ability-Based Design - Wobbrock, Gajos, Kane, Harada,
+                    Froehlich, 2011</h3>
+                <ul>
+                    <li><mark>assistive technology</mark>: developed out of World War II, adding an adaptation to the
+                        user which improves the system</li>
+                    <li><mark>rehabilitation engineering</mark>: approach that has sought to quantify, track, measure
+                        human performance for the sake of providing better-fitting adaptations</li>
+                    <li><mark>universal design</mark>: design principles that grew out of architecture, one size fits
+                        all mindset</li>
+                    <li><mark>universal usability</mark>: guidelines for designing interfaces that are usable by the
+                        widest range of people possible</li>
+                    <li><mark>7 abilities of ability-based design</mark>: ability, accountability, adaptation,
+                        transparency, performance, context, community</li>
+                </ul>
+                <h3 id="lecture17" style="color: #3B37FC;">Lecture 17: IC4TD - Information and Communication
+                    Technologies for Developments</h3>
+                <ul>
+                    <li>much of the world doesn't have access to iPhone or 5G technology</li>
+                    <li>could technology better help developing regions by assisting in things like: credit and capital,
+                        healthcare, education, disaster management, government</li>
+                    <li>"technology, no matter how well designed, is only a magnifier of human intent and capacity. it
+                        is not a substitute"</li>
+                    <li>IC4TD focus is on Asia and Africa</li>
+                    <li><mark>rethinking technology in the context of local communities</mark>: are graphical user
+                        interfaces the norm for other places and regions, image-based/speech-based vs text-based</li>
+                    <li>what has worked: mobile Q&A for farmers, village based stations for local cellular network,
+                        digitizing paper forms</li>
+                    <li><mark>supporting development efforts</mark>: rather than creating something brand-new, how can
+                        we add to what exists</li>
+                    <li>ex: crowdsourcing platform in Kenya to aid crisis mapping, medication adherence through phone
+                        calls</li>
+                    <li>what role does social media play in revolutions - is it an enabler or simply present?</li>
+                    <li><mark>technology as new versions of old problems</mark>: postcolonial computing (assumptions
+                        about what other people can understand, not navigating past our default cultural frame), privacy
+                        with shared devices</li>
+                    <li>ideas: invest in people, not technology, </li>
+                </ul>
+                <h3 id="paper20" style="color: #7a5132;">Designing Mobile Interfaces for Novice and Low-Literacy Users -
+                    Medhi, Patnaik, Brunskill, Gautama, Thies, Toyama, 2011</h3>
+                <ul>
+                    <li>the mobile phone is the best way to reach a global development focus, however, much of the
+                        population is illiterate and/or novice at using their phone</li>
+                    <li>input methods: typing, structured speech, free-form speech</li>
+                    <li>output methods: text, audio, graphical UI</li>
+                    <li>conducted studies in India, Philippines, and South Africa on two tasks: completing a mobile bank
+                        transaction with access to text, voice, and graphics vs entering health data with minimal errors
+                        using text vs live operator</li>
+                    <li>voice recordings of help information is very helpful to users, icon-based interfaces also work
+                        better</li>
+                    <li>however, ethnography and region based differences also need to be accounted for, also prior
+                        experience using mobile phones</li>
+                    <li><mark>usability barriers</mark>: hierarchal navigation, discoverability in deep menu systems,
+                        scroll bars are initially not understood, unlabeled keys, nonnumeric inputs, language
+                        difficulties</li>
+                </ul>
+                <h3 id="lecture18" style="color: #3B37FC;">Lecture 18: Something Old, Something New</h3>
+                <ul>
+                    <li>Vannevar Bush's idea of the memex - "wholly new forms of encyclopedias will appear, ready-made
+                        with a mesh of associative trails running through them"</li>
+                    <li>Memex inspires Sutherland and his GUI which inspires Doug Engelbart's mouse and demo which
+                        inspires Alan Kay - "the best way to predict the future is to invent it"</li>
+                    <li>Xerox Star draws from Engelbart and Kay's ideas (WYSIWYG, mouse and keys, direct manipulation,
+                        desktop metaphor, bitmapped display) which inspires Lisa which allows Mac to be created</li>
+                    <li>HCI establishes near the end of this and so does CHI</li>
+                </ul>
+                <h3 id="paper21" style="color: #7a5132;">As We May Think - Bush, 1945</h3>
+                <ul>
+                    <li>"The human mind does not work in that way. It operates by association. With one item in its
+                        grasp, it snaps instantly to the next that is suggested by the association of thoughts, in
+                        accordance with some intricate web of trails carried by the cells of the brain. It has other
+                        characteristics, of course; trails that are not frequently followed are prone to fade, items are
+                        not fully permanent, memory is transitory. Yet this speed of action, the intricacy of trails,
+                        the detail of mental pictures, is awe-inspiring beyond all else in nature. Man cannot hope fully
+                        to duplicate this mental process artificially, but he certainly ought to be able to learn from
+                        it."</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>🌱 Designed (and built) by Sadhika in California. © 2023</p>
+      </footer>
+</body>
+
+<script src="../scripts.js"></script>
+
+</html>
