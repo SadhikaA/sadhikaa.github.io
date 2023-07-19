@@ -34,7 +34,7 @@ h1 {
 
 h2 {
     color: #3B37FC;
-    font-family: IBM Plex Mono;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 24px;
     font-weight: 400;
     line-height: normal;
@@ -268,11 +268,6 @@ mark {
 }
 
 .page-header {
-    color: #3B37FC;
-    font-family: IBM Plex Mono;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: normal;
     margin-top: 50px;
     margin-bottom: 0;
     line-height: 0;
