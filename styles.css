@@ -620,3 +620,9 @@ button:focus {
 .scroll-button.right {
     right: 0.6vw;
 }
+
+mark {
+    background-color: #f3ecdb;
+    border-radius: 3px;
+    padding: 1px;
+}
