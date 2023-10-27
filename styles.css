@@ -42,10 +42,15 @@ h2 {
 
 h3 {
     color: #000;
-    font-family: JetBrains Mono;
+    /* font-family: JetBrains Mono;
     font-size: 16px;
     font-weight: 400;
-    font-style: bold;
+    font-style: bold; */
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 130%;
+
     margin-top: 0;
     line-height: normal;
 }
@@ -73,14 +78,14 @@ h3 {
 }
 
 .writing-image {
-    display:grid;
+    display: grid;
     height: auto;
     border-radius: 10px;
     justify-items: center;
 }
 
 .racquet-image {
-    display:flex;
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
@@ -268,9 +273,11 @@ mark {
 }
 
 .page-header {
-    margin-top: 50px;
-    margin-bottom: 0;
+    margin-top: 70px;
+    margin-bottom: 32px;
     line-height: 0;
+    font-size: 22px;
+    font-weight: 200;
 }
 
 .writing-header {
@@ -440,6 +447,13 @@ button:focus {
     margin-top: 5px;
 }
 
+.icons {
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+    margin-top: 5px;
+}
+
 .icon:hover {
     transform: scale(1.08);
 }
@@ -474,6 +488,16 @@ button:focus {
 .add-inter {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 130%;
+}
+
+.inter {
+    margin-top: 40px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 32px;
+    font-weight: 600;
     letter-spacing: 0.3px;
     line-height: 130%;
 }
@@ -540,6 +564,7 @@ button:focus {
         flex-direction: column;
         align-items: center;
     }
+
     .project-tag {
         margin-bottom: 10px;
     }
@@ -566,7 +591,8 @@ button:focus {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-    position: relative; /* Add position relative */
+    position: relative;
+    /* Add position relative */
 }
 
 .left-section {
@@ -583,17 +609,23 @@ button:focus {
     z-index: 1;
 }
 
-.right-section {
-    flex: 2;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    height: 32vh;
-    padding: 20px;
+.image-scroll-container {
+    max-width: 100%;
+    overflow-x: auto;
     white-space: nowrap;
-    overflow-x: scroll;
+    padding: 10px;
+
 }
 
-.scroll-button, .scroll-button:focus, .scroll-button:active, .scroll-button:hover {
+.image-scroll-container img {
+    display: inline-block;
+}
+
+
+.scroll-button,
+.scroll-button:focus,
+.scroll-button:active,
+.scroll-button:hover {
     position: absolute;
     top: 50%;
     opacity: 80%;
@@ -614,7 +646,7 @@ button:focus {
 
 
 .scroll-button.left {
-    right: 36.5vw;
+    right: 37.5vw;
 }
 
 .scroll-button.right {
@@ -625,4 +657,37 @@ mark {
     background-color: #f3ecdb;
     border-radius: 3px;
     padding: 1px;
+}
+
+.container-col {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    background-color: #eaebf4;
+    border-radius: 10px;
+    padding: 2px;
+    
+    p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.row {
+    display: flex;
+    row-gap: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 12px;
+    margin-left: 12px;
 }
