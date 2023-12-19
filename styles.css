@@ -151,6 +151,11 @@ li {
     display: flex;
     margin-top: 10px;
     padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.writing-row:hover {
+    transform: scale(1.02);
 }
 
 .subtitle {
@@ -179,7 +184,7 @@ li {
     align-self: flex-start;
     font-family: JetBrains Mono;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     color: #004225;
     background-color: #D0E7D2;
     text-decoration: none;
@@ -510,7 +515,6 @@ mark {
 
 .notes-link:hover {
     color: #3B37FC;
-    font-weight: 600;
 }
 
 .tag-container {
@@ -526,7 +530,7 @@ mark {
     align-self: flex-start;
     font-family: JetBrains Mono;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     color: #12486B;
     background-color: #9EDDFF;
     text-decoration: none;
