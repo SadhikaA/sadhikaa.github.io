@@ -5,7 +5,6 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
-import Spline from '@splinetool/react-spline';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();

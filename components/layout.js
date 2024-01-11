@@ -1,6 +1,5 @@
 // TwoColumnLayout.js
 import React from 'react';
-import utilStyles from '../styles/utils.module.css';
 import layoutStyles from './layout.module.css';
 
 const TwoColumnLayout = ({ children }) => {
