@@ -37,7 +37,9 @@ export default function Home({ allPostsData }) {
                     <button className={utilStyles.button}>Email</button>
                     <p></p>
                     <p className={utilStyles.subheading}>explore my website ↴</p>
+                    <Link href={`/projects`}>
                     <button className={utilStyles.pageNavigation}>&nbsp;/projects</button>
+                    </Link>
                     <button className={utilStyles.pageNavigation}>&nbsp;/experience</button>
                     <button className={utilStyles.pageNavigation}>&nbsp;/notes</button>
                     <button className={utilStyles.pageNavigation}>&nbsp;/blog</button>
