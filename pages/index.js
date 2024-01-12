@@ -38,7 +38,7 @@ export default function Home({ allPostsData }) {
                     <p></p>
                     <p className={utilStyles.subheading}>explore my website ↴</p>
                     <Link href={`/projects`}>
-                    <button className={utilStyles.pageNavigation}>&nbsp;/projects</button>
+                        <button className={utilStyles.pageNavigation}>&nbsp;/projects</button>
                     </Link>
                     <button className={utilStyles.pageNavigation}>&nbsp;/experience</button>
                     <button className={utilStyles.pageNavigation}>&nbsp;/notes</button>
@@ -46,7 +46,7 @@ export default function Home({ allPostsData }) {
                     <button className={utilStyles.pageNavigation}>&nbsp;/bookshelf</button>
                 </div>
                 <div className={utilStyles.container}>
-                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.22/build/spline-viewer.js"></script>
+                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.25/build/spline-viewer.js"></script>
                     <spline-viewer hint url="https://prod.spline.design/mDpLLkIv8yao7omE/scene.splinecode"></spline-viewer>
                     <h2 className={utilStyles.headingLg}>Blog</h2>
                     <ul className={utilStyles.list}>
