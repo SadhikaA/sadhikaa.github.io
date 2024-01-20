@@ -2,9 +2,9 @@
     flex: 1;
     margin: 30px 0px 30px 30px;
     padding: 1px;
-    background: #222;
-    color: white;
-    border: 10px solid #222;
+    background: #fefefe;
+    color: black;
+    border: 10px solid #fefefe;
     border-radius: 15px;
     height: 100vh;
 }

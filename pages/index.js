@@ -28,7 +28,6 @@ export default function Home({ allPostsData }) {
             <Layout>
                 <div className={utilStyles.container}>
                     <h1>Sadhika Akula</h1>
-                    <p>[👷🏽‍♀️ website currently under construction]</p>
                     <p className={utilStyles.subheading}>hello world!</p>
                     <p style={{ marginTop: '5px' }}>I’m a student at UC Berkeley, studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, artificial intelligence, and future hardware. Currently, I'm tinkering with SwiftUI and taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. </p>
                     <p className={utilStyles.subheading}>find me also at ↴</p>
