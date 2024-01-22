@@ -19,7 +19,7 @@ export default function Projects() {
                 </div>
                 <div className={utilStyles.container}>
                     <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
-                    <h2 className={utilStyles.headingLg}>Projects</h2>
+                    <h2 className={utilStyles.headingLg}>/projects</h2>
                 </div>
             </Layout>
         </>

@@ -19,7 +19,7 @@ export default function Experience() {
                 </div>
                 <div className={utilStyles.container}>
                     <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
-                    <h2 className={utilStyles.headingLg}>Experience</h2>
+                    <h2 className={utilStyles.headingLg}>/experience</h2>
                 </div>
             </Layout>
         </>

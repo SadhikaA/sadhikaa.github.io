@@ -19,7 +19,7 @@ export default function Bookshelf() {
                 </div>
                 <div className={utilStyles.container}>
                     <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
-                    <h2 className={utilStyles.headingLg}>Bookshelf</h2>
+                    <h2 className={utilStyles.headingLg}>/bookshelf</h2>
                 </div>
             </Layout>
         </>
