@@ -29,15 +29,14 @@ export default function Blog({ allPostsData }) {
                 <div className={utilStyles.container}></div>
                 <div className={utilStyles.container}>
                     <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
-                    <h2 className={utilStyles.headingLg}>Blog</h2>
+                    <h2 className={utilStyles.headingLg}>/blog</h2>
                     <ul className={utilStyles.list}>
                         {allPostsData.map(({ id, date, title }) => (
                             <li className={utilStyles.listItem} key={id}>
-                                <Link href={`/posts/${id}`}> {title}</Link>
-                                <br />
                                 <small className={utilStyles.lightGrayText}>
-                                    <Date dateString={date} />
+                                    <div className={utilStyles.blogtag}><Date dateString={date} /></div>
                                 </small>
+                                <Link href={`/posts/${id}`}><button className={utilStyles.bloglink}>{title}</button></Link>
                             </li>
                         ))}
                     </ul>

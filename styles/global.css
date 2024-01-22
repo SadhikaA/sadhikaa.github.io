@@ -19,6 +19,13 @@ h1 {
   line-height: 120%;
 }
 
+h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 spline-viewer {
   height: 750px;
   width: 100%; 
