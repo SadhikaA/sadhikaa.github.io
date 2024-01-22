@@ -29,18 +29,18 @@
 
 .pageNavigation:hover {
   font-family: 'JetBrains Mono', sans-serif;
-  color: white;
+  color: black;
   line-height: 180%;
   letter-spacing: 0.9px;
   width: 100%;
-  background-color: #444;
+  background-color: #dcdcdc;
   margin-bottom: 2px;
   margin-top: 12px;
   padding: 0;
   text-align: left;
   font-size: 15px;
   border: none;
-  border: solid 1px white;
+  border: solid 1px black;
   border-radius: 5px;
 }
 

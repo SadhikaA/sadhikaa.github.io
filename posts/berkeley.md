@@ -82,4 +82,30 @@ I like to call this class math for ML. It dives deep into the behind the scenes 
 
 This class about the ethical side of CS was very interesting. It was very timely to discuss how technology and capitalism work together at the same semester where the tech industry was going through massive shifts post-COVID. Various case studies also made me consider times when technology isn’t always the solution to every problem or how we could create people-centered technology rather than product-centered technology.
 
+### Semester 5 - Fall 2023
 
+#### EECS 149: Introduction to Embedded Systems
+
+Going into this class, I didn't know what to expect. The labs were pretty interesting as we were using a different programming language (Lingua Franca with a C target) to program a Polulu robot and use its sensors, timers, and other features. The emphasis towards finite state machines (FSMs) in this class made me consider how many processes today are/could be represented by state machines. I enjoyed learning more about the intersection of hardware and software covering topics such as wireless sensing, networking, and IoT devices. My final project was my favorite part of the class which involved building a stabilizing drone from scratch.
+
+#### PHYS 7B: Electricity and Magnetism
+
+I would say this class was pretty standard E&M physics, right-hand rule etc. It was a nice refreshed to pair along with EECS 149 and I enjoyed learning about the inner workings of many mechanical systems that we take for granted today. I would recommend taking this class before EECS 16A as usually suggested.
+
+#### EPS 109: Computer Simulations in Jupyter Notebooks
+
+I wasn't sure what to expect in this course but it did not disappoint. Using numpy, matplotlib, and other math and Python packages, we created intricate simulations through the semester. This included Mandelbrot and Julia sets, partial and ordinary differential equations, as well as orbits, erosion, and random walks. I enjoyed working on my final project which aimed to simulate two neurons growing and connecting over time. Throughout the class, I was impressed with how just a few lines of code could create intricate animations.
+
+#### UCBUGG DeCal: Computer Animation
+
+This class really pushed me to learning a new technology within a semester and working on all parts of the pipeline from modeling to animation to rendering. I learned a lot about Maya and working with 3D technologies and concepts in computer graphics and computer animation. For a DeCal, I spent a lot of time on this class because of the sheer amount of restarting any 3D process requires but I really felt that I was learning by effort. By the end of the class, I had a much greater appreciation for any animated film I watch and finally answered so many questions I had about the animation pipeline. I hope to use the skills from this class to make more animated shorts.
+
+### Semester 6 - Spring 2024
+
+reviews coming May 2024!
+
+#### COMPSCI 184: Computer Graphics
+
+#### COMPSCI 162: Operating Systems
+
+### ENGIN 157AC: Engineering, Environment, and Society
