@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
+import blogStyles from '../styles/blog.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
@@ -34,9 +35,9 @@ export default function Blog({ allPostsData }) {
                         {allPostsData.map(({ id, date, title }) => (
                             <li className={utilStyles.listItem} key={id}>
                                 <small className={utilStyles.lightGrayText}>
-                                    <div className={utilStyles.blogtag}><Date dateString={date} /></div>
+                                    <div className={blogStyles.blogtag}><Date dateString={date} /></div>
                                 </small>
-                                <Link href={`/posts/${id}`}><button className={utilStyles.bloglink}>{title}</button></Link>
+                                <Link href={`/posts/${id}`}><button className={blogStyles.bloglink}>{title}</button></Link>
                             </li>
                         ))}
                     </ul>
