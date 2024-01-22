@@ -18,8 +18,8 @@ export default function Home() {
             <Layout>
                 <div className={utilStyles.container}></div>
                 <div className={utilStyles.container}>
-                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.31/build/spline-viewer.js"></script>
-                    <spline-viewer hint url="https://prod.spline.design/mDpLLkIv8yao7omE/scene.splinecode"></spline-viewer>
+                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.32/build/spline-viewer.js"></script>
+<spline-viewer hint url="https://prod.spline.design/mDpLLkIv8yao7omE/scene.splinecode"></spline-viewer>
                 </div>
             </Layout>
         </>
