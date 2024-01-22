@@ -19,7 +19,7 @@ const TwoColumnLayout = ({ children }) => {
           <p></p>
           <p className={utilStyles.subheading}>explore my website ↴</p>
           <Link href="/projects"><button className={utilStyles.pageNavigation}>&nbsp;/projects</button></Link>
-          <Link href="/notes"><button className={utilStyles.pageNavigation}>&nbsp;/blog</button></Link>
+          <Link href="/notes"><button className={utilStyles.pageNavigation}>&nbsp;/notes</button></Link>
           <Link href="/experience"><button className={utilStyles.pageNavigation}>&nbsp;/experience</button></Link>
           <Link href="/blog"><button className={utilStyles.pageNavigation}>&nbsp;/blog</button></Link>
           <Link href="/bookshelf"><button className={utilStyles.pageNavigation}>&nbsp;/bookshelf</button></Link>
