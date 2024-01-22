@@ -87,8 +87,8 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
-  background-color: rgb(108, 224, 219);
-  color: rgb(4, 56, 54);
+  background-color: rgb(255, 204, 0);
+  color: rgb(178, 80, 0);
   border: none;
   padding: 2px 6px;
   margin-top: 10px;
@@ -98,8 +98,8 @@
 }
 
 .button:hover {
-  background-color: rgb(0, 189, 180);
-  color: rgb(4, 56, 54);
+  background-color: rgba(255, 204, 0, 0.464);
+  color: rgb(178, 80, 0);
 }
 
 @media (min-width: 768px) {
