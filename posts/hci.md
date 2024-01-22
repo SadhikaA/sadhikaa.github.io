@@ -1,5 +1,5 @@
 ---
-title: 'Human-Computer Interaction: Foundation and Frontiers'
+title: 'Human-Computer Interaction'
 date: '2023-06-12'
 ---
 

@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const TwoColumnLayout = ({ children }) => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className={layoutStyles.page}>
       <div className={layoutStyles.leftColumn}>{children[0]}
         <div className={utilStyles.container}>
           <h1>Sadhika Akula</h1>
