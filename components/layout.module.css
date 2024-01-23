@@ -6,12 +6,12 @@
 .leftColumn {
     flex: 1;
     padding: 1px;
-    background: #fefefe;
+    background: #ffffff;
     color: black;
-    border: 10px solid #fefefe;
+    border: 10px solid #ffffff;
     border-radius: 15px;
     line-height: 1;
-    margin: 20px;
+    margin: 30px 30px 0px 30px;
     height: auto;
 }
 

@@ -3,6 +3,11 @@ import React from 'react';
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import {createRoot} from 'react-dom/client';
+import Markdown from 'react-markdown';
+
+// const markdown = '# Hi, *Markdown*!';
+// createRoot(document.body).render(<Markdown>{markdown}</Markdown>)
 
 export default function Projects() {
     return (
