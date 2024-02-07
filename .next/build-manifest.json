@@ -15,11 +15,6 @@
     "static/chunks/main-app.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -30,35 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/blog": [
+    "/noteposts/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/blog.js"
-    ],
-    "/bookshelf": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/bookshelf.js"
-    ],
-    "/experience": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/experience.js"
+      "static/chunks/pages/noteposts/[id].js"
     ],
     "/notes": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/notes.js"
-    ],
-    "/posts/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/posts/[id].js"
-    ],
-    "/projects": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/projects.js"
     ]
   },
   "ampFirstPages": []

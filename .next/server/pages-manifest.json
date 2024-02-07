@@ -2,11 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/blog": "pages/blog.js",
   "/notes": "pages/notes.js",
-  "/posts/[id]": "pages/posts/[id].js",
-  "/projects": "pages/projects.js",
-  "/": "pages/index.js",
-  "/bookshelf": "pages/bookshelf.js",
-  "/experience": "pages/experience.js"
+  "/blog": "pages/blog.js",
+  "/noteposts/[id]": "pages/noteposts/[id].js"
 }
