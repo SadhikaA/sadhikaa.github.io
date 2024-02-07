@@ -2,9 +2,21 @@ import Head from 'next/head';
 import React from 'react';
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
+import blogStyles from '../styles/blog.module.css';
+import { getSortedPostsData } from '../lib/noteposts';
 import Link from 'next/link';
+import Date from '../components/date';
 
-export default function Notes() {
+export async function getStaticProps() {
+    const allPostsData = getSortedPostsData();
+    return {
+        props: {
+            allPostsData,
+        },
+    };
+}
+
+export default function Notes({ allPostsData}) {
     return (
         <>
             <Head>
@@ -20,6 +32,16 @@ export default function Notes() {
                 <div className={utilStyles.container}>
                     <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
                     <h2 className={utilStyles.headingLg}>/notes</h2>
+                    <ul className={utilStyles.list}>
+                        {allPostsData.map(({ id, date, title }) => (
+                            <li className={utilStyles.listItem} key={id}>
+                                <small className={utilStyles.lightGrayText}>
+                                    <div className={blogStyles.blogtag}><Date dateString={date} /></div>
+                                </small>
+                                <Link href={`/noteposts/${id}`}><button className={blogStyles.bloglink}>{title}</button></Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </Layout>
         </>
