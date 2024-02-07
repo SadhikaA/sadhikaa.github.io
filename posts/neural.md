@@ -17,7 +17,7 @@ date: '2024-01-01'
 
 ### Value Class
 
-```python
+```py
 class Value:
     def __init__(self, data, _children=(), _operation="", label=""):
         self.data = data
