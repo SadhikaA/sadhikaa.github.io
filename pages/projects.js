@@ -23,7 +23,7 @@ export default function Projects() {
                 <div className={utilStyles.container}>
                 </div>
                 <div className={utilStyles.container}>
-                    <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
+                    <Link href="/"><button className={utilStyles.button}>/home</button></Link>
                     <h2 className={utilStyles.headingLg}>/projects</h2>
                 </div>
             </Layout>

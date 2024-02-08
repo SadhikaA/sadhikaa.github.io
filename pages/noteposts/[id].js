@@ -1,8 +1,9 @@
-import Layout from '../../components/layout';
+import Layout from '../../components/toc_layout';
 import Head from 'next/head';
 import { getAllPostIds, getPostData } from '../../lib/noteposts';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
+import Link from 'next/link';
 
 export default function Post({ postData }) {
     return (
@@ -11,12 +12,17 @@ export default function Post({ postData }) {
           <title>{postData.title}</title>
         </Head>
         <article>
+        <div className={utilStyles.container}></div>
+        <div className={utilStyles.container}>
+          <Link href="/"><button className={utilStyles.button}>/home</button></Link>
+          <Link href="/notes"><button className={utilStyles.button}>/notes</button></Link>
           <h2 className={utilStyles.subheading}>{postData.title}</h2>
           <div className={utilStyles.lightText}>
             <Date dateString={postData.date} />
           </div>
           <div className={utilStyles.markdownContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
-        </article>
+          </div>
+          </article>
       </Layout>
     );
   }

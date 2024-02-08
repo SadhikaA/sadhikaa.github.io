@@ -30,7 +30,7 @@ export default function Notes({ allPostsData}) {
                 <div className={utilStyles.container}>
                 </div>
                 <div className={utilStyles.container}>
-                    <Link href="/"><button className={utilStyles.button}>← Home</button></Link>
+                    <Link href="/"><button className={utilStyles.button}>/home</button></Link>
                     <h2 className={utilStyles.headingLg}>/notes</h2>
                     <ul className={utilStyles.list}>
                         {allPostsData.map(({ id, date, title }) => (

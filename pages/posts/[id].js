@@ -3,23 +3,29 @@ import Head from 'next/head';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
+import Link from 'next/link';
 
 export default function Post({ postData }) {
-    return (
-      <Layout>
-        <Head>
-          <title>{postData.title}</title>
-        </Head>
-        <article>
-          <h2 className={utilStyles.subheading}>{postData.title}</h2>
-          <div className={utilStyles.lightText}>
-            <Date dateString={postData.date} />
-          </div>
-          <div className={utilStyles.markdownContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
+  return (
+    <Layout>
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+      <article>
+      <div className={utilStyles.container}></div>
+      <div className={utilStyles.container}>
+        <Link href="/"><button className={utilStyles.button}>/home</button></Link>
+        <Link href="/blog"><button className={utilStyles.button}>/blogs</button></Link>
+        <h2 className={utilStyles.subheading}>{postData.title}</h2>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <div className={utilStyles.markdownContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
+        </div>
         </article>
-      </Layout>
-    );
-  }
+    </Layout>
+  );
+}
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
