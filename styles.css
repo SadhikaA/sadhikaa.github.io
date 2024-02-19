@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: Inter, sans-serif;
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+    padding-top: 6vw;
+    padding-right: 22vw;
+    padding-left: 22vw;
+}
+
+.subheading {
+    font-family: "JetBrains Mono", sans-serif;
+    padding-top: 10px;
+    font-size: 13px;
+    margin-bottom: 0px;
+    font-weight: 500;
+    color: rgb(59, 55, 252);
+}
+
+p {
+    line-height: 128%;
+    font-size: 14px;
+}
+
+
+.button {
+    font-family: "JetBrains Mono", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: rgb(255, 204, 0);
+    color: rgb(178, 80, 0);
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 10px;
+    border-radius: 4px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+    
