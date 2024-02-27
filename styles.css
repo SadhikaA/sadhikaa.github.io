@@ -6,14 +6,51 @@ h1 {
     font-size: 28px;
 }
 
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+h4 {
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+}
+
 body {
     font-family: Inter, sans-serif;
     letter-spacing: 0.3px;
     line-height: 1.4;
-    padding-top: 8vw;
-    padding-right: 20vw;
-    padding-left: 20vw;
+    padding-top: 3vw;
+    padding-right: 15vw;
+    padding-left: 15vw;
 }
+
+code {
+    font-family: monospace;
+    border-radius: 5px;
+    padding: 2px; 
+    border: 1px solid rgb(236, 236, 236);
+    font-size: 13px;
+    background-color: rgb(236, 236, 236);
+    color: black;
+}
+
+.math {
+    display: inline-block;
+  }
 
 @media (max-width: 768px) {
     body {
@@ -33,6 +70,10 @@ body {
 
 p {
     line-height: 128%;
+    font-size: 14px;
+}
+
+li {
     font-size: 14px;
 }
 
@@ -94,6 +135,16 @@ column {
     flex: 1;
 }
 
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
 a {
     border: none;
     background-color: white;
@@ -110,16 +161,42 @@ a {
 .bloglink {
     color: #0070f3;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
+}
+
+.subheading {
+    color: #0070f3;
+    text-decoration: none;
+    font-weight: 500;
+    padding-left: 20px;
 }
 
 .blogtag {
-    margin-top: 2px;
-    margin-right: 15px;
+    margin-top: 0;
     align-self: flex-start;
-    font-family: JetBrains Mono;
+    font-family: Inter;
     font-size: 12px;
     font-weight: 500;
     text-decoration: none;
-    padding: 0.08rem 0.4rem;
+    color: rgb(94, 94, 94);
+    padding-top: 8px;
+}
+
+.top {
+    cursor: pointer;
+    position: fixed; 
+    bottom: 20px;
+    right: 20px;
+    z-index: 999; 
+}
+
+em {
+    font-family: Inter;
+    font-style: normal;
+    border-radius: 5px;
+    padding: 2px; 
+    border: 1px solid rgb(176, 243, 191);
+    font-size: 13px;
+    background-color: rgb(176, 243, 191);
+    color: black;
 }
