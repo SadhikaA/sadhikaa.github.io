@@ -1,6 +1,30 @@
 import markdown
 import re
 
+def paragraph(line):
+    while "**" in line:
+        line = line.replace("**", "<b>", 1)
+        line = line.replace("**", "</b>", 1)
+    # check for == in line 
+    while "==" in line:
+        line = line.replace("==", "<em>", 1)
+        line = line.replace("==", "</em>", 1)
+    # check for ` in line 
+    while "`" in line:
+        code_started = True
+        line = line.replace("`", "<code>", 1)
+        line = line.replace("`", "</code>", 1)
+        code_started = False
+    # check for _ in line
+    while "!" in line:
+        line = line.replace("!", "<i>", 1)
+        line = line.replace("!", "</i>", 1)
+    # check for inline math, $
+    while "$" in line:
+        line = line.replace("$", "<span class='math'>\(", 1)
+        line = line.replace("$", "\)</span>", 1)
+    return line
+
 def parse_markdown(markdown_text):
     # get title between --- and ---
     title = re.findall(r'---(.*?)---', markdown_text, re.DOTALL)[0][8:]
@@ -61,8 +85,13 @@ def parse_markdown(markdown_text):
             lang = "swift"
             html_output += f'<pre><code class="language-{lang}">'
             code_started = True
+        # check for c code
+        elif line.startswith("```") and "c" in line:
+            lang = "c"
+            html_output += f'<pre><code class="language-{lang}">'
+            code_started = True
         # check for end of code block 
-        elif line.startswith("```"):
+        elif line.startswith("```") and code_started:
             html_output += '\n\t</code></pre>'
             code_started = False
         # add code between lines 
@@ -79,13 +108,18 @@ def parse_markdown(markdown_text):
                     html_output += f'\n<div class="column">'
                     i += 1
                     line = lines[i]
-                    html_output += f'{line}'
+                    if not line.startswith("<img"):
+                        line = paragraph(line)
+                        html_output += f'<p style="text-align:left">{line}</p>'
+                    else:
+                        html_output += f'{line}'
                     html_output += f'</div>'
             html_output += f'\n</div>'
         # list support 
         elif line.startswith("-"):
             html_output += f'\n<ul>'
             while line.startswith("-"):
+                line = paragraph(line)
                 html_output += f'\n<li>{line[2:]}</li>'
                 i += 1
                 line = lines[i]
@@ -97,25 +131,7 @@ def parse_markdown(markdown_text):
         else:
             curr = f'\n<p>'
             # check for ** in line 
-            while "**" in line:
-                line = line.replace("**", "<b>", 1)
-                line = line.replace("**", "</b>", 1)
-            # check for _ in line
-            while "_" in line:
-                line = line.replace("_", "<i>", 1)
-                line = line.replace("_", "</i>", 1)
-            # check for == in line 
-            while "==" in line:
-                line = line.replace("==", "<em>", 1)
-                line = line.replace("==", "</em>", 1)
-            # check for ` in line 
-            while "`" in line:
-                line = line.replace("`", "<code>", 1)
-                line = line.replace("`", "</code>", 1)
-            # check for inline math, $
-            while "$" in line:
-                line = line.replace("$", "<span class='math'>", 1)
-                line = line.replace("$", "</span>", 1)
+            line = paragraph(line)
             curr += line
             curr += '</p>'
             # otherwise add a normal p 
@@ -123,6 +139,7 @@ def parse_markdown(markdown_text):
         i += 1
 
     html_output += """
+        <p style="padding-bottom: 60px"></p>
         <a class="top" href="#top"><button class="orange">⬆</button></a>
     </body>
     </html>
@@ -156,7 +173,7 @@ def convert_markdown_to_html(input_file, output_file):
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_text)
 
-    print(f"HTML file generated successfully: {output_file}")
+    print(f"🚀 Success! Generated: {output_file}")
 
 # Example usage: Convert input.md to output.html
-convert_markdown_to_html('graphics.md', 'output.html')
+convert_markdown_to_html('graphics.md', 'graphics.html')

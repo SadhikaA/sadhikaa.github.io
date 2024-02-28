@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Operating Systems 
+</title>
+        <link rel="stylesheet" href="../styles.css">
+        <link href="../../prism.css" rel="stylesheet" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+        <script src="../../prism.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <a href="../index.html"><button class="orange">/home</button></a>
+        <a href="../notes.html"><button class="orange">/fieldnotes</button></a>
+<h2 id="top">💾 Operating Systems</h2>
+<hr>
+<a href="#h1" class="subheading">Simulatenous Multithreading </a><br>
+<a href="#h2" class="bloglink">Scheduling </a><br>
+<a href="#h3" class="subheading">Shortest Run Time First (SRTF) </a><br>
+<a href="#h4" class="subheading">Multi Level Feedback Scheduling </a><br>
+<a href="#h5" class="subheading">Case Study: O(1) Scheduler</a><br>
+<a href="#h6" class="subheading">Multi Core Scheduling</a><br>
+<a href="#h7" class="bloglink">Real Time Scheduling</a><br>
+<a href="#h8" class="subheading">Earliest Deadline First (EDF)</a><br>
+<hr>
+<h4 id="h1">Simulatenous Multithreading </h4>
+<p>It will swap them for you </p>
+<p>Similar to having 2 cores but not as fast </p>
+<h3 id="h2">Scheduling </h3>
+<h4 id="h3">Shortest Run Time First (SRTF) </h4>
+<ul>
+<li>SRTF leads to starvation. </li>
+<li>How do we predict future? build model of past, if program was random, no point in predicting </li>
+<li>Make SRTF <em>adaptive</em> where we change policy based on past behavior </li>
+<li>Use an estimator on previous CPU bursts </li>
+<li>Estimate next time burst such as using exponential averaging </li>
+<li>Downside: if prediction model costs more than what you're scheduling then you're burning out of time and cycles</li>
+<li>How do we handle simultaneous mix of different types of apps? How to best schedule them? How do we recognize one from the other? </li>
+<li>Apps that sleep a lot and have short bursts must be interactive apps (they should get high priority).</li>
+<li>Apps that compute a lot should get lower priority since they won't notice intermittent bursts from interactive apps.</li>
+</ul>
+<h4 id="h4">Multi Level Feedback Scheduling </h4>
+<ul>
+<li>Each queue has a different scheduling technique. </li>
+<li>Things at top run with higher priority. </li>
+<li>A way of approximating SRTF because short things go up, long things go down.</li>
+<li>We give priority to tasks at the top. </li>
+<li>High priority queues are often considered background tasks. </li>
+<li>CPU bound ones drop, short running I/O bound </li>
+<li>User can foil CPU (add in a bunch of I/O or print statements means that we could run much faster)</li>
+</ul>
+<h4 id="h5">Case Study: O(1) Scheduler</h4>
+<ul>
+<li>140 levels of priority (lower = higher)</li>
+<li>40 for user tasks (set by nice, which gives it lower priority)</li>
+<li>100 for realtime/kernel</li>
+<li>two seperate priority queues, active and expired </li>
+</ul>
+<h4 id="h6">Multi Core Scheduling</h4>
+<ul>
+<li>Not a huge difference from single core scheduling</li>
+<li><i>Affinity scheduling</i>: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU </li>
+</ul>
+<p>Spinlock: doesn't put calling thread to sleep, it just busy waits </p>
+<ul>
+<li>when do we want this: waiting for limited number of threads </li>
+</ul><pre><code class="language-c">
+	int value = 0;     // free 
+	acquire() {
+	    while(test&set(&value)) { }  // spin while busy 
+	}
+	release() {
+	    value = 0;   // atomic store 
+	}
+	</code></pre>
+<h3 id="h7">Real Time Scheduling</h3>
+<p>We don't care about running fast, we want to predict performance. What is the guarenteed worst case? When car slams on brake, car needs to brake deadline needs to be met. </p>
+<p>Each task has a hard real-time that it must meet. Ideally we want to determine this in advance. (EDF and rate monitononic scheduling - RMS)</p>
+<p>Soft real time means that we need to attempt to meet deadlines with high probability (constant bandwidth server - CBS)</p>
+<p>Tasks have deadlines (D) and known computation times (C).</p>
+<p>We only have one core. None of current schedulers help. </p>
+<h4 id="h8">Earliest Deadline First (EDF)</h4>
+<p>Tasks are <b>periodic</b> with period <code>P</code> and computation <code>C</code> in each period, <span class='math'>\((P_i, C_i\))</span> for each task <code>i</code></p>
+<p>Find the one whose deadline expires first.</p>
+        <p style="padding-bottom: 60px"></p>
+        <a class="top" href="#top"><button class="orange">⬆</button></a>
+    </body>
+    </html>
+    
