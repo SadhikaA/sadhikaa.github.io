@@ -176,4 +176,4 @@ def convert_markdown_to_html(input_file, output_file):
     print(f"🚀 Success! Generated: {output_file}")
 
 # Example usage: Convert input.md to output.html
-convert_markdown_to_html('graphics.md', 'graphics.html')
+convert_markdown_to_html('operatingsys.md', 'operatingsys.html')

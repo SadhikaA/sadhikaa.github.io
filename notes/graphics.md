@@ -4,6 +4,26 @@ title: Computer Graphics and Imaging
 
 # 🫖 Computer Graphics 
 
+## Rasterization 
+
+### Drawing Triangles 
+
+## Sampling, Aliasing, Antialiasing
+
+## Transforms 
+
+## Texture Mapping 
+
+## Rasterization Pipeline
+
+## Geometry, Splines, Bezier Curves 
+
+## Ray Tracing
+
+## Ray Tracing Acceleration 
+
+## Measuring Light: Radiometry & Photometry 
+
 ## Monte Carlo Integration 
 
 Graphics requires lots of integrals so we want to consider how to make estimating integrals shorter. One way to estimate sample integrals is by sampling $f(x)$ at different $x$ positions, using trapezoidal rule or Riemann's. The more samples of $f(x)$ we take, the better our estimate gets. We can use area sampling as a form of antialiasing and estimating the integral of a triangle over the area of a pixel. In order to calculate irradiance from an environment, we integrate over all directions in the hemisphere. In order to calculate motion blur, we integrate over the pixel as well as over exposure time. We can even have a five dimensional integral by integrating over 2D lens pupil, 2D pixel area, and exposure over time.
@@ -50,3 +70,7 @@ Estimate the integral of a function by averaging random samples of the function'
 ==Monte Carlo Estimator== for the definite integral of $f(x)$ gives us the formula for the estimate of an integral given a set of random samples, $F_N = \frac{1}{N}\sum_{i=1}^N\frac{f(X_i)}{p(X_i)}$
 
 $F_N$ is the Monte Carlo estimator given $N$ samples. Draw a bunch of samples, the chance that we draw $X_i$ is $P(X_i)$. 
+
+## Global Illumination & Path Tracing 
+
+## Material Modeling

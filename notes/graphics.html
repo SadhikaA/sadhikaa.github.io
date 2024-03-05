@@ -16,11 +16,33 @@
         <a href="../notes.html"><button class="orange">/fieldnotes</button></a>
 <h2 id="top">🫖 Computer Graphics </h2>
 <hr>
-<a href="#h1" class="bloglink">Monte Carlo Integration </a><br>
-<a href="#h2" class="subheading">Probability Review</a><br>
-<a href="#h3" class="subheading">Monte Carlo Estimator </a><br>
+<a href="#h1" class="bloglink">Rasterization </a><br>
+<a href="#h2" class="subheading">Drawing Triangles </a><br>
+<a href="#h3" class="bloglink">Sampling, Aliasing, Antialiasing</a><br>
+<a href="#h4" class="bloglink">Transforms </a><br>
+<a href="#h5" class="bloglink">Texture Mapping </a><br>
+<a href="#h6" class="bloglink">Rasterization Pipeline</a><br>
+<a href="#h7" class="bloglink">Geometry, Splines, Bezier Curves </a><br>
+<a href="#h8" class="bloglink">Ray Tracing</a><br>
+<a href="#h9" class="bloglink">Ray Tracing Acceleration </a><br>
+<a href="#h10" class="bloglink">Measuring Light: Radiometry & Photometry </a><br>
+<a href="#h11" class="bloglink">Monte Carlo Integration </a><br>
+<a href="#h12" class="subheading">Probability Review</a><br>
+<a href="#h13" class="subheading">Monte Carlo Estimator </a><br>
+<a href="#h14" class="bloglink">Global Illumination & Path Tracing </a><br>
+<a href="#h15" class="bloglink">Material Modeling</a><br>
 <hr>
-<h3 id="h1">Monte Carlo Integration </h3>
+<h3 id="h1">Rasterization </h3>
+<h4 id="h2">Drawing Triangles </h4>
+<h3 id="h3">Sampling, Aliasing, Antialiasing</h3>
+<h3 id="h4">Transforms </h3>
+<h3 id="h5">Texture Mapping </h3>
+<h3 id="h6">Rasterization Pipeline</h3>
+<h3 id="h7">Geometry, Splines, Bezier Curves </h3>
+<h3 id="h8">Ray Tracing</h3>
+<h3 id="h9">Ray Tracing Acceleration </h3>
+<h3 id="h10">Measuring Light: Radiometry & Photometry </h3>
+<h3 id="h11">Monte Carlo Integration </h3>
 <p>Graphics requires lots of integrals so we want to consider how to make estimating integrals shorter. One way to estimate sample integrals is by sampling <span class='math'>\(f(x)\)</span> at different <span class='math'>\(x\)</span> positions, using trapezoidal rule or Riemann's. The more samples of <span class='math'>\(f(x)\)</span> we take, the better our estimate gets. We can use area sampling as a form of antialiasing and estimating the integral of a triangle over the area of a pixel. In order to calculate irradiance from an environment, we integrate over all directions in the hemisphere. In order to calculate motion blur, we integrate over the pixel as well as over exposure time. We can even have a five dimensional integral by integrating over 2D lens pupil, 2D pixel area, and exposure over time.</p>
 <p>However, we have to be careful about <em>curse of dimensionality</em>. If we want to take <span class='math'>\(N\)</span> samples in <span class='math'>\(5\)</span> dimensions, then we need to take <span class='math'>\(N^5\)</span> samples. This means our error also scales with respect to this. But if we remember, random sampling has very low error in higher dimensions. When computing infinite dimensional integrals such as for global illumination, Monte Carlo integration will require fewer samples than quad-based numerical integration. </p>
 <p><b>Goal</b>: estimate integrals based on random sampling of functions </p>
@@ -36,7 +58,7 @@
 <li>noise, because we are estimating integral randomly, we will only be correct on average</li>
 <li>can be slow to converge, because we need a lot of samples</li>
 </ul>
-<h4 id="h2">Probability Review</h4>
+<h4 id="h12">Probability Review</h4>
 <p><b>Discrete Probability Density Functions (PDFs)</b></p>
 <p><span class='math'>\(X\)</span> : <em>random variable</em></p>
 <p><span class='math'>\(X \sim P(x)\)</span> : <span class='math'>\(X\)</span> is drawn from <span class='math'>\(P(x)\)</span>, a PDF, describes relative probability of a random process choosing the value <span class='math'>\(x\)</span></p>
@@ -49,13 +71,15 @@
 <p><em>expected value</em> : <span class='math'>\(E[X] = \int x*p(x)dx\)</span></p>
 <p><b>Functions of Random Variables</b></p>
 <p>A function <span class='math'>\(Y\)</span> of a random variable <span class='math'>\(X\)</span> is also a random variable. If <span class='math'>\(X \sim p(x)\)</span>, then <span class='math'>\(Y = f(X)\)</span>, and therefore, <span class='math'>\(E[Y] = E[f(x)] = \int f(x)*p(x) dx\)</span></p>
-<h4 id="h3">Monte Carlo Estimator </h4>
+<h4 id="h13">Monte Carlo Estimator </h4>
 <p>Estimate the integral of a function by averaging random samples of the function's value</p>
 <div class="row">
 <div class="column"><img src="../images/monte_carlo.png" width="60%"></div>
 <div class="column"><p style="text-align:left"><em>Monte Carlo Estimator</em> for the definite integral of <span class='math'>\(f(x)\)</span> gives us the formula for the estimate of an integral given a set of random samples, <span class='math'>\(F_N = \frac{1}{N}\sum_{i=1}^N\frac{f(X_i)}{p(X_i)}\)</span></p></div>
 </div>
-<p><span class='math'>\(F_N\)</span> is the Monte Carlo estimator given <span class='math'>\(N\)</span> samples.</p>
+<p><span class='math'>\(F_N\)</span> is the Monte Carlo estimator given <span class='math'>\(N\)</span> samples. Draw a bunch of samples, the chance that we draw <span class='math'>\(X_i\)</span> is <span class='math'>\(P(X_i)\)</span>. </p>
+<h3 id="h14">Global Illumination & Path Tracing </h3>
+<h3 id="h15">Material Modeling</h3>
         <p style="padding-bottom: 60px"></p>
         <a class="top" href="#top"><button class="orange">⬆</button></a>
     </body>

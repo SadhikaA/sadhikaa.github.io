@@ -16,20 +16,252 @@
         <a href="../notes.html"><button class="orange">/fieldnotes</button></a>
 <h2 id="top">💾 Operating Systems</h2>
 <hr>
-<a href="#h1" class="subheading">Simulatenous Multithreading </a><br>
-<a href="#h2" class="bloglink">Scheduling </a><br>
-<a href="#h3" class="subheading">Shortest Run Time First (SRTF) </a><br>
-<a href="#h4" class="subheading">Multi Level Feedback Scheduling </a><br>
-<a href="#h5" class="subheading">Case Study: O(1) Scheduler</a><br>
-<a href="#h6" class="subheading">Multi Core Scheduling</a><br>
-<a href="#h7" class="bloglink">Real Time Scheduling</a><br>
-<a href="#h8" class="subheading">Earliest Deadline First (EDF)</a><br>
+<a href="#h1" class="bloglink">Kernels </a><br>
+<a href="#h2" class="subheading">Dual Mode Operation </a><br>
+<a href="#h3" class="subheading">Disabling Interrupts </a><br>
+<a href="#h4" class="subheading">System Calls</a><br>
+<a href="#h5" class="subheading">Exec syscall</a><br>
+<a href="#h6" class="bloglink">Address Spaces </a><br>
+<a href="#h7" class="subheading">Base and Bound</a><br>
+<a href="#h8" class="bloglink">Processes and Threads</a><br>
+<a href="#h9" class="subheading">Threads</a><br>
+<a href="#h10" class="subheading">Comparing Processes and Threads</a><br>
+<a href="#h11" class="subheading">Forking </a><br>
+<a href="#h12" class="bloglink">Input/Ouput </a><br>
+<a href="#h13" class="subheading">High Level File API</a><br>
+<a href="#h14" class="bloglink">Mutual Exclusion </a><br>
+<a href="#h15" class="subheading">Simulatenous Multithreading </a><br>
+<a href="#h16" class="subheading">Critical Section </a><br>
+<a href="#h17" class="subheading">Locks </a><br>
+<a href="#h18" class="bloglink">Pintos </a><br>
+<a href="#h19" class="subheading">Pintos Lists </a><br>
+<a href="#h20" class="bloglink">Readers & Writers </a><br>
+<a href="#h21" class="subheading">Reader Code</a><br>
+<a href="#h22" class="bloglink">Scheduling </a><br>
+<a href="#h23" class="subheading">Shortest Run Time First (SRTF) </a><br>
+<a href="#h24" class="subheading">Multi Level Feedback Scheduling </a><br>
+<a href="#h25" class="subheading">Case Study: O(1) Scheduler</a><br>
+<a href="#h26" class="subheading">Multi Core Scheduling</a><br>
+<a href="#h27" class="bloglink">Real Time Scheduling</a><br>
+<a href="#h28" class="subheading">Earliest Deadline First (EDF)</a><br>
 <hr>
-<h4 id="h1">Simulatenous Multithreading </h4>
+<p>Operating systems provide abstractions to applications, translates from hardware interface to application interface. OS provides running program with its own process. It also manages sharing of resources among multiple applications. </p>
+<p>OS plays many roles: <em>referee</em> (manage protection, isolation, sharing of resources), <em>illusionist</em> (provide easy to use, clean abstractions of physical resources), <em>glue</em> (common services - storage, window system, networking, sharing, authorization)</p>
+<h3 id="h1">Kernels </h3>
+<p><b><em>Kernels</em></b> have PCBs, TCBs, device drivers, and kernel stacks. All of these cannot be accessed by the user.</p>
+<p>The <b><em>kernel</em></b> handles process management, terminal drivers, disk and tape drivers, CPU scheduling, page replacement, demand paging, virtual memory, file system management, device management, system calls, and security and protection. </p>
+<p>In <b><em>x86 architecture</em></b>, contains the stack pointer as <code>ESP</code> and the instruction pointer as <code>EIP</code>.</p>
+<h4 id="h2">Dual Mode Operation </h4>
+<p><code>0</code> = user mode / <code>3</code> = kernel mode</p>
+<p><b>User mode</b> calls <b>kernel mode</b> through a <b>syscall</b> (sends a syscall ID), <b>trap/exception</b> (synchronous event, segfault, divide by zero), <b>interrupt</b> (asynchronous timer, I/O device, independent of user process).</p>
+<p>We need to save processor state in the thread control block when we make a context switch because the kernel may overwrite it. </p>
+<p>User has access to the GUIs, applications, CLIs, resource management. User can't access virtual addresses marked as kernel only in the page table, change the page table base pointer register, or enable/disable interrupts.</p>
+<p>Syscall steps:</p>
+<ul>
+<li>library puts syscall number into register</li>
+<li>executes special trap instruction that atomically changes to kernel mode</li>
+<li>switches to kernel stack </li>
+<li>saves user registers</li>
+<li>execustes syscall handler looked up from interrupt vector table (holds pointers and addresses to interrupt handlers, happens when we get an interrupt to kernel handler)</li>
+</ul>
+<p>CPU switch from process A to process B: (all happens by the kernel)</p>
+<ul>
+<li>A is executing and then we got an interrupt/system call </li>
+<li>we save the state into A's PCB</li>
+<li>reload state from B's PCB </li>
+<li>execute B, then we get another interrupt/syscall</li>
+<li>save state into B's PCB</li>
+<li>reload state from A's PCB </li>
+<li>execute A </li>
+</ul>
+<p>How do have safe kernel mode transfers? Use a separate kernel stack, locate arguments in registers/user stack, copy arguments from user memory to kernel memory, validate arguments, and then copy results back to user memory.</p>
+<p>How do we have safe interrupts? Use an interrupt vector (limited number of entry points into the kernel). Use kernel interrupt stack (handler works regardless of state of user code). There is an atomic transfer of control and transparent restartable execution (user does not know that the interrupt has occurred).</p>
+<h4 id="h3">Disabling Interrupts </h4>
+<ul>
+<li>Used to temporarily prevent the CPU from responding to interrupts</li>
+<li>CPU will continue executing the current program without interruption, ignoring external events</li>
+<li>Interrupt requests that occur will be queued after</li>
+<li>Used during critical sections where interrupt handling could cause issues/disrupt the flow of execution (ensure the integrity of shared data structures accessed by multiple threads or interrupt handlers)</li>
+<li>Make sure to re-enable interrupts </li>
+</ul>
+<h4 id="h4">System Calls</h4>
+<p><code>exit</code> - terminates a process</p>
+<p><code>exec</code> - changes the program being run by the current process</p>
+<p><code>fork</code> - copies the current process</p>
+<p><code>wait</code> - waits for process to finish </p>
+<p><code>kill</code> - sends a signal to another process (SIGINT is CtrlC, SIGKILL, SIGSTOP)</p>
+<p><code>sigaction</code> - takes in signal number, a pointer to a struct that represents the behavior of a signal handler, pointer to struct where previous behavior will be stored </p>
+<h4 id="h5">Exec syscall</h4>
+<p><b><em>Exec</em></b> will rewrite the entire image of the program and erase everything that was going to happen after.</p>
+<ul>
+<li>Operating System loads file into current process's address space</li>
+<li>Sets up <code>main</code> as entry point</li>
+<li>Closes any open file descriptors</li>
+<li>Memory space is replaced with memory of new program </li>
+<li>New program starts from its entry point </li>
+</ul>
+<h3 id="h6">Address Spaces </h3>
+<p>An <b><em>address space</em></b> is a set of memory addresses that are accessible to the program to read/write to. The virtual address space is distinct from memory space of physical machine.</p>
+<p>How does <b>address space translation</b> work? Translator translates virtual address into physical memory address. Hardware translates it using page tables.</p>
+<p>32 bit processor means that we have <span class='math'>\(2^{32}\)</span> addresses. </p>
+<p><code>stack</code> - grows downward from 0xFFFF, region of memory used for automatic storage of local vars, function arguments, return addresses, function call info (each thread has its own and deallocated after function calls end)</p>
+<p><code>heap</code> - grows upward after stack, dynamically allocated region (malloc, calloc, realloc, free)</p>
+<p><code>static data</code> - initialized static data and global variables used by the program, also read only data (constants and string literals), initialized static data and global variables used by the program, also read only data (constants and string literals), initialized static arrays and structures </p>
+<p><code>BSS (block started by symbol) segment</code> - uninitialized static data and global vars declared without explicit values, set to 0/NULL at the beginning </p>
+<p><code>text/code</code> - executable code of the program </p>
+<h4 id="h7">Base and Bound</h4>
+<p>Translates a program address to values that are in that process's memory space only (only access mmory between base and bound), but not used anymore because it limits the size of the address space, also if the location moves, then we have to redo things.</p>
+<p>Why is B&B bad?</p>
+<ul>
+<li>wasteful becaues we have to dedicate physical memory for potential future usage</li>
+<li>fragmentation: kernel has to fit whole processes into this memory block </li>
+<li>hard to share data between processes and between process and kernel (better is using page table translation)</li>
+</ul>
+<h3 id="h8">Processes and Threads</h3>
+<p>A <b><em>process</em></b> is an instance of a running program (contains PCB, threads, address space, files, and sockets)</p>
+<p>There's a tradeoff with processes: communication is easier <b>within</b> processes, and harder <b>between</b> processes.</p>
+<p>The <em>process control block (PCB)</em> is stored in kernel memory (is how the kernel represents a single process). It holds the status, register state, process ID, etc.</p>
+<p><em>Multiprocessing</em> means we have multiple CPUs/cores.</p>
+<p><em>Multiprogramming</em> means we have multiple jobs/processes interleaving.</p>
+<p><em>Multithreading</em> is when we have multiple threads/processes.</p>
+<h4 id="h9">Threads</h4>
+<p><b><em>Threads</em></b> share code, data, files, and heap. Threads also have their own unique thread control block, stack pointer, stack, and registers.</p>
+<p><code>running</code> = running (current registers hold the context of the thread)</p>
+<p><code>ready</code> = eligible to run, not currently reading</p>
+<p><code>blocked</code> = eligible to run </p>
+<p>If a thread is waiting for I/O to finish, the OS marks it as blocked. Once I/O finishes, OS marks it as ready. </p>
+<p>Threads allow us to have concurrency in our programs.</p>
+<p><b><em>Concurrency</em></b> means that we are executing multiple tasks or processes at the same time, interleaving occurs. <i>(overlapping execution)</i></p>
+<p><b><em>Parallelism</em></b> means that we are executing multiple tasks/processes at the same time but on multiple cores, relies on multiplicity to do many things at the same itme. <i>(simulataneous execution)</i> </p>
+<p>Parallelism also allows us to take advantage of hardware. Concurrency allows us to easily handle I/O and other simultaneous events. Two threads on a single core system execute concurrently, but not in parallel. Parallelism implies concurrency, but concurrency does not equal parallel.</p>
+<p>A <b><em>multithreaded</em></b> process means that there are multiple threads running concurrently in the same process. Each PCB (process control block) in a process has its own per thread state as well. </p>
+<p> </p>
+<p><b><em>Hyperthreading</em></b> allows multiple threads to interleave instructions in a single CPU. Each thread has it's own set of registers and makes progress independently of other threads. Therefore, they operating both concurrently and parallel. </p>
+<p>The idea behind <b><em>synchronization</em></b> is that we want a second thread to have updated information from a previous thread, so how do we get the data between threads to be synchronized.</p>
+<p>We have to be wary of <b><em>non-determinism</em></b>, if we have multiple threads acting on a global variable or a variable on the heap, we need to be careful of the order in which threads are running. For example, without <code>pthread_join</code> and <code>exit</code>, the main thread can exit before completion of another thread.</p>
+<h4 id="h10">Comparing Processes and Threads</h4>
+<ul>
+<li>processes are created using <code>fork()</code> and threads are created with <code>pthread_create()</code> </li>
+<li>processes have distinct page tables, threads have the same page table</li>
+<li>processes have distinct registers and instruction pointers </li>
+<li>threads have distinct registers and instruction pointers </li>
+<li>we do synchronization for processes using <code>wait()</code> and <code>waitpid()</code>, we do synchronization for threads using <code>pthread_join()</code> and semaphores and locks </li>
+<li>processes have <b>higher overhead</b> than threads </li>
+<li>processes have <b>greater protection</b> than threads </li>
+</ul>
+<p><b><code>Heaps and Static Variables</code></b></p>
+<ul>
+<li>for <b><i>processes</i></b>, both child and parent processes have their <i>own</i> heap, so they each have separate data in them </li>
+<li>for <b><i>threads</i></b>, we need to be careful about what we are passing in to our helper function and where the variable was declared, because threads <i>share</i> the heap, so they can possibly overwrite each other </li>
+</ul>
+<p><b><code>Stacks</code></b></p>
+<ul>
+<li>for <b><i>processes</i></b>, processes that are related share copies of stacks from when they were forked, but their changes are specific to themselves --> they also cannot access each other's stacks </li>
+<li>for <b><i>threads</i></b>, threads don't share the same stack but can access each other's stacks which means that they can modify other stacks </li>
+<li><i>how can we access other stacks?</i> if we pass in the address of a variable on the stack to a helper function and modify it in our <code>pthread_create</code> helper, and exit ad join correctly, it will modify the same address</li>
+</ul>
+<p><b><code>File Descriptors</code></b></p>
+<ul>
+<li>for <b><i>processes</i></b>, processes have separate file descriptors, closing one doesn't close anothers, each process has its own pointer to the file descriptor, edits are shared</li>
+<li>for <b><i>threads</i></b>, file descriptors are shared, if one thread closes it the other thread cannot access it </li>
+</ul>
+<h4 id="h11">Forking </h4>
+<p><b><code>pid_t fork</code></b> </p>
+<ul>
+<li>forking a thread creates a parent and child process, the OS starts both of them</li>
+<li>fork returns pid of the current running process</li>
+<li><code>if pid > 0</code>, then we are running in the parent process </li>
+<li><code>if pid = 0</code>, then we are running in the child process </li>
+<li><code>if pid < 0</code>, error</li>
+<li>when we fork, the entire virtual address and memory of the parent gets copied over (file descriptors and all variables)</li>
+<li>how do we create child process' heap'? <b><em>Copy on write</em></b> is where both processes use the same page table until once process changes something in order to save memory </li>
+<li>we use <code>wait(&status)</code> to wait for the return value of the child thread</li>
+<li>to get the current PID of the current running process, <code>getpid()</code> </li>
+<li>all processes have a common ancestor and can be traced back to the init process that started it</li>
+</ul>
+<h3 id="h12">Input/Ouput </h3>
+<p><b><em>Overhead</em></b> describes the additional resources/time required to perform a task beyond what is strictly necessary. Processes have a <i>higher</i> overhead than threads, but offer more protection.</p>
+<p>Low level file API has lower overhead because we are closer to resources, have direct access to hardware and don't need to copy files. </p>
+<p><b>Layer of I/O</b></p>
+<ul>
+<li>High Level (streams, buffered I/O)</li>
+<li>Low Level (file descriptors: open(), read(), write(), close(),....)</li>
+<li>Open File descriptions </li>
+<li>File System (files/directories/indexes)</li>
+<li>I/O Driver (commands and data transfers)</li>
+<li>Hardware (disks, flash, controllers, DMA)</li>
+</ul>
+<h4 id="h13">High Level File API</h4>
+<p>High level file API operates on <b>streams</b>, unformatted sequence of bytes (text/data) with a position. It is essential to check if opening a file returns NULL.</p>
+<p><code>FILE *fopen(const char *filename, const char *mode)</code> </p>
+<p><code>int fclose(FILE *fp)</code> </p>
+<h3 id="h14">Mutual Exclusion </h3>
+<p><em>Mutex (mutual exclusion)</em> - how do we make sure that two threads aren't accessing the same memory </p>
+<h4 id="h15">Simulatenous Multithreading </h4>
 <p>It will swap them for you </p>
 <p>Similar to having 2 cores but not as fast </p>
-<h3 id="h2">Scheduling </h3>
-<h4 id="h3">Shortest Run Time First (SRTF) </h4>
+<h4 id="h16">Critical Section </h4>
+<p>Code exactly one thread can execute at once. </p>
+<h4 id="h17">Locks </h4>
+<p>An object only one thread can hold at a time.</p>
+<h3 id="h18">Pintos </h3>
+<h4 id="h19">Pintos Lists </h4><pre><code class="language-c">
+	struct list_elem* list_begin(struct list* lst);
+	struct list_elem* list_end(struct list* lst);
+	struct list_elem* list_next(struct list_elem* elem);
+	
+	STRUCT* list_entry(LIST_ELEM, STRUCT, MEMBER);
+	</code></pre>
+<h3 id="h20">Readers & Writers </h3>
+<p>Consider a shared database:</p>
+<ul>
+<li>readers never modify the database</li>
+<li>writers read and modify the database </li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>readers can't read while someone modifies </li>
+<li>only one writer at a time</li>
+<li>can have multiple readers at the same time</li>
+<li>writers cannot be there when readers are reading</li>
+</ul>
+<p>Correctness Constraints: </p>
+<ul>
+<li>readers can access database when no writers </li>
+<li>writers can access database when no readers or writers </li>
+<li>only one thread manipulates state variables at a time </li>
+</ul>
+<p>State variables (protected by lock):</p>
+<p><code>int AR</code> - number of active readers (initially 0) </p>
+<p><code>int WR</code> - number of waiting readers (initially 0) </p>
+<p><code>int AW</code> - number of active writers (initially 0) </p>
+<p><code>int WW</code> - number of waiting writers (initially 0) </p>
+<p><code>condition var okToRead = null</code>    // for readers </p>
+<p><code>condition var okToWrite = null</code>    // for writers </p>
+<h4 id="h21">Reader Code</h4><pre><code class="language-c">
+	Reader() {
+	    // first check self into system 
+	    acquire(&lock);       // no one is else is checking current state of policy 
+	    while ((AW + WW) > 0) {
+	        WR++;
+	        cond_wait(&okToRead, &lock);
+	        WR--;
+	    }
+	    AR++;
+	    release(&lock);
+	    // perform actual read-only access 
+	    AccessDatabase(ReadOnly);
+	    // now, check out of system 
+	    acquire(&lock);
+	    AR--;
+	    if (AR == 0 && WW > 0) {
+	        cond_signal(&okToWrite);
+	    }
+	}
+	</code></pre>
+<h3 id="h22">Scheduling </h3>
+<p>We want to prevent <b><em>starvation</em></b>, where a thread fails to make progress for an indefinite period of time, the scheduling policy will never run because the threads are waiting on each other or spinning.</p>
+<h4 id="h23">Shortest Run Time First (SRTF) </h4>
 <ul>
 <li>SRTF leads to starvation. </li>
 <li>How do we predict future? build model of past, if program was random, no point in predicting </li>
@@ -41,7 +273,7 @@
 <li>Apps that sleep a lot and have short bursts must be interactive apps (they should get high priority).</li>
 <li>Apps that compute a lot should get lower priority since they won't notice intermittent bursts from interactive apps.</li>
 </ul>
-<h4 id="h4">Multi Level Feedback Scheduling </h4>
+<h4 id="h24">Multi Level Feedback Scheduling </h4>
 <ul>
 <li>Each queue has a different scheduling technique. </li>
 <li>Things at top run with higher priority. </li>
@@ -51,14 +283,14 @@
 <li>CPU bound ones drop, short running I/O bound </li>
 <li>User can foil CPU (add in a bunch of I/O or print statements means that we could run much faster)</li>
 </ul>
-<h4 id="h5">Case Study: O(1) Scheduler</h4>
+<h4 id="h25">Case Study: O(1) Scheduler</h4>
 <ul>
 <li>140 levels of priority (lower = higher)</li>
 <li>40 for user tasks (set by nice, which gives it lower priority)</li>
 <li>100 for realtime/kernel</li>
 <li>two seperate priority queues, active and expired </li>
 </ul>
-<h4 id="h6">Multi Core Scheduling</h4>
+<h4 id="h26">Multi Core Scheduling</h4>
 <ul>
 <li>Not a huge difference from single core scheduling</li>
 <li><i>Affinity scheduling</i>: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU </li>
@@ -75,14 +307,14 @@
 	    value = 0;   // atomic store 
 	}
 	</code></pre>
-<h3 id="h7">Real Time Scheduling</h3>
+<h3 id="h27">Real Time Scheduling</h3>
 <p>We don't care about running fast, we want to predict performance. What is the guarenteed worst case? When car slams on brake, car needs to brake deadline needs to be met. </p>
 <p>Each task has a hard real-time that it must meet. Ideally we want to determine this in advance. (EDF and rate monitononic scheduling - RMS)</p>
 <p>Soft real time means that we need to attempt to meet deadlines with high probability (constant bandwidth server - CBS)</p>
 <p>Tasks have deadlines (D) and known computation times (C).</p>
 <p>We only have one core. None of current schedulers help. </p>
-<h4 id="h8">Earliest Deadline First (EDF)</h4>
-<p>Tasks are <b>periodic</b> with period <code>P</code> and computation <code>C</code> in each period, <span class='math'>\((P_i, C_i\))</span> for each task <code>i</code></p>
+<h4 id="h28">Earliest Deadline First (EDF)</h4>
+<p>Tasks are <b>periodic</b> with period <code>P</code> and computation <code>C</code> in each period, <span class='math'>\(\((P_i, C_i\))\)</span> for each task <code>i</code></p>
 <p>Find the one whose deadline expires first.</p>
         <p style="padding-bottom: 60px"></p>
         <a class="top" href="#top"><button class="orange">⬆</button></a>
