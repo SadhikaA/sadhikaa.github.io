@@ -210,6 +210,64 @@ Code exactly one thread can execute at once.
 
 An object only one thread can hold at a time.
 
+## Monitors 
+
+**==Monitors==** are defined as a lock and zero or more condition variables for managing concurrent access to shared data.
+
+Monitors contain **==condition variables==** which allow us to sleep inside a critical section by atomically releasing the lock at the time that we go to sleep. Unlike semaphores, we can't wait inside a critical selction. 
+
+`cond_wait(&lock)` - atomically releases a lock and goes to sleep, will reacquire lock again before returning 
+`cond_signal()` - wake up one waiter, if any 
+`cond_broadcast()` - wake up all waiters 
+
+We must hold the lock when doing condition variable operations.
+
+```c
+// Bounded Buffer example of Condition Variables 
+lock buf_lock = initially unlocked
+condition producer_CV = initially empty
+condition consumer_CV = initially empty
+
+Producer(item) {
+    acquire(&buf_lock);
+    while (buffer full) { cond_wait(&producer_CV, &buf_lock); }
+    enqueue(item);
+    cond_signal(&consumer_CV);
+    release(&buf_lock);
+}
+
+Consumer() {
+    acquire(&buf_lock);
+    while (buffer empty) { cond_wait(&consumer_CV, &buf_lock); }
+    item = dequeue();
+    cond_signal(&producer_CV);
+    release(&buf_lock);
+    return item;
+}
+```
+
+Thread will sleep, not !busywait!, so this is more useful.
+
+### Basic Structure of Mesa Monitor Pattern 
+
+- monitors represent the synchronization logic of the program (wait if necesary, signal when change something so that any waiting threads can proceed)
+
+```c
+/* check and/or update state variables, wait if necessary */
+lock 
+while (need to wait) {
+    condvar.wait()
+}
+unlock 
+
+// doing something so no need to wait 
+
+/* check and/or update state variables */
+lock 
+condvar.signal();
+unlock 
+```
+
 ## Pintos 
 
 ### Pintos Lists 
@@ -239,6 +297,19 @@ Correctness Constraints:
 - writers can access database when no readers or writers 
 - only one thread manipulates state variables at a time 
 
+Based on this, we want to have a solution that looks something like this:
+
+```c
+Reader()
+    Wait until no writers
+    Access database
+    Check out - wake up a waiting writer
+Writer()
+    Wait until no active readers/writers 
+    Access database
+    Check out - wake up waiting readers or writer 
+```
+
 State variables (protected by lock):
 `int AR` - number of active readers (initially 0) 
 `int WR` - number of waiting readers (initially 0) 
@@ -252,22 +323,24 @@ State variables (protected by lock):
 ```c
 Reader() {
     // first check self into system 
-    acquire(&lock);       // no one is else is checking current state of policy 
-    while ((AW + WW) > 0) {
-        WR++;
-        cond_wait(&okToRead, &lock);
-        WR--;
+    acquire(&lock);       // acquire lock so only one thread/R/W checking 
+    while ((AW + WW) > 0) {    // is it ok to read? any active or waiting writers 
+        WR++;                  // no, there are writers
+        cond_wait(&okToRead, &lock);    // sleep on our condition var
+        WR--;                  // no longer waiting 
     }
-    AR++;
-    release(&lock);
-    // perform actual read-only access 
-    AccessDatabase(ReadOnly);
+    AR++;       // we're an active reader now
+    release(&lock);   // release lock for other readers + writers to be able to check 
+    // lock doesn't protect database, it protects reader + writer checks 
+    // access the database as a reader 
+    AccessDatabase(ReadOnly); 
     // now, check out of system 
-    acquire(&lock);
-    AR--;
-    if (AR == 0 && WW > 0) {
-        cond_signal(&okToWrite);
+    acquire(&lock);       
+    AR--;         // no longer an active reader 
+    if (AR == 0 && WW > 0) {     // if there are no other active readers
+        cond_signal(&okToWrite);    // wake up one writer 
     }
+    release(&lock);
 }
 ```
 
@@ -277,28 +350,82 @@ Reader() {
 Writer() {
     // first check self into system 
     acquire(&lock);
-    while((AW + AR) > 0) {
-        WW++;
-        cond_wait(&okToWrite, &lock);
-        WW--;
+    while((AW + AR) > 0) {     // is it safe to write?
+        WW++;            // we're a waiting writer 
+        cond_wait(&okToWrite, &lock);      // if there's an active writer or reader, go to sleep
+        WW--;        // no longer waiting
     }
-    AW++;
-    release(&lock);
-    // perform actual read/write access
+    AW++;       // we're now an active writer 
+    release(&lock);      // release for others 
+    // write to the database 
     AccessDatabase(ReadWrite);
     // now, check out of the system 
-    acquire(&lock);
-    AW--;
-    if (WW > 0) {
-        cond_signal(&okToWrite);
-    } else if (WR > 0) {
-        cond_broadcast(&okToRead);
+    acquire(&lock);     
+    AW--;               // no longer active 
+    // give writers priority over readers (WW before WR) because they can only be done one at a time and also because readers could prevent writers from ever going forward
+    if (WW > 0) {            // is there a waiting writer 
+        cond_signal(&okToWrite);      // signal them 
+    } else if (WR > 0) {       // if there's a waiting reader 
+        cond_broadcast(&okToRead);     // wake up all readers 
+        // this is a broadcast instead of signal because we want to wake up ALL readers
+        // this is fine because only one reader can acquire the lock so they won't all run
     }
     release(&lock);
 }
 ``` 
 
-### Sample Simulation 
+### Sample Simulation of R+W
+
+Consider this sequence of operators (order in which they want to access the database): `R1`, `R2`, `W1`, `R3`. Initially, `AR=0`, `WR=0`, `AW=0`, and `WW=0`.
+
+Optimal setup: reader 1 and 2 should read at the same time, then let writer 1 write, then reader 3.
+
+`AR = 0, WR = 0, AW = 0, WW = 0`
+
+```c
+// R1 comes first (no waiting threads)
+Changes: AR++, accesses the database and releases lock 
+AR = 1, WR = 0, AW = 0, WW = 0
+
+// R2 comes along (R1 is accessing the database)
+Changes: AR++, accesses the database, releases lock 
+AR = 2, WR = 0, AW = 0, WW = 0 
+
+// W1 comes along (R1 and R2 accessing database)
+Changes: writer acquires SAME lock, since AR > 0, W1 cannot start because of the readers
+Writer will wait on the condition variable and until cond_signal(&okToWrite)
+AR = 2, WR = 0, AW = 0, WW = 1
+
+// R3 comes along (R1 and R2 accessing, W1 waiting)
+Changes: WW > 0 so WR++ and wait on the okToRead var
+AR = 2, WR = 1, AW = 0, WW = 1
+
+// suppose R2 finished (R1 accessing database, W1 and R3 waiting)
+Changes: AR--, acquires lock to do the check, don't signal okToWrite bc AR doesn't equal 0
+AR = 1, WR = 1, AW = 0, WW = 1
+
+// R1 finishes (W1 and R3 waiting)
+Changes: AR--, singal the okToWrite because AR = 0, after all readers done writer W1 is signaled
+AR = 0, WR = 1, AW = 0, WW = 1
+
+// W1 receives signal (R3 still waiting)
+Changes: WW--, AW++, wakes up its thread, acquires lock, accesses database
+AR = 0, WR = 1, AW = 1, WW = 0
+
+// W1 finishes (R3 still waiting)
+Changes: AW--, WW is not > 0 (no additional waiting writers), but there is a waiting reader so cond_broadcast
+AR = 0, WR = 1, AW = 0, WW = 0
+
+// R3 receives signal 
+Changes: WR--, AR++, access database, no one to signal so release lock and database is idle
+AR = 1, WR = 0, AW = 0, WW = 0
+
+// Final order: R1, R2, W1, R3
+```
+
+Can readers starve? Potentially because writers could keep coming in and readers never get to read. How do we fix this? 
+
+With this setup, writers !could! block readers from entering. `Cond_wait` implicitly releases the lock.
 
 ## Scheduling 
 
@@ -313,7 +440,7 @@ Assume: 1 program per user, one thread per program, programs are independent
 Goals:
 - minimize response time (minimize elapsed time to do an operation/job, response time is what the user sees - keystroke, compiling a program, etc)
 - maximize throughput (maximize operations per second) 
-- not identical to throughput! (minimizing response time will lead to more context switching than if you only maximized throughput) 
+- not identical to throughput (minimizing response time will lead to more context switching than if you only maximized throughput) 
 - minimize overhead (for example, context switching) 
 - efficient use of resources (CPU, disk, memory) 
 - fairness (share CPU among users in some equitable way) - we get a better average response time if we make system less fair 
@@ -321,8 +448,6 @@ Goals:
 ### First Come First Serve (FCFS)
 
 same as FIFO/run until done
-
-
 
 ### Shortest Run Time First (SRTF) 
 

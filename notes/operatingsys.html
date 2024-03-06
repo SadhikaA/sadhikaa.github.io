@@ -33,17 +33,22 @@
 <a href="#h15" class="subheading">Simulatenous Multithreading </a><br>
 <a href="#h16" class="subheading">Critical Section </a><br>
 <a href="#h17" class="subheading">Locks </a><br>
-<a href="#h18" class="bloglink">Pintos </a><br>
-<a href="#h19" class="subheading">Pintos Lists </a><br>
-<a href="#h20" class="bloglink">Readers & Writers </a><br>
-<a href="#h21" class="subheading">Reader Code</a><br>
-<a href="#h22" class="bloglink">Scheduling </a><br>
-<a href="#h23" class="subheading">Shortest Run Time First (SRTF) </a><br>
-<a href="#h24" class="subheading">Multi Level Feedback Scheduling </a><br>
-<a href="#h25" class="subheading">Case Study: O(1) Scheduler</a><br>
-<a href="#h26" class="subheading">Multi Core Scheduling</a><br>
-<a href="#h27" class="bloglink">Real Time Scheduling</a><br>
-<a href="#h28" class="subheading">Earliest Deadline First (EDF)</a><br>
+<a href="#h18" class="bloglink">Monitors </a><br>
+<a href="#h19" class="subheading">Basic Structure of Mesa Monitor Pattern </a><br>
+<a href="#h20" class="bloglink">Pintos </a><br>
+<a href="#h21" class="subheading">Pintos Lists </a><br>
+<a href="#h22" class="bloglink">Readers & Writers </a><br>
+<a href="#h23" class="subheading">Reader Code</a><br>
+<a href="#h24" class="subheading">Writer Code</a><br>
+<a href="#h25" class="subheading">Sample Simulation of R+W</a><br>
+<a href="#h26" class="bloglink">Scheduling </a><br>
+<a href="#h27" class="subheading">First Come First Serve (FCFS)</a><br>
+<a href="#h28" class="subheading">Shortest Run Time First (SRTF) </a><br>
+<a href="#h29" class="subheading">Multi Level Feedback Scheduling </a><br>
+<a href="#h30" class="subheading">Case Study: O(1) Scheduler</a><br>
+<a href="#h31" class="subheading">Multi Core Scheduling</a><br>
+<a href="#h32" class="bloglink">Real Time Scheduling</a><br>
+<a href="#h33" class="subheading">Earliest Deadline First (EDF)</a><br>
 <hr>
 <p>Operating systems provide abstractions to applications, translates from hardware interface to application interface. OS provides running program with its own process. It also manages sharing of resources among multiple applications. </p>
 <p>OS plays many roles: <em>referee</em> (manage protection, isolation, sharing of resources), <em>illusionist</em> (provide easy to use, clean abstractions of physical resources), <em>glue</em> (common services - storage, window system, networking, sharing, authorization)</p>
@@ -204,15 +209,63 @@
 <p>Code exactly one thread can execute at once. </p>
 <h4 id="h17">Locks </h4>
 <p>An object only one thread can hold at a time.</p>
-<h3 id="h18">Pintos </h3>
-<h4 id="h19">Pintos Lists </h4><pre><code class="language-c">
+<h3 id="h18">Monitors </h3>
+<p><b><em>Monitors</em></b> are defined as a lock and zero or more condition variables for managing concurrent access to shared data.</p>
+<p>Monitors contain <b><em>condition variables</em></b> which allow us to sleep inside a critical section by atomically releasing the lock at the time that we go to sleep. Unlike semaphores, we can't wait inside a critical selction. </p>
+<p><code>cond_wait(&lock)</code> - atomically releases a lock and goes to sleep, will reacquire lock again before returning </p>
+<p><code>cond_signal()</code> - wake up one waiter, if any </p>
+<p><code>cond_broadcast()</code> - wake up all waiters </p>
+<p>We must hold the lock when doing condition variable operations.</p><pre><code class="language-c">
+	// Bounded Buffer example of Condition Variables 
+	lock buf_lock = initially unlocked
+	condition producer_CV = initially empty
+	condition consumer_CV = initially empty
+	
+	Producer(item) {
+	    acquire(&buf_lock);
+	    while (buffer full) { cond_wait(&producer_CV, &buf_lock); }
+	    enqueue(item);
+	    cond_signal(&consumer_CV);
+	    release(&buf_lock);
+	}
+	
+	Consumer() {
+	    acquire(&buf_lock);
+	    while (buffer empty) { cond_wait(&consumer_CV, &buf_lock); }
+	    item = dequeue();
+	    cond_signal(&producer_CV);
+	    release(&buf_lock);
+	    return item;
+	}
+	</code></pre>
+<p>Thread will sleep, not <i>busywait</i>, so this is more useful.</p>
+<h4 id="h19">Basic Structure of Mesa Monitor Pattern </h4>
+<ul>
+<li>monitors represent the synchronization logic of the program (wait if necesary, signal when change something so that any waiting threads can proceed)</li>
+</ul><pre><code class="language-c">
+	/* check and/or update state variables, wait if necessary */
+	lock 
+	while (need to wait) {
+	    condvar.wait()
+	}
+	unlock 
+	
+	// doing something so no need to wait 
+	
+	/* check and/or update state variables */
+	lock 
+	condvar.signal();
+	unlock 
+	</code></pre>
+<h3 id="h20">Pintos </h3>
+<h4 id="h21">Pintos Lists </h4><pre><code class="language-c">
 	struct list_elem* list_begin(struct list* lst);
 	struct list_elem* list_end(struct list* lst);
 	struct list_elem* list_next(struct list_elem* elem);
 	
 	STRUCT* list_entry(LIST_ELEM, STRUCT, MEMBER);
 	</code></pre>
-<h3 id="h20">Readers & Writers </h3>
+<h3 id="h22">Readers & Writers </h3>
 <p>Consider a shared database:</p>
 <ul>
 <li>readers never modify the database</li>
@@ -231,37 +284,135 @@
 <li>writers can access database when no readers or writers </li>
 <li>only one thread manipulates state variables at a time </li>
 </ul>
+<p>Based on this, we want to have a solution that looks something like this:</p><pre><code class="language-c">
+	Reader()
+	    Wait until no writers
+	    Access database
+	    Check out - wake up a waiting writer
+	Writer()
+	    Wait until no active readers/writers 
+	    Access database
+	    Check out - wake up waiting readers or writer 
+	</code></pre>
 <p>State variables (protected by lock):</p>
 <p><code>int AR</code> - number of active readers (initially 0) </p>
 <p><code>int WR</code> - number of waiting readers (initially 0) </p>
 <p><code>int AW</code> - number of active writers (initially 0) </p>
 <p><code>int WW</code> - number of waiting writers (initially 0) </p>
-<p><code>condition var okToRead = null</code>    // for readers </p>
-<p><code>condition var okToWrite = null</code>    // for writers </p>
-<h4 id="h21">Reader Code</h4><pre><code class="language-c">
+<p><code>condition var okToRead = null    // for readers</code></p>
+<p><code>condition var okToWrite = null    // for writers</code></p>
+<h4 id="h23">Reader Code</h4><pre><code class="language-c">
 	Reader() {
 	    // first check self into system 
-	    acquire(&lock);       // no one is else is checking current state of policy 
-	    while ((AW + WW) > 0) {
-	        WR++;
-	        cond_wait(&okToRead, &lock);
-	        WR--;
+	    acquire(&lock);       // acquire lock so only one thread/R/W checking 
+	    while ((AW + WW) > 0) {    // is it ok to read? any active or waiting writers 
+	        WR++;                  // no, there are writers
+	        cond_wait(&okToRead, &lock);    // sleep on our condition var
+	        WR--;                  // no longer waiting 
 	    }
-	    AR++;
-	    release(&lock);
-	    // perform actual read-only access 
-	    AccessDatabase(ReadOnly);
+	    AR++;       // we're an active reader now
+	    release(&lock);   // release lock for other readers + writers to be able to check 
+	    // lock doesn't protect database, it protects reader + writer checks 
+	    // access the database as a reader 
+	    AccessDatabase(ReadOnly); 
 	    // now, check out of system 
-	    acquire(&lock);
-	    AR--;
-	    if (AR == 0 && WW > 0) {
-	        cond_signal(&okToWrite);
+	    acquire(&lock);       
+	    AR--;         // no longer an active reader 
+	    if (AR == 0 && WW > 0) {     // if there are no other active readers
+	        cond_signal(&okToWrite);    // wake up one writer 
 	    }
+	    release(&lock);
 	}
 	</code></pre>
-<h3 id="h22">Scheduling </h3>
+<h4 id="h24">Writer Code</h4><pre><code class="language-c">
+	Writer() {
+	    // first check self into system 
+	    acquire(&lock);
+	    while((AW + AR) > 0) {     // is it safe to write?
+	        WW++;            // we're a waiting writer 
+	        cond_wait(&okToWrite, &lock);      // if there's an active writer or reader, go to sleep
+	        WW--;        // no longer waiting
+	    }
+	    AW++;       // we're now an active writer 
+	    release(&lock);      // release for others 
+	    // write to the database 
+	    AccessDatabase(ReadWrite);
+	    // now, check out of the system 
+	    acquire(&lock);     
+	    AW--;               // no longer active 
+	    // give writers priority over readers (WW before WR) because they can only be done one at a time and also because readers could prevent writers from ever going forward
+	    if (WW > 0) {            // is there a waiting writer 
+	        cond_signal(&okToWrite);      // signal them 
+	    } else if (WR > 0) {       // if there's a waiting reader 
+	        cond_broadcast(&okToRead);     // wake up all readers 
+	        // this is a broadcast instead of signal because we want to wake up ALL readers
+	        // this is fine because only one reader can acquire the lock so they won't all run
+	    }
+	    release(&lock);
+	}
+	</code></pre>
+<h4 id="h25">Sample Simulation of R+W</h4>
+<p>Consider this sequence of operators (order in which they want to access the database): <code>R1</code>, <code>R2</code>, <code>W1</code>, <code>R3</code>. Initially, <code>AR=0</code>, <code>WR=0</code>, <code>AW=0</code>, and <code>WW=0</code>.</p>
+<p>Optimal setup: reader 1 and 2 should read at the same time, then let writer 1 write, then reader 3.</p>
+<p><code>AR = 0, WR = 0, AW = 0, WW = 0</code></p><pre><code class="language-c">
+	// R1 comes first (no waiting threads)
+	Changes: AR++, accesses the database and releases lock 
+	AR = 1, WR = 0, AW = 0, WW = 0
+	
+	// R2 comes along (R1 is accessing the database)
+	Changes: AR++, accesses the database, releases lock 
+	AR = 2, WR = 0, AW = 0, WW = 0 
+	
+	// W1 comes along (R1 and R2 accessing database)
+	Changes: writer acquires SAME lock, since AR > 0, W1 cannot start because of the readers
+	Writer will wait on the condition variable and until cond_signal(&okToWrite)
+	AR = 2, WR = 0, AW = 0, WW = 1
+	
+	// R3 comes along (R1 and R2 accessing, W1 waiting)
+	Changes: WW > 0 so WR++ and wait on the okToRead var
+	AR = 2, WR = 1, AW = 0, WW = 1
+	
+	// suppose R2 finished (R1 accessing database, W1 and R3 waiting)
+	Changes: AR--, acquires lock to do the check, don't signal okToWrite bc AR doesn't equal 0
+	AR = 1, WR = 1, AW = 0, WW = 1
+	
+	// R1 finishes (W1 and R3 waiting)
+	Changes: AR--, singal the okToWrite because AR = 0, after all readers done writer W1 is signaled
+	AR = 0, WR = 1, AW = 0, WW = 1
+	
+	// W1 receives signal (R3 still waiting)
+	Changes: WW--, AW++, wakes up its thread, acquires lock, accesses database
+	AR = 0, WR = 1, AW = 1, WW = 0
+	
+	// W1 finishes (R3 still waiting)
+	Changes: AW--, WW is not > 0 (no additional waiting writers), but there is a waiting reader so cond_broadcast
+	AR = 0, WR = 1, AW = 0, WW = 0
+	
+	// R3 receives signal 
+	Changes: WR--, AR++, access database, no one to signal so release lock and database is idle
+	AR = 1, WR = 0, AW = 0, WW = 0
+	
+	// Final order: R1, R2, W1, R3
+	</code></pre>
+<p>Can readers starve? Potentially because writers could keep coming in and readers never get to read. How do we fix this? </p>
+<p>With this setup, writers <i>could</i> block readers from entering. <code>Cond_wait</code> implicitly releases the lock.</p>
+<h3 id="h26">Scheduling </h3>
+<p><code>thread_yield</code> - sets current thread back to READY, pushes it back on READY list, call schedule to select next thread to run upon iret </p>
+<p><code>schedule</code> - selects next thread to run, calls switch_threads to change regs to point to stack for thread to resume, sets its status to RUNNING, if user thread (activate the process), returns back to intr_handler </p>
 <p>We want to prevent <b><em>starvation</em></b>, where a thread fails to make progress for an indefinite period of time, the scheduling policy will never run because the threads are waiting on each other or spinning.</p>
-<h4 id="h23">Shortest Run Time First (SRTF) </h4>
+<p>Assume: 1 program per user, one thread per program, programs are independent </p>
+<p>Goals:</p>
+<ul>
+<li>minimize response time (minimize elapsed time to do an operation/job, response time is what the user sees - keystroke, compiling a program, etc)</li>
+<li>maximize throughput (maximize operations per second) </li>
+<li>not identical to throughput (minimizing response time will lead to more context switching than if you only maximized throughput) </li>
+<li>minimize overhead (for example, context switching) </li>
+<li>efficient use of resources (CPU, disk, memory) </li>
+<li>fairness (share CPU among users in some equitable way) - we get a better average response time if we make system less fair </li>
+</ul>
+<h4 id="h27">First Come First Serve (FCFS)</h4>
+<p>same as FIFO/run until done</p>
+<h4 id="h28">Shortest Run Time First (SRTF) </h4>
 <ul>
 <li>SRTF leads to starvation. </li>
 <li>How do we predict future? build model of past, if program was random, no point in predicting </li>
@@ -273,7 +424,7 @@
 <li>Apps that sleep a lot and have short bursts must be interactive apps (they should get high priority).</li>
 <li>Apps that compute a lot should get lower priority since they won't notice intermittent bursts from interactive apps.</li>
 </ul>
-<h4 id="h24">Multi Level Feedback Scheduling </h4>
+<h4 id="h29">Multi Level Feedback Scheduling </h4>
 <ul>
 <li>Each queue has a different scheduling technique. </li>
 <li>Things at top run with higher priority. </li>
@@ -283,14 +434,14 @@
 <li>CPU bound ones drop, short running I/O bound </li>
 <li>User can foil CPU (add in a bunch of I/O or print statements means that we could run much faster)</li>
 </ul>
-<h4 id="h25">Case Study: O(1) Scheduler</h4>
+<h4 id="h30">Case Study: O(1) Scheduler</h4>
 <ul>
 <li>140 levels of priority (lower = higher)</li>
 <li>40 for user tasks (set by nice, which gives it lower priority)</li>
 <li>100 for realtime/kernel</li>
 <li>two seperate priority queues, active and expired </li>
 </ul>
-<h4 id="h26">Multi Core Scheduling</h4>
+<h4 id="h31">Multi Core Scheduling</h4>
 <ul>
 <li>Not a huge difference from single core scheduling</li>
 <li><i>Affinity scheduling</i>: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU </li>
@@ -307,13 +458,13 @@
 	    value = 0;   // atomic store 
 	}
 	</code></pre>
-<h3 id="h27">Real Time Scheduling</h3>
+<h3 id="h32">Real Time Scheduling</h3>
 <p>We don't care about running fast, we want to predict performance. What is the guarenteed worst case? When car slams on brake, car needs to brake deadline needs to be met. </p>
 <p>Each task has a hard real-time that it must meet. Ideally we want to determine this in advance. (EDF and rate monitononic scheduling - RMS)</p>
 <p>Soft real time means that we need to attempt to meet deadlines with high probability (constant bandwidth server - CBS)</p>
 <p>Tasks have deadlines (D) and known computation times (C).</p>
 <p>We only have one core. None of current schedulers help. </p>
-<h4 id="h28">Earliest Deadline First (EDF)</h4>
+<h4 id="h33">Earliest Deadline First (EDF)</h4>
 <p>Tasks are <b>periodic</b> with period <code>P</code> and computation <code>C</code> in each period, <span class='math'>\(\((P_i, C_i\))\)</span> for each task <code>i</code></p>
 <p>Find the one whose deadline expires first.</p>
         <p style="padding-bottom: 60px"></p>
