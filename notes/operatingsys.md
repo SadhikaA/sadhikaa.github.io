@@ -268,6 +268,24 @@ condvar.signal();
 unlock 
 ```
 
+### Monitors from Semaphores
+
+Condition variables have no history, but sempahores have history. 
+- If a thread `signal`s and no one is waiting? Condition var/monitor does nothing. If a thread later waits, then the thread waits. For a semaphores, if the thread V's and no one is waiting we increment the semaphore. When a thread later does P, it decrements and then continues.
+
+```c
+Wait (Lock *thelock, Semaphore *thesame) {
+    release(thelock);   
+    // need to add ^ because cond_wait releases the lock 
+    semaP(thesema);
+    acquire(thelock);
+}
+Signal (Semaphore *thesema) {
+    if semaphore queue is not empty:
+        semaV(thesema);
+}
+```
+
 ## Pintos 
 
 ### Pintos Lists 
@@ -401,7 +419,7 @@ Changes: WW > 0 so WR++ and wait on the okToRead var
 AR = 2, WR = 1, AW = 0, WW = 1
 
 // suppose R2 finished (R1 accessing database, W1 and R3 waiting)
-Changes: AR--, acquires lock to do the check, don't signal okToWrite bc AR doesn't equal 0
+Changes: AR--, acquires lock to do the check, no signal okToWrite bc AR doesn't equal 0
 AR = 1, WR = 1, AW = 0, WW = 1
 
 // R1 finishes (W1 and R3 waiting)
@@ -423,11 +441,19 @@ AR = 1, WR = 0, AW = 0, WW = 0
 // Final order: R1, R2, W1, R3
 ```
 
-Can readers starve? Potentially because writers could keep coming in and readers never get to read. How do we fix this? 
+Can readers starve? Potentially because writers could keep coming in and readers never get to read based on this: `while ((AW + WW) > 0)`. How do we fix this? One idea: use some sort of queue 
 
-With this setup, writers !could! block readers from entering. `Cond_wait` implicitly releases the lock.
+What if we erase the condition check (`if (AR = 0 && WW > 0)`) in Reader exit? It won't break the code because the writer will check anyways so it's ok to signal the `okToWrite` all the time.
+
+What if we turn `signal()` into `broadcast()`? We wake up all sleeping threads but only one will actually act so this is okay.
+
+What if we use only one condition variable (`okContinue`) instead of two separate ones? Both readers AND writers will sleep on this variable. But we would need to use `broadcast()` instead of `signal()`. 
+
+With this setup, writers !could! block readers from entering. `cond_wait` implicitly releases the lock.
 
 ## Scheduling 
+
+Scheduling means deciding which threads are given access to resources from moment to moment. I/O bursts will be allowed to be completed without scheduling disrupting this, but CPU bursts will be where we may interfere with scheduling.
 
 `thread_yield` - sets current thread back to READY, pushes it back on READY list, call schedule to select next thread to run upon iret 
 
@@ -438,20 +464,98 @@ We want to prevent **==starvation==**, where a thread fails to make progress for
 Assume: 1 program per user, one thread per program, programs are independent 
 
 Goals:
-- minimize response time (minimize elapsed time to do an operation/job, response time is what the user sees - keystroke, compiling a program, etc)
-- maximize throughput (maximize operations per second) 
-- not identical to throughput (minimizing response time will lead to more context switching than if you only maximized throughput) 
-- minimize overhead (for example, context switching) 
-- efficient use of resources (CPU, disk, memory) 
+- minimize **==response time==** (elapsed time to do an operation/job, this is what the user sees - keystroke, compiling a program, etc, meet the deadlines imposed by the world)
+- maximize **==throughput==** (operations per second) - can be done by either efficiently using resources (CPU, disk, memory) OR minimizing the context switching (overhead) 
+- throughput is related to response time, but not identical, minimizing response time leads to more context switching than if you only maximized throughput) 
 - fairness (share CPU among users in some equitable way) - we get a better average response time if we make system less fair 
 
 ### First Come First Serve (FCFS)
 
 same as FIFO/run until done
 
+The thread keeps the CPU until the thread is done. No interrupts.
+
+```c
+If we have 3 processes: P_1, P_2, P_3 with burst times 24, 3, 3.
+We run P_1 from 0 to 24, P_2 from 24 to 27, and P_3 from 27 to 30.
+// What is the waiting time for each process? 
+P_1 had wait of 0, P_2 - 24, P_3 - 27 
+Average waiting time: (0 + 24 + 27) / 3 = 17
+Average completion time: (24 + 27 + 30) / 3 = 27 
+```
+
+This causes the **==convoy effect==** where short processes need to wait for long processes and the queue gets longer.
+
+FCFS is potentially bad for short jobs, depends on submit order.
+
+### Round Robin (RR) 
+
+We add **preemption**. Each process gets a small unit of CPU time (a **quanta**). After the quantum expires, the process is goes back to the end of the ready queue and we pick the next process. If we have $n$ processes and time quantum of $q$, then each process gets $1/n$ of the CPU time in chunks of at most $q$ time units. No process will wait more than $(n-1)q$ time units.
+
+If $q$ is very large, then we end up behaving like FCFS.
+If $q$ is small, then we interleave a lot, hyperthreading.
+$q$ should be larger than a context switch otherwise we are just context switching.
+
+```c
+If we have 4 processes: with burst times 53, 8, 68, 24.
+// We still run them in order but only for time quantum (20 for this question).
+We run:
+    P_1 from 0 to 20
+    P_2 from 20 to 28  // didn't need the whole quantum 
+    P_3 from 28 to 48, P_4 from 48 to 68, P_1 from 68 to 88
+    P_3 from 88 to 108, P_4 from 108 to 112
+    P_1 from 112 to 125, P_3 from 125 to 145, P_3 from 145 to 153
+// What is the waiting time for each process? 
+P_1: (68 - 20) + (112 - 88) = 72
+P_2: (20 - 0) = 20
+P_3: (28 - 0) + (88 - 48) + (125 - 108) = 85
+P_4: (48 - 0) + (108 - 68) = 85
+Average waiting time: 66.25
+Average completion time: (28 + 112 + 125 + 153) / 4 = 104.5 
+```
+
+Overall, round robin is better for short jobs and is more fair. The context switching time will add up for long jobs.
+
+**How do we implement RR in the kernel?**
+We use our FIFO ready queue. We use a timer interrupt to send the previous job to the back of the queue.
+!How do we choose the time slice?! If it's too big, then the response time suffers. If it's infinite, then we are back to a FIFO queue. If it's too small, then less operations per second (less throughput) happening. 
+
+### Comparing RR and FCFS 
+
+- assuming zero cost switching time, is RR always better than FCFS? average completion time is worse under RR because we're constantly switching
+- with RR, we must share cache state and memory between all jobs, but with FSFC we can devote it entirely to one job, therefore the total time for RR is longer even if we have a zero-cost switch
+- RR is between the best case and worst case FCFS times, it may not give best result, but it will always be !better than worst FCFS!
+- RR moderates and helps short jobs to run with better timeliness because scheduling matters more for short jobs than long jobs
+- if all jobs have the same amount of time, then RR and FCFS finish at the same time
+
+### Strict Priority Scheduling
+
+We want higher priority jobs to run in preference to low priority jobs. 
+**Issues**: starvation (lower priority jobs don't get to run because of higher priority jobs), deadlock (when a low priority task has a lock needed by the high priority task) 
+
+**==Priority Inversion==**: 
+!==`INSERT DESCRIPTION HERE`==!
+
+Strict priority is not fair. **How do we implement fairness?** Give each priority queue some fraction of the CPU (like an express lane). We could increase the priority of the jobs that don't get service.
+
+### Shortest Job First (SJF) 
+
+- run whichever job has the least amount of computation to do (also called shortest time to completion first - STCF)
+
+### Shortest Remaining Time First (SRTF) 
+
+- preemptive version of SJF
+- if a job arrives and has shorter time to completion than the remaining time on the current job, immediately preempt CPU
+
+### Comparing SRTF with FCFS
+
+- what if all jobs are the same length? SRTF becomes the same as FCFS, FCFS is best we can do if all jobs are the same length 
+- what if jobs have varying length? with SRTF, short jobs will not be stuck behind long ones
+
 ### Shortest Run Time First (SRTF) 
 
 - SRTF leads to starvation. 
+- Con: unfair 
 - How do we predict future? build model of past, if program was random, no point in predicting 
 - Make SRTF ==adaptive== where we change policy based on past behavior 
 - Use an estimator on previous CPU bursts 
