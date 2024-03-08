@@ -27,12 +27,13 @@ h4 {
     font-weight: 600;
     letter-spacing: -0.02em;
     margin-bottom: 0;
+    padding-top: 15px;
 }
 
 body {
     font-family: Inter, sans-serif;
     letter-spacing: 0.3px;
-    line-height: 1.4;
+    line-height: 1.5;
     padding-top: 3vw;
     padding-right: 15vw;
     padding-left: 15vw;
@@ -196,7 +197,6 @@ em {
     border-radius: 5px;
     padding: 2px; 
     border: 0.2px solid rgb(176, 243, 191);
-    font-size: 13px;
     background-color: rgb(176, 243, 191);
     color: black;
     border-bottom: 0;
