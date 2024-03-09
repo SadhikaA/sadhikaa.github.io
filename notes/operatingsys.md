@@ -554,9 +554,10 @@ Strict priority is not fair. **How do we implement fairness?** Give each priorit
 
 ### Shortest Run Time First (SRTF) 
 
-- SRTF leads to starvation. 
-- Con: unfair 
-- How do we predict future? build model of past, if program was random, no point in predicting 
+- SRTF can leads to starvation if many small jobs 
+- Pros: optimal average response time
+- Con: unfair, can't predict the future so technically impossible
+- How do we predict future? build model of past, if program was random, no point in predicting OR ask the user ahead of time 
 - Make SRTF ==adaptive== where we change policy based on past behavior 
 - Use an estimator on previous CPU bursts 
 - Estimate next time burst such as using exponential averaging 
@@ -567,13 +568,17 @@ Strict priority is not fair. **How do we implement fairness?** Give each priorit
 
 ### Multi Level Feedback Scheduling 
 
-- Each queue has a different scheduling technique. 
-- Things at top run with higher priority. 
+- Each queue has its own scheduling algorithm (can be RR, FCFS) 
+- Also needs to do scheduling between queues like ==fixed priority scheduling== (serve from highest to lowest) but this could cause starvation so we can give each queue an amount of CPU time instead (70% to highest, 20% to next, etc) - approximate SRTF 
+- Things at top run with higher priority because they have shorter CPU bursts
+- Things at the bottom run for longer CPU time so we give it lower priority  
 - A way of approximating SRTF because short things go up, long things go down.
 - We give priority to tasks at the top. 
+- I/O is always given higher priority (like `printf`) so we could potentially foil these plans by adding that in 
 - High priority queues are often considered background tasks. 
 - CPU bound ones drop, short running I/O bound 
 - User can foil CPU (add in a bunch of I/O or print statements means that we could run much faster)
+- How to adjust job's priority: job starts in the highest priority queue, if timeout expires, drop one level, otherwise, push up one level
 
 ### Case Study: O(1) Scheduler
 
@@ -581,11 +586,14 @@ Strict priority is not fair. **How do we implement fairness?** Give each priorit
 - 40 for user tasks (set by nice, which gives it lower priority)
 - 100 for realtime/kernel
 - two seperate priority queues, active and expired 
+- real time has higher priority than user tasks 
+- lots of heuristics to determine moving around the tasks 
 
 ### Multi Core Scheduling
 
 - Not a huge difference from single core scheduling
-- !Affinity scheduling!: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU 
+- helpful to have per-core data structures for scheduling (limit context switching, greater cache coherence) 
+- !Affinity scheduling!: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU, allows us to reuse cache, predict branches 
 
 Spinlock: doesn't put calling thread to sleep, it just busy waits 
 - when do we want this: waiting for limited number of threads 
@@ -600,6 +608,8 @@ release() {
 }
 ```
 
+- ==gang scheduling== for **parallel applications** - when multiple threads work together on a multi core system, try to schedule them together 
+
 ## Real Time Scheduling
 
 We don't care about running fast, we want to predict performance. What is the guarenteed worst case? When car slams on brake, car needs to brake deadline needs to be met. 
@@ -608,13 +618,20 @@ Each task has a hard real-time that it must meet. Ideally we want to determine t
 Soft real time means that we need to attempt to meet deadlines with high probability (constant bandwidth server - CBS)
 
 Tasks have deadlines (D) and known computation times (C).
-
-We only have one core. None of current schedulers help. 
+Task arrives when arrow goes up, occurs for time C, and needs to finish by deadline D.
+They are also periodic so C keeps repeating.
 
 ### Earliest Deadline First (EDF)
 
 Tasks are **periodic** with period `P` and computation `C` in each period, $\((P_i, C_i\))$ for each task `i`
 
-Find the one whose deadline expires first.
+- Preemptive priority-based dynamic scheduling: each task is assigned a current priority based on how close the absolute deadline is 
+- scheduler will always schedule the active task with the closest absolute deadline
+- for `n` tasks with computation time `C` and deadline `D`, a feasible schedule exists if sum of ratio $C_i/D_i$ is `<= 1`.
 
+### Starvation 
 
+- starvation means that a thread fails to make progress for an indefinite period of time 
+- starvation is not the same as deadlock because starvation can resolve, deadlocks are unresolvable
+- causes of starvation: scheduling policy never runs a particular thread on the CPU, threads wait for each other or are spinning in a way that will never be resolved 
+- 

@@ -47,12 +47,15 @@
 <a href="#h29" class="subheading">Round Robin (RR) </a><br>
 <a href="#h30" class="subheading">Comparing RR and FCFS </a><br>
 <a href="#h31" class="subheading">Strict Priority Scheduling</a><br>
-<a href="#h32" class="subheading">Shortest Run Time First (SRTF) </a><br>
-<a href="#h33" class="subheading">Multi Level Feedback Scheduling </a><br>
-<a href="#h34" class="subheading">Case Study: O(1) Scheduler</a><br>
-<a href="#h35" class="subheading">Multi Core Scheduling</a><br>
-<a href="#h36" class="bloglink">Real Time Scheduling</a><br>
-<a href="#h37" class="subheading">Earliest Deadline First (EDF)</a><br>
+<a href="#h32" class="subheading">Shortest Job First (SJF) </a><br>
+<a href="#h33" class="subheading">Shortest Remaining Time First (SRTF) </a><br>
+<a href="#h34" class="subheading">Comparing SRTF with FCFS</a><br>
+<a href="#h35" class="subheading">Shortest Run Time First (SRTF) </a><br>
+<a href="#h36" class="subheading">Multi Level Feedback Scheduling </a><br>
+<a href="#h37" class="subheading">Case Study: O(1) Scheduler</a><br>
+<a href="#h38" class="subheading">Multi Core Scheduling</a><br>
+<a href="#h39" class="bloglink">Real Time Scheduling</a><br>
+<a href="#h40" class="subheading">Earliest Deadline First (EDF)</a><br>
 <hr>
 <p>Operating systems provide abstractions to applications, translates from hardware interface to application interface. OS provides running program with its own process. It also manages sharing of resources among multiple applications. </p>
 <p>OS plays many roles: <em>referee</em> (manage protection, isolation, sharing of resources), <em>illusionist</em> (provide easy to use, clean abstractions of physical resources), <em>glue</em> (common services - storage, window system, networking, sharing, authorization)</p>
@@ -483,10 +486,26 @@
 <p><b><em>Priority Inversion</em></b>: </p>
 <p><i><em><code>INSERT DESCRIPTION HERE</code></em></i></p>
 <p>Strict priority is not fair. <b>How do we implement fairness?</b> Give each priority queue some fraction of the CPU (like an express lane). We could increase the priority of the jobs that don't get service.</p>
-<h4 id="h32">Shortest Run Time First (SRTF) </h4>
+<h4 id="h32">Shortest Job First (SJF) </h4>
 <ul>
-<li>SRTF leads to starvation. </li>
-<li>How do we predict future? build model of past, if program was random, no point in predicting </li>
+<li>run whichever job has the least amount of computation to do (also called shortest time to completion first - STCF)</li>
+</ul>
+<h4 id="h33">Shortest Remaining Time First (SRTF) </h4>
+<ul>
+<li>preemptive version of SJF</li>
+<li>if a job arrives and has shorter time to completion than the remaining time on the current job, immediately preempt CPU</li>
+</ul>
+<h4 id="h34">Comparing SRTF with FCFS</h4>
+<ul>
+<li>what if all jobs are the same length? SRTF becomes the same as FCFS, FCFS is best we can do if all jobs are the same length </li>
+<li>what if jobs have varying length? with SRTF, short jobs will not be stuck behind long ones</li>
+</ul>
+<h4 id="h35">Shortest Run Time First (SRTF) </h4>
+<ul>
+<li>SRTF can leads to starvation if many small jobs </li>
+<li>Pros: optimal average response time</li>
+<li>Con: unfair, can't predict the future so technically impossible</li>
+<li>How do we predict future? build model of past, if program was random, no point in predicting OR ask the user ahead of time </li>
 <li>Make SRTF <em>adaptive</em> where we change policy based on past behavior </li>
 <li>Use an estimator on previous CPU bursts </li>
 <li>Estimate next time burst such as using exponential averaging </li>
@@ -495,24 +514,28 @@
 <li>Apps that sleep a lot and have short bursts must be interactive apps (they should get high priority).</li>
 <li>Apps that compute a lot should get lower priority since they won't notice intermittent bursts from interactive apps.</li>
 </ul>
-<h4 id="h33">Multi Level Feedback Scheduling </h4>
+<h4 id="h36">Multi Level Feedback Scheduling </h4>
 <ul>
-<li>Each queue has a different scheduling technique. </li>
-<li>Things at top run with higher priority. </li>
+<li>Each queue has its own scheduling algorithm (can be RR, FCFS) </li>
+<li>Also needs to do scheduling between queues like <em>fixed priority scheduling</em> (serve from highest to lowest) but this could cause starvation so we can give each queue an amount of CPU time instead (70% to highest, 20% to next, etc) - approximate SRTF </li>
+<li>Things at top run with higher priority because they have shorter CPU bursts</li>
+<li>Things at the bottom run for longer CPU time so we give it lower priority  </li>
 <li>A way of approximating SRTF because short things go up, long things go down.</li>
 <li>We give priority to tasks at the top. </li>
+<li>I/O is always given higher priority (like <code>printf</code>) so we could potentially foil these plans by adding that in </li>
 <li>High priority queues are often considered background tasks. </li>
 <li>CPU bound ones drop, short running I/O bound </li>
 <li>User can foil CPU (add in a bunch of I/O or print statements means that we could run much faster)</li>
+<li>How to adjust job's priority: job starts in the highest priority queue, if timeout expires, drop one level, otherwise, push up one level</li>
 </ul>
-<h4 id="h34">Case Study: O(1) Scheduler</h4>
+<h4 id="h37">Case Study: O(1) Scheduler</h4>
 <ul>
 <li>140 levels of priority (lower = higher)</li>
 <li>40 for user tasks (set by nice, which gives it lower priority)</li>
 <li>100 for realtime/kernel</li>
 <li>two seperate priority queues, active and expired </li>
 </ul>
-<h4 id="h35">Multi Core Scheduling</h4>
+<h4 id="h38">Multi Core Scheduling</h4>
 <ul>
 <li>Not a huge difference from single core scheduling</li>
 <li><i>Affinity scheduling</i>: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU </li>
@@ -529,13 +552,13 @@
 	    value = 0;   // atomic store 
 	}
 	</code></pre>
-<h3 id="h36">Real Time Scheduling</h3>
+<h3 id="h39">Real Time Scheduling</h3>
 <p>We don't care about running fast, we want to predict performance. What is the guarenteed worst case? When car slams on brake, car needs to brake deadline needs to be met. </p>
 <p>Each task has a hard real-time that it must meet. Ideally we want to determine this in advance. (EDF and rate monitononic scheduling - RMS)</p>
 <p>Soft real time means that we need to attempt to meet deadlines with high probability (constant bandwidth server - CBS)</p>
 <p>Tasks have deadlines (D) and known computation times (C).</p>
 <p>We only have one core. None of current schedulers help. </p>
-<h4 id="h37">Earliest Deadline First (EDF)</h4>
+<h4 id="h40">Earliest Deadline First (EDF)</h4>
 <p>Tasks are <b>periodic</b> with period <code>P</code> and computation <code>C</code> in each period, <span class='math'>\(\((P_i, C_i\))\)</span> for each task <code>i</code></p>
 <p>Find the one whose deadline expires first.</p>
         <p style="padding-bottom: 60px"></p>
