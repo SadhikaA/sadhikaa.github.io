@@ -1,0 +1,133 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+}
+
+.leftColumn {
+    margin-left: 20px;
+    padding: 20px 20px;
+    margin-right: 20px;
+}
+
+.rightColumn {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+    background-color: black;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons {
+    margin-left: 10px;
+}
+
+.icons img {
+    margin-right: 5px;
+}
+
+.icons {
+    display: flex;
+}
+
+.icon {
+    color: black;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+}
+
+.icon:hover {
+    color: #4100f3;
+}
+
+.heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    color: #ffffff;
+    padding: 2px 7px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.date {
+    font-family: 'JetBrains Mono', monospace;
+    padding-right: 6px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 130%;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.tagGraphics {
+    background-color: #974aa5;
+}
+
+.tagHardware {
+    background-color: #2196F3;
+}
+
+.tagDesign {
+    background-color: #FF6F00;
+}
+
+.tagWeb {
+    background-color: #4CAF50;
+}
+
+.tagiOS {
+    background-color: #D53D4F;
+}
+
+.tagWriting {
+    background-color: #3D52D5;
+}
+
+.tagMLAI {
+    background-color: #b27e06;
+}
+
+.linkP {
+    padding-left: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 130%;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: black;
+}
+
+.iframeContainer {
+    height: 800px;
+}

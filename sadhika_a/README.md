@@ -1,1 +1,0 @@
-Personal website made with Next.js, Spline, React.
