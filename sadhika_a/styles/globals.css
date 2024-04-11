@@ -25,10 +25,10 @@ h2 {
 a {
   border: none;
   background-color: white;
-  text-decoration: underline dotted;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  color: #4100f3;
+  text-decoration: none;
+  /* text-decoration-thickness: 2px;
+  text-underline-offset: 4px; */
+  color: black;
   font-size: 14px;
   letter-spacing: 0.3px;
   line-height: 130%;
