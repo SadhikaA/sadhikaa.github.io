@@ -3,7 +3,9 @@ import Layout from '../components/layout';
 import Head from 'next/head';
 import Image from 'next/image';
 
-export default function Drone() {
+// import app from '../images/ucbugg/app.png';
+
+export default function Markdown() {
   return (
     <>
       <Head>
@@ -17,15 +19,18 @@ export default function Drone() {
         </div>
         <div className={styles.rightColumn}>
           <h3>UCB Society of Women Engineers Website</h3>
-          <p className={styles.contentTag}>React</p>
           <p className={styles.contentTag}>Next.js</p>
-          <p><a className={styles.links} href="">Github ↗</a> &nbsp;<a className={styles.links} href="">Website ↗</a></p>
-          <p>In my embedded systems class (EECS 149), my group and I decided to build a self-stabilizing drone from scratch for our final project. Using materials from class such as </p>
+          <p className={styles.contentTag}>React</p>&nbsp;&nbsp;
+          <a className={styles.links} href="">Github ↗</a>
+          <hr></hr>
+          <p>In the fall...</p>
           <h4>Heading</h4>
-          <p>I build the app in Swift using the Core Bluetooth API. It works by taking in UUID...</p>
+          {/* <div className={styles.imageContainer}>
+            <Image src={magnet} alt="magnetometer" width={350} className={styles.mobileImage}/>
+          </div> */}
+          <p>I build the app...</p>
         </div>
       </Layout>
     </>
   );
 }
-

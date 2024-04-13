@@ -38,7 +38,7 @@ export default function Layout({ children }) {
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/markdown">
-              <p className={styles.linkP}>creating my own markdown parser and notetaking app</p>
+              <p className={styles.linkP}>creating my own markdown parser</p>
             </Link>
           </li> 
           <li>

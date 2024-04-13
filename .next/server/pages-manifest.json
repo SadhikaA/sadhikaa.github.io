@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/drone": "pages/drone.js",
-  "/": "pages/index.js",
-  "/markdown": "pages/markdown.js"
+  "/markdown": "pages/markdown.js",
+  "/ucbugg": "pages/ucbugg.js",
+  "/sweweb": "pages/sweweb.js",
+  "/drone": "pages/drone.js"
 }
