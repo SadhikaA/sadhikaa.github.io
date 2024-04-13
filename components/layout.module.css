@@ -15,9 +15,10 @@
     padding-top: 0px;
     background-color: black;
     color: white;
+    padding-bottom: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .container {
         grid-template-columns: 1fr;
     }
@@ -130,4 +131,46 @@
 
 .iframeContainer {
     height: 800px;
+}
+
+.links {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    background-color: black;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: rgb(230, 213, 99);
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 130%;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .mobileImage {
+      width: 80%;
+      height: auto; 
+    }
+  }
+
+.contentTag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    background-color: rgb(216, 216, 216);
+    color: black;
+    padding: 2px 7px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
 }

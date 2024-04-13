@@ -23,9 +23,24 @@ export default function Layout({ children }) {
           </div>
         </div>
         <p className={styles.heading}>about</p>
-        <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. This summer I'll be an SWE intern at Apple.</p>
+        <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. This summer I'll be an SWE intern at Apple. This website serves as a way to log my work and keep track of what I've built, categorized roughly by the type of work it is.</p>
         <p className={styles.heading}>portfolio</p>
         <ul>
+          <li>
+            <p className={styles.date}>FEB 2024</p>
+            <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
+            <Link href="/sweweb">
+              <p className={styles.linkP}>redesigning the UC Berkeley SWE website</p>
+            </Link>
+          </li>
+          <li>
+            <p className={styles.date}>JAN 2024</p>
+            <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
+            <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
+            <Link href="/markdown">
+              <p className={styles.linkP}>creating my own markdown parser and notetaking app</p>
+            </Link>
+          </li> 
           <li>
             <p className={styles.date}>DEC 2023</p>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
