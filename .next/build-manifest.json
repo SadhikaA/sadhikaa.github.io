@@ -25,20 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/drone": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/drone.js"
-    ],
     "/markdown": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/markdown.js"
-    ],
-    "/sweweb": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/sweweb.js"
     ],
     "/ucbugg": [
       "static/chunks/webpack.js",
