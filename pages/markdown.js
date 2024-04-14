@@ -31,6 +31,7 @@ export default function Markdown() {
           <p>Version 1 of the markdown parser involved a simple python script that converted a md file into an html page and table of contents. I manually wrote the script to parse each line of md using my own stylistic choices sometimes, but mostly following normal markdown conventions. I also included latex and code support using MathJAX and Prism.</p>
           <p>However, this version required writing markdown, running the Python script, and reloading the html each time. Not ideal for taking a page of notes in lecture. I also wanted to include more features like hovering over a word to get its definition, automatic highlighting, inline conversion of markdown, comments, and a flashcard system.</p>
           <h4>v2</h4>
+          <p></p>
         </div>
       </Layout>
     </>

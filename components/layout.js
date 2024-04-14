@@ -23,7 +23,7 @@ export default function Layout({ children }) {
           </div>
         </div>
         <p className={styles.heading}>about</p>
-        <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. This summer I'll be an SWE intern at Apple. This website serves as a way to log my work and keep track of what I've built, categorized roughly by the type of work it is.</p>
+        <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p>
         <p className={styles.heading}>portfolio</p>
         <ul>
           <li>
