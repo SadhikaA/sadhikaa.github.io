@@ -85,3 +85,13 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+textarea {
+  outline: none;
+  border: none;
+  resize: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  line-height: 130%;
+}
