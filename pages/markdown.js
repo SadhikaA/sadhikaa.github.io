@@ -32,14 +32,12 @@ export default function Markdown() {
           <p>However, this version required writing markdown, running the Python script, and reloading the html each time. Not ideal for taking a page of notes in lecture. I also wanted to include more features like hovering over a word to get its definition, automatic highlighting, inline conversion of markdown, comments, and a better table of contents.</p>
           <h4>v2</h4>
           <p>Feature list: </p>
-          <p>inline notes, type and update directly in the document<br></br>
-          editing mode and reading mode<br></br>
-          vocab word highlighting<br></br>
+          <p>vocab word highlighting<br></br>
           comments (cornell notes/footnotes type)<br></br>
           huge margins to help you read<br></br>
           table of contents on the side<br></br>
           one page at a time like textbook</p>
-          <p>After looking at this feature list, I started to implement each one by one. In doing so, I realized I needed a lot more database management and storage policies along with lots of css to make the markdown and notebook pages look exactly like I wanted to. I realized that Obsidian had a lot of these features in-built, so I decided to use it instead of making my own.</p>
+          <p></p>
         </div>
       </Layout>
     </>
