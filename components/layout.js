@@ -28,6 +28,7 @@ export default function Layout({ children }) {
         <ul>
           <li>
             <p className={styles.date}>FEB 2024</p>
+            <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/sweweb">
               <p className={styles.linkP}>redesigning the UC Berkeley SWE website</p>
@@ -36,7 +37,6 @@ export default function Layout({ children }) {
           <li>
             <p className={styles.date}>JAN 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
-            <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/markdown">
               <p className={styles.linkP}>creating my own markdown parser</p>
             </Link>

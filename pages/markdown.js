@@ -38,8 +38,8 @@ export default function Markdown() {
           comments (cornell notes/footnotes type)<br></br>
           huge margins to help you read<br></br>
           table of contents on the side<br></br>
-          have diff "pens" that you can switch on demand<br></br>
           one page at a time like textbook</p>
+          <p>After looking at this feature list, I started to implement each one by one. In doing so, I realized I needed a lot more database management and storage policies along with lots of css to make the markdown and notebook pages look exactly like I wanted to. I realized that Obsidian had a lot of these features in-built, so I decided to use it instead of making my own.</p>
         </div>
       </Layout>
     </>

@@ -21,14 +21,14 @@ export default function Drone() {
         <div className={styles.leftColumn}>
         </div>
         <div className={styles.rightColumn}>
-          <h3>Swift Flight: Stabilized Drone</h3>
+          <h3>🚁 Swift Flight: Stabilized Drone</h3>
           
           <p className={styles.contentTag}>Arduino</p>
           <p className={styles.contentTag}>SwiftUI</p>
           <p className={styles.contentTag}>EPS32</p>&nbsp;&nbsp;
           <a className={styles.links} href="https://github.com/SadhikaA/drone">Github ↗</a> &nbsp;<a className={styles.links} href="https://www.youtube.com/watch?v=93SXaI1Zl-0">Video ↗</a>
           <hr></hr>
-          <p>In my embedded systems class (EECS 149), my group and I decided to build a self-stabilizing drone from scratch for our final project using basic sensor readings. We started with the given materials and sensors from class including a 10 DOF IMU, BLE device, EPS32 microcontroller, drone motors, propellors, and a drone skeleton. I worked primarily on sensor calibration and a bluetooth app to communicate and manuever the drone.</p>
+          <p>In my embedded systems class (EECS 149), my group and I decided to build a self-stabilizing drone from scratch for our final project using basic sensor readings. We started with the given materials and sensors from class including a 10 DOF IMU, BLE device, EPS32 microcontroller, drone motors, propellers, and a drone skeleton. I worked primarily on sensor calibration and a bluetooth app to communicate and maneuver the drone.</p>
           <h4>Sensor Calibration</h4>
           <p>I worked on sensor calibration for our IMU (inertial measurement unit). The IMU included a 3-axis gyro, 3-axis magnetometer, 3-axis accelerometer, and barometer. In order to adjust for the noise and error of the magnetometer, accelerometer, and magnetometer. I worked with my teammate to design a contraption that allows for measuring the values of the sensor readings and plotting it. After plotting these values, we adjusted the centers of these graphs and determined the noise and calibration values.</p>
           <div className={styles.imageContainer}>

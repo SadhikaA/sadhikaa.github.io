@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/markdown": "pages/markdown.js",
-  "/": "pages/index.js",
+  "/ucbugg": "pages/ucbugg.js",
   "/drone": "pages/drone.js"
 }
