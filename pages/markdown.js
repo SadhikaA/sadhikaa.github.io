@@ -32,12 +32,13 @@ export default function Markdown() {
           <p>However, this version required writing markdown, running the Python script, and reloading the html each time. Not ideal for taking a page of notes in lecture. I also wanted to include more features like hovering over a word to get its definition, automatic highlighting, inline conversion of markdown, comments, and a better table of contents.</p>
           <h4>v2</h4>
           <p>Feature list: </p>
-          <p>vocab word highlighting<br></br>
+          <p>vocab word highlighting + hover for definition?<br></br>
           comments (cornell notes/footnotes type)<br></br>
-          huge margins to help you read<br></br>
+          large margins for readability<br></br>
           table of contents on the side<br></br>
-          one page at a time like textbook</p>
-          <p></p>
+          one page at a time<br></br>
+          good use of visuals to detail the notes</p>
+          {/* examples: https://nicolbolas.github.io/oldtut/Basics/Tut01%20Following%20the%20Data.html & https://phillipi.github.io/6.882/2020/notes/6.036_notes.pdf */}
         </div>
       </Layout>
     </>
