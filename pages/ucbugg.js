@@ -4,6 +4,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import character from '../images/ucbugg/character.png';
+import rig from '../images/ucbugg/rig.png';
+import final from '../images/ucbugg/final.png';
+import toon from '../images/ucbugg/toon.png';
+import storyboard2 from '../images/ucbugg/storyboard2.png';
 
 export default function UCBUGG() {
   return (
@@ -33,12 +37,18 @@ export default function UCBUGG() {
           <h4>Modeling</h4>
           <p>I built...</p>
           <h4>Rigging</h4>
+          <div className={styles.imageContainer}>
+            <Image src={rig} alt="character" width={650} className={styles.mobileImage}/>
+          </div>
           <h4>Shading</h4>
+          <div className={styles.imageContainer}>
+            <Image src={toon} alt="character" width={650} className={styles.mobileImage}/>
+          </div>
           <h4>Animation</h4>
           <h4>Rendering</h4>
           <h4>Post-Production</h4>
           <p>Post-production mostly involved adding music and final edits.</p>
-          <p>Between this project and my drone project, the end of the semester was a wild ride, but I definitely learned a lot and got two great learning experiences out of it, albeit very different from each other (hardware and animation).</p>
+          <p>In the same semester, I worked on both this my drone project, making the end of the semester pretty hectic, but I got two great learning experiences out of it in hardware and animation.</p>
         </div>
       </Layout>
     </>
