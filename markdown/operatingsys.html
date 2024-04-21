@@ -1,0 +1,583 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Operating Systems 
+</title>
+        <link rel="stylesheet" href="../markdown/styles.css">
+        <link href="../markdown/prism.css" rel="stylesheet" />
+        <script src="../markdown/prism.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+<h2 id="top">💾 Operating Systems</h2>
+<hr>
+<a href="#h1" class="bloglink">Kernels </a><br>
+<a href="#h2" class="subheading">Dual Mode Operation </a><br>
+<a href="#h3" class="subheading">Disabling Interrupts </a><br>
+<a href="#h4" class="subheading">System Calls</a><br>
+<a href="#h5" class="subheading">Exec syscall</a><br>
+<a href="#h6" class="bloglink">Address Spaces </a><br>
+<a href="#h7" class="subheading">Base and Bound</a><br>
+<a href="#h8" class="bloglink">Processes and Threads</a><br>
+<a href="#h9" class="subheading">Threads</a><br>
+<a href="#h10" class="subheading">Comparing Processes and Threads</a><br>
+<a href="#h11" class="subheading">Forking </a><br>
+<a href="#h12" class="bloglink">Input/Ouput </a><br>
+<a href="#h13" class="subheading">High Level File API</a><br>
+<a href="#h14" class="bloglink">Mutual Exclusion </a><br>
+<a href="#h15" class="subheading">Simulatenous Multithreading </a><br>
+<a href="#h16" class="subheading">Critical Section </a><br>
+<a href="#h17" class="subheading">Locks </a><br>
+<a href="#h18" class="bloglink">Monitors </a><br>
+<a href="#h19" class="subheading">Basic Structure of Mesa Monitor Pattern </a><br>
+<a href="#h20" class="subheading">Monitors from Semaphores</a><br>
+<a href="#h21" class="bloglink">Pintos </a><br>
+<a href="#h22" class="subheading">Pintos Lists </a><br>
+<a href="#h23" class="bloglink">Readers & Writers </a><br>
+<a href="#h24" class="subheading">Reader Code</a><br>
+<a href="#h25" class="subheading">Writer Code</a><br>
+<a href="#h26" class="subheading">Sample Simulation of R+W</a><br>
+<a href="#h27" class="bloglink">Scheduling </a><br>
+<a href="#h28" class="subheading">First Come First Serve (FCFS)</a><br>
+<a href="#h29" class="subheading">Round Robin (RR) </a><br>
+<a href="#h30" class="subheading">Comparing RR and FCFS </a><br>
+<a href="#h31" class="subheading">Strict Priority Scheduling</a><br>
+<a href="#h32" class="subheading">Shortest Job First (SJF) </a><br>
+<a href="#h33" class="subheading">Shortest Remaining Time First (SRTF) </a><br>
+<a href="#h34" class="subheading">Comparing SRTF with FCFS</a><br>
+<a href="#h35" class="subheading">Shortest Run Time First (SRTF) </a><br>
+<a href="#h36" class="subheading">Multi Level Feedback Scheduling </a><br>
+<a href="#h37" class="subheading">Case Study: O(1) Scheduler</a><br>
+<a href="#h38" class="subheading">Multi Core Scheduling</a><br>
+<a href="#h39" class="bloglink">Real Time Scheduling</a><br>
+<a href="#h40" class="subheading">Earliest Deadline First (EDF)</a><br>
+<a href="#h41" class="subheading">Starvation </a><br>
+<hr>
+<p>Operating systems provide abstractions to applications, translates from hardware interface to application interface. OS provides running program with its own process. It also manages sharing of resources among multiple applications. </p>
+<p>OS plays many roles: <em>referee</em> (manage protection, isolation, sharing of resources), <em>illusionist</em> (provide easy to use, clean abstractions of physical resources), <em>glue</em> (common services - storage, window system, networking, sharing, authorization)</p>
+<h3 id="h1">Kernels </h3>
+<p><b><em>Kernels</em></b> have PCBs, TCBs, device drivers, and kernel stacks. All of these cannot be accessed by the user.</p>
+<p>The <b><em>kernel</em></b> handles process management, terminal drivers, disk and tape drivers, CPU scheduling, page replacement, demand paging, virtual memory, file system management, device management, system calls, and security and protection. </p>
+<p>In <b><em>x86 architecture</em></b>, contains the stack pointer as <code>ESP</code> and the instruction pointer as <code>EIP</code>.</p>
+<h4 id="h2">Dual Mode Operation </h4>
+<p><code>0</code> = user mode / <code>3</code> = kernel mode</p>
+<p><b>User mode</b> calls <b>kernel mode</b> through a <b>syscall</b> (sends a syscall ID), <b>trap/exception</b> (synchronous event, segfault, divide by zero), <b>interrupt</b> (asynchronous timer, I/O device, independent of user process).</p>
+<p>We need to save processor state in the thread control block when we make a context switch because the kernel may overwrite it. </p>
+<p>User has access to the GUIs, applications, CLIs, resource management. User can't access virtual addresses marked as kernel only in the page table, change the page table base pointer register, or enable/disable interrupts.</p>
+<p>Syscall steps:</p>
+<ul>
+<li>library puts syscall number into register</li>
+<li>executes special trap instruction that atomically changes to kernel mode</li>
+<li>switches to kernel stack </li>
+<li>saves user registers</li>
+<li>execustes syscall handler looked up from interrupt vector table (holds pointers and addresses to interrupt handlers, happens when we get an interrupt to kernel handler)</li>
+</ul>
+<p>CPU switch from process A to process B: (all happens by the kernel)</p>
+<ul>
+<li>A is executing and then we got an interrupt/system call </li>
+<li>we save the state into A's PCB</li>
+<li>reload state from B's PCB </li>
+<li>execute B, then we get another interrupt/syscall</li>
+<li>save state into B's PCB</li>
+<li>reload state from A's PCB </li>
+<li>execute A </li>
+</ul>
+<p>How do have safe kernel mode transfers? Use a separate kernel stack, locate arguments in registers/user stack, copy arguments from user memory to kernel memory, validate arguments, and then copy results back to user memory.</p>
+<p>How do we have safe interrupts? Use an interrupt vector (limited number of entry points into the kernel). Use kernel interrupt stack (handler works regardless of state of user code). There is an atomic transfer of control and transparent restartable execution (user does not know that the interrupt has occurred).</p>
+<h4 id="h3">Disabling Interrupts </h4>
+<ul>
+<li>Used to temporarily prevent the CPU from responding to interrupts</li>
+<li>CPU will continue executing the current program without interruption, ignoring external events</li>
+<li>Interrupt requests that occur will be queued after</li>
+<li>Used during critical sections where interrupt handling could cause issues/disrupt the flow of execution (ensure the integrity of shared data structures accessed by multiple threads or interrupt handlers)</li>
+<li>Make sure to re-enable interrupts </li>
+</ul>
+<h4 id="h4">System Calls</h4>
+<p><code>exit</code> - terminates a process</p>
+<p><code>exec</code> - changes the program being run by the current process</p>
+<p><code>fork</code> - copies the current process</p>
+<p><code>wait</code> - waits for process to finish </p>
+<p><code>kill</code> - sends a signal to another process (SIGINT is CtrlC, SIGKILL, SIGSTOP)</p>
+<p><code>sigaction</code> - takes in signal number, a pointer to a struct that represents the behavior of a signal handler, pointer to struct where previous behavior will be stored </p>
+<h4 id="h5">Exec syscall</h4>
+<p><b><em>Exec</em></b> will rewrite the entire image of the program and erase everything that was going to happen after.</p>
+<ul>
+<li>Operating System loads file into current process's address space</li>
+<li>Sets up <code>main</code> as entry point</li>
+<li>Closes any open file descriptors</li>
+<li>Memory space is replaced with memory of new program </li>
+<li>New program starts from its entry point </li>
+</ul>
+<h3 id="h6">Address Spaces </h3>
+<p>An <b><em>address space</em></b> is a set of memory addresses that are accessible to the program to read/write to. The virtual address space is distinct from memory space of physical machine.</p>
+<p>How does <b>address space translation</b> work? Translator translates virtual address into physical memory address. Hardware translates it using page tables.</p>
+<p>32 bit processor means that we have <span class='math'>\(2^{32}\)</span> addresses. </p>
+<p><code>stack</code> - grows downward from 0xFFFF, region of memory used for automatic storage of local vars, function arguments, return addresses, function call info (each thread has its own and deallocated after function calls end)</p>
+<p><code>heap</code> - grows upward after stack, dynamically allocated region (malloc, calloc, realloc, free)</p>
+<p><code>static data</code> - initialized static data and global variables used by the program, also read only data (constants and string literals), initialized static data and global variables used by the program, also read only data (constants and string literals), initialized static arrays and structures </p>
+<p><code>BSS (block started by symbol) segment</code> - uninitialized static data and global vars declared without explicit values, set to 0/NULL at the beginning </p>
+<p><code>text/code</code> - executable code of the program </p>
+<h4 id="h7">Base and Bound</h4>
+<p>Translates a program address to values that are in that process's memory space only (only access mmory between base and bound), but not used anymore because it limits the size of the address space, also if the location moves, then we have to redo things.</p>
+<p>Why is B&B bad?</p>
+<ul>
+<li>wasteful becaues we have to dedicate physical memory for potential future usage</li>
+<li>fragmentation: kernel has to fit whole processes into this memory block </li>
+<li>hard to share data between processes and between process and kernel (better is using page table translation)</li>
+</ul>
+<h3 id="h8">Processes and Threads</h3>
+<p>A <b><em>process</em></b> is an instance of a running program (contains PCB, threads, address space, files, and sockets)</p>
+<p>There's a tradeoff with processes: communication is easier <b>within</b> processes, and harder <b>between</b> processes.</p>
+<p>The <em>process control block (PCB)</em> is stored in kernel memory (is how the kernel represents a single process). It holds the status, register state, process ID, etc.</p>
+<p><em>Multiprocessing</em> means we have multiple CPUs/cores.</p>
+<p><em>Multiprogramming</em> means we have multiple jobs/processes interleaving.</p>
+<p><em>Multithreading</em> is when we have multiple threads/processes.</p>
+<h4 id="h9">Threads</h4>
+<p><b><em>Threads</em></b> share code, data, files, and heap. Threads also have their own unique thread control block, stack pointer, stack, and registers.</p>
+<p><code>running</code> = running (current registers hold the context of the thread)</p>
+<p><code>ready</code> = eligible to run, not currently reading</p>
+<p><code>blocked</code> = eligible to run </p>
+<p>If a thread is waiting for I/O to finish, the OS marks it as blocked. Once I/O finishes, OS marks it as ready. </p>
+<p>Threads allow us to have concurrency in our programs.</p>
+<p><b><em>Concurrency</em></b> means that we are executing multiple tasks or processes at the same time, interleaving occurs. <i>(overlapping execution)</i></p>
+<p><b><em>Parallelism</em></b> means that we are executing multiple tasks/processes at the same time but on multiple cores, relies on multiplicity to do many things at the same itme. <i>(simulataneous execution)</i> </p>
+<p>Parallelism also allows us to take advantage of hardware. Concurrency allows us to easily handle I/O and other simultaneous events. Two threads on a single core system execute concurrently, but not in parallel. Parallelism implies concurrency, but concurrency does not equal parallel.</p>
+<p>A <b><em>multithreaded</em></b> process means that there are multiple threads running concurrently in the same process. Each PCB (process control block) in a process has its own per thread state as well. </p>
+<p> </p>
+<p><b><em>Hyperthreading</em></b> allows multiple threads to interleave instructions in a single CPU. Each thread has it's own set of registers and makes progress independently of other threads. Therefore, they operating both concurrently and parallel. </p>
+<p>The idea behind <b><em>synchronization</em></b> is that we want a second thread to have updated information from a previous thread, so how do we get the data between threads to be synchronized.</p>
+<p>We have to be wary of <b><em>non-determinism</em></b>, if we have multiple threads acting on a global variable or a variable on the heap, we need to be careful of the order in which threads are running. For example, without <code>pthread_join</code> and <code>exit</code>, the main thread can exit before completion of another thread.</p>
+<h4 id="h10">Comparing Processes and Threads</h4>
+<ul>
+<li>processes are created using <code>fork()</code> and threads are created with <code>pthread_create()</code> </li>
+<li>processes have distinct page tables, threads have the same page table</li>
+<li>processes have distinct registers and instruction pointers </li>
+<li>threads have distinct registers and instruction pointers </li>
+<li>we do synchronization for processes using <code>wait()</code> and <code>waitpid()</code>, we do synchronization for threads using <code>pthread_join()</code> and semaphores and locks </li>
+<li>processes have <b>higher overhead</b> than threads </li>
+<li>processes have <b>greater protection</b> than threads </li>
+</ul>
+<p><b><code>Heaps and Static Variables</code></b></p>
+<ul>
+<li>for <b><i>processes</i></b>, both child and parent processes have their <i>own</i> heap, so they each have separate data in them </li>
+<li>for <b><i>threads</i></b>, we need to be careful about what we are passing in to our helper function and where the variable was declared, because threads <i>share</i> the heap, so they can possibly overwrite each other </li>
+</ul>
+<p><b><code>Stacks</code></b></p>
+<ul>
+<li>for <b><i>processes</i></b>, processes that are related share copies of stacks from when they were forked, but their changes are specific to themselves --> they also cannot access each other's stacks </li>
+<li>for <b><i>threads</i></b>, threads don't share the same stack but can access each other's stacks which means that they can modify other stacks </li>
+<li><i>how can we access other stacks?</i> if we pass in the address of a variable on the stack to a helper function and modify it in our <code>pthread_create</code> helper, and exit ad join correctly, it will modify the same address</li>
+</ul>
+<p><b><code>File Descriptors</code></b></p>
+<ul>
+<li>for <b><i>processes</i></b>, processes have separate file descriptors, closing one doesn't close anothers, each process has its own pointer to the file descriptor, edits are shared</li>
+<li>for <b><i>threads</i></b>, file descriptors are shared, if one thread closes it the other thread cannot access it </li>
+</ul>
+<h4 id="h11">Forking </h4>
+<p><b><code>pid_t fork</code></b> </p>
+<ul>
+<li>forking a thread creates a parent and child process, the OS starts both of them</li>
+<li>fork returns pid of the current running process</li>
+<li><code>if pid > 0</code>, then we are running in the parent process </li>
+<li><code>if pid = 0</code>, then we are running in the child process </li>
+<li><code>if pid < 0</code>, error</li>
+<li>when we fork, the entire virtual address and memory of the parent gets copied over (file descriptors and all variables)</li>
+<li>how do we create child process' heap'? <b><em>Copy on write</em></b> is where both processes use the same page table until once process changes something in order to save memory </li>
+<li>we use <code>wait(&status)</code> to wait for the return value of the child thread</li>
+<li>to get the current PID of the current running process, <code>getpid()</code> </li>
+<li>all processes have a common ancestor and can be traced back to the init process that started it</li>
+</ul>
+<h3 id="h12">Input/Ouput </h3>
+<p><b><em>Overhead</em></b> describes the additional resources/time required to perform a task beyond what is strictly necessary. Processes have a <i>higher</i> overhead than threads, but offer more protection.</p>
+<p>Low level file API has lower overhead because we are closer to resources, have direct access to hardware and don't need to copy files. </p>
+<p><b>Layer of I/O</b></p>
+<ul>
+<li>High Level (streams, buffered I/O)</li>
+<li>Low Level (file descriptors: open(), read(), write(), close(),....)</li>
+<li>Open File descriptions </li>
+<li>File System (files/directories/indexes)</li>
+<li>I/O Driver (commands and data transfers)</li>
+<li>Hardware (disks, flash, controllers, DMA)</li>
+</ul>
+<h4 id="h13">High Level File API</h4>
+<p>High level file API operates on <b>streams</b>, unformatted sequence of bytes (text/data) with a position. It is essential to check if opening a file returns NULL.</p>
+<p><code>FILE *fopen(const char *filename, const char *mode)</code> </p>
+<p><code>int fclose(FILE *fp)</code> </p>
+<h3 id="h14">Mutual Exclusion </h3>
+<p><em>Mutex (mutual exclusion)</em> - how do we make sure that two threads aren't accessing the same memory </p>
+<h4 id="h15">Simulatenous Multithreading </h4>
+<p>It will swap them for you </p>
+<p>Similar to having 2 cores but not as fast </p>
+<h4 id="h16">Critical Section </h4>
+<p>Code exactly one thread can execute at once. </p>
+<h4 id="h17">Locks </h4>
+<p>An object only one thread can hold at a time.</p>
+<h3 id="h18">Monitors </h3>
+<p><b><em>Monitors</em></b> are defined as a lock and zero or more condition variables for managing concurrent access to shared data.</p>
+<p>Monitors contain <b><em>condition variables</em></b> which allow us to sleep inside a critical section by atomically releasing the lock at the time that we go to sleep. Unlike semaphores, we can't wait inside a critical selction. </p>
+<p><code>cond_wait(&lock)</code> - atomically releases a lock and goes to sleep, will reacquire lock again before returning </p>
+<p><code>cond_signal()</code> - wake up one waiter, if any </p>
+<p><code>cond_broadcast()</code> - wake up all waiters </p>
+<p>We must hold the lock when doing condition variable operations.</p><pre><code class="language-c">
+	// Bounded Buffer example of Condition Variables 
+	lock buf_lock = initially unlocked
+	condition producer_CV = initially empty
+	condition consumer_CV = initially empty
+	
+	Producer(item) {
+	    acquire(&buf_lock);
+	    while (buffer full) { cond_wait(&producer_CV, &buf_lock); }
+	    enqueue(item);
+	    cond_signal(&consumer_CV);
+	    release(&buf_lock);
+	}
+	
+	Consumer() {
+	    acquire(&buf_lock);
+	    while (buffer empty) { cond_wait(&consumer_CV, &buf_lock); }
+	    item = dequeue();
+	    cond_signal(&producer_CV);
+	    release(&buf_lock);
+	    return item;
+	}
+	</code></pre>
+<p>Thread will sleep, not <i>busywait</i>, so this is more useful.</p>
+<h4 id="h19">Basic Structure of Mesa Monitor Pattern </h4>
+<ul>
+<li>monitors represent the synchronization logic of the program (wait if necesary, signal when change something so that any waiting threads can proceed)</li>
+</ul><pre><code class="language-c">
+	/* check and/or update state variables, wait if necessary */
+	lock 
+	while (need to wait) {
+	    condvar.wait()
+	}
+	unlock 
+	
+	// doing something so no need to wait 
+	
+	/* check and/or update state variables */
+	lock 
+	condvar.signal();
+	unlock 
+	</code></pre>
+<h4 id="h20">Monitors from Semaphores</h4>
+<p>Condition variables have no history, but sempahores have history. </p>
+<ul>
+<li>If a thread <code>signal</code>s and no one is waiting? Condition var/monitor does nothing. If a thread later waits, then the thread waits. For a semaphores, if the thread V's and no one is waiting we increment the semaphore. When a thread later does P, it decrements and then continues.</li>
+</ul><pre><code class="language-c">
+	Wait (Lock *thelock, Semaphore *thesame) {
+	    release(thelock);   
+	    // need to add ^ because cond_wait releases the lock 
+	    semaP(thesema);
+	    acquire(thelock);
+	}
+	Signal (Semaphore *thesema) {
+	    if semaphore queue is not empty:
+	        semaV(thesema);
+	}
+	</code></pre>
+<h3 id="h21">Pintos </h3>
+<h4 id="h22">Pintos Lists </h4><pre><code class="language-c">
+	struct list_elem* list_begin(struct list* lst);
+	struct list_elem* list_end(struct list* lst);
+	struct list_elem* list_next(struct list_elem* elem);
+	
+	STRUCT* list_entry(LIST_ELEM, STRUCT, MEMBER);
+	</code></pre>
+<h3 id="h23">Readers & Writers </h3>
+<p>Consider a shared database:</p>
+<ul>
+<li>readers never modify the database</li>
+<li>writers read and modify the database </li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>readers can't read while someone modifies </li>
+<li>only one writer at a time</li>
+<li>can have multiple readers at the same time</li>
+<li>writers cannot be there when readers are reading</li>
+</ul>
+<p>Correctness Constraints: </p>
+<ul>
+<li>readers can access database when no writers </li>
+<li>writers can access database when no readers or writers </li>
+<li>only one thread manipulates state variables at a time </li>
+</ul>
+<p>Based on this, we want to have a solution that looks something like this:</p><pre><code class="language-c">
+	Reader()
+	    Wait until no writers
+	    Access database
+	    Check out - wake up a waiting writer
+	Writer()
+	    Wait until no active readers/writers 
+	    Access database
+	    Check out - wake up waiting readers or writer 
+	</code></pre>
+<p>State variables (protected by lock):</p>
+<p><code>int AR</code> - number of active readers (initially 0) </p>
+<p><code>int WR</code> - number of waiting readers (initially 0) </p>
+<p><code>int AW</code> - number of active writers (initially 0) </p>
+<p><code>int WW</code> - number of waiting writers (initially 0) </p>
+<p><code>condition var okToRead = null    // for readers</code></p>
+<p><code>condition var okToWrite = null    // for writers</code></p>
+<h4 id="h24">Reader Code</h4><pre><code class="language-c">
+	Reader() {
+	    // first check self into system 
+	    acquire(&lock);       // acquire lock so only one thread/R/W checking 
+	    while ((AW + WW) > 0) {    // is it ok to read? any active or waiting writers 
+	        WR++;                  // no, there are writers
+	        cond_wait(&okToRead, &lock);    // sleep on our condition var
+	        WR--;                  // no longer waiting 
+	    }
+	    AR++;       // we're an active reader now
+	    release(&lock);   // release lock for other readers + writers to be able to check 
+	    // lock doesn't protect database, it protects reader + writer checks 
+	    // access the database as a reader 
+	    AccessDatabase(ReadOnly); 
+	    // now, check out of system 
+	    acquire(&lock);       
+	    AR--;         // no longer an active reader 
+	    if (AR == 0 && WW > 0) {     // if there are no other active readers
+	        cond_signal(&okToWrite);    // wake up one writer 
+	    }
+	    release(&lock);
+	}
+	</code></pre>
+<h4 id="h25">Writer Code</h4><pre><code class="language-c">
+	Writer() {
+	    // first check self into system 
+	    acquire(&lock);
+	    while((AW + AR) > 0) {     // is it safe to write?
+	        WW++;            // we're a waiting writer 
+	        cond_wait(&okToWrite, &lock);      // if there's an active writer or reader, go to sleep
+	        WW--;        // no longer waiting
+	    }
+	    AW++;       // we're now an active writer 
+	    release(&lock);      // release for others 
+	    // write to the database 
+	    AccessDatabase(ReadWrite);
+	    // now, check out of the system 
+	    acquire(&lock);     
+	    AW--;               // no longer active 
+	    // give writers priority over readers (WW before WR) because they can only be done one at a time and also because readers could prevent writers from ever going forward
+	    if (WW > 0) {            // is there a waiting writer 
+	        cond_signal(&okToWrite);      // signal them 
+	    } else if (WR > 0) {       // if there's a waiting reader 
+	        cond_broadcast(&okToRead);     // wake up all readers 
+	        // this is a broadcast instead of signal because we want to wake up ALL readers
+	        // this is fine because only one reader can acquire the lock so they won't all run
+	    }
+	    release(&lock);
+	}
+	</code></pre>
+<h4 id="h26">Sample Simulation of R+W</h4>
+<p>Consider this sequence of operators (order in which they want to access the database): <code>R1</code>, <code>R2</code>, <code>W1</code>, <code>R3</code>. Initially, <code>AR=0</code>, <code>WR=0</code>, <code>AW=0</code>, and <code>WW=0</code>.</p>
+<p>Optimal setup: reader 1 and 2 should read at the same time, then let writer 1 write, then reader 3.</p>
+<p><code>AR = 0, WR = 0, AW = 0, WW = 0</code></p><pre><code class="language-c">
+	// R1 comes first (no waiting threads)
+	Changes: AR++, accesses the database and releases lock 
+	AR = 1, WR = 0, AW = 0, WW = 0
+	
+	// R2 comes along (R1 is accessing the database)
+	Changes: AR++, accesses the database, releases lock 
+	AR = 2, WR = 0, AW = 0, WW = 0 
+	
+	// W1 comes along (R1 and R2 accessing database)
+	Changes: writer acquires SAME lock, since AR > 0, W1 cannot start because of the readers
+	Writer will wait on the condition variable and until cond_signal(&okToWrite)
+	AR = 2, WR = 0, AW = 0, WW = 1
+	
+	// R3 comes along (R1 and R2 accessing, W1 waiting)
+	Changes: WW > 0 so WR++ and wait on the okToRead var
+	AR = 2, WR = 1, AW = 0, WW = 1
+	
+	// suppose R2 finished (R1 accessing database, W1 and R3 waiting)
+	Changes: AR--, acquires lock to do the check, no signal okToWrite bc AR doesn't equal 0
+	AR = 1, WR = 1, AW = 0, WW = 1
+	
+	// R1 finishes (W1 and R3 waiting)
+	Changes: AR--, singal the okToWrite because AR = 0, after all readers done writer W1 is signaled
+	AR = 0, WR = 1, AW = 0, WW = 1
+	
+	// W1 receives signal (R3 still waiting)
+	Changes: WW--, AW++, wakes up its thread, acquires lock, accesses database
+	AR = 0, WR = 1, AW = 1, WW = 0
+	
+	// W1 finishes (R3 still waiting)
+	Changes: AW--, WW is not > 0 (no additional waiting writers), but there is a waiting reader so cond_broadcast
+	AR = 0, WR = 1, AW = 0, WW = 0
+	
+	// R3 receives signal 
+	Changes: WR--, AR++, access database, no one to signal so release lock and database is idle
+	AR = 1, WR = 0, AW = 0, WW = 0
+	
+	// Final order: R1, R2, W1, R3
+	</code></pre>
+<p>Can readers starve? Potentially because writers could keep coming in and readers never get to read based on this: <code>while ((AW + WW) > 0)</code>. How do we fix this? One idea: use some sort of queue </p>
+<p>What if we erase the condition check (<code>if (AR = 0 && WW > 0)</code>) in Reader exit? It won't break the code because the writer will check anyways so it's ok to signal the <code>okToWrite</code> all the time.</p>
+<p>What if we turn <code>signal()</code> into <code>broadcast()</code>? We wake up all sleeping threads but only one will actually act so this is okay.</p>
+<p>What if we use only one condition variable (<code>okContinue</code>) instead of two separate ones? Both readers AND writers will sleep on this variable. But we would need to use <code>broadcast()</code> instead of <code>signal()</code>. </p>
+<p>With this setup, writers <i>could</i> block readers from entering. <code>cond_wait</code> implicitly releases the lock.</p>
+<h3 id="h27">Scheduling </h3>
+<p>Scheduling means deciding which threads are given access to resources from moment to moment. I/O bursts will be allowed to be completed without scheduling disrupting this, but CPU bursts will be where we may interfere with scheduling.</p>
+<p><code>thread_yield</code> - sets current thread back to READY, pushes it back on READY list, call schedule to select next thread to run upon iret </p>
+<p><code>schedule</code> - selects next thread to run, calls switch_threads to change regs to point to stack for thread to resume, sets its status to RUNNING, if user thread (activate the process), returns back to intr_handler </p>
+<p>We want to prevent <b><em>starvation</em></b>, where a thread fails to make progress for an indefinite period of time, the scheduling policy will never run because the threads are waiting on each other or spinning.</p>
+<p>Assume: 1 program per user, one thread per program, programs are independent </p>
+<p>Goals:</p>
+<ul>
+<li>minimize <b><em>response time</em></b> (elapsed time to do an operation/job, this is what the user sees - keystroke, compiling a program, etc, meet the deadlines imposed by the world)</li>
+<li>maximize <b><em>throughput</em></b> (operations per second) - can be done by either efficiently using resources (CPU, disk, memory) OR minimizing the context switching (overhead) </li>
+<li>throughput is related to response time, but not identical, minimizing response time leads to more context switching than if you only maximized throughput) </li>
+<li>fairness (share CPU among users in some equitable way) - we get a better average response time if we make system less fair </li>
+</ul>
+<h4 id="h28">First Come First Serve (FCFS)</h4>
+<p>same as FIFO/run until done</p>
+<p>The thread keeps the CPU until the thread is done. No interrupts.</p><pre><code class="language-c">
+	If we have 3 processes: P_1, P_2, P_3 with burst times 24, 3, 3.
+	We run P_1 from 0 to 24, P_2 from 24 to 27, and P_3 from 27 to 30.
+	// What is the waiting time for each process? 
+	P_1 had wait of 0, P_2 - 24, P_3 - 27 
+	Average waiting time: (0 + 24 + 27) / 3 = 17
+	Average completion time: (24 + 27 + 30) / 3 = 27 
+	</code></pre>
+<p>This causes the <b><em>convoy effect</em></b> where short processes need to wait for long processes and the queue gets longer.</p>
+<p>FCFS is potentially bad for short jobs, depends on submit order.</p>
+<h4 id="h29">Round Robin (RR) </h4>
+<p>We add <b>preemption</b>. Each process gets a small unit of CPU time (a <b>quanta</b>). After the quantum expires, the process is goes back to the end of the ready queue and we pick the next process. If we have <span class='math'>\(n\)</span> processes and time quantum of <span class='math'>\(q\)</span>, then each process gets <span class='math'>\(1/n\)</span> of the CPU time in chunks of at most <span class='math'>\(q\)</span> time units. No process will wait more than <span class='math'>\((n-1)q\)</span> time units.</p>
+<p>If <span class='math'>\(q\)</span> is very large, then we end up behaving like FCFS.</p>
+<p>If <span class='math'>\(q\)</span> is small, then we interleave a lot, hyperthreading.</p>
+<p><span class='math'>\(q\)</span> should be larger than a context switch otherwise we are just context switching.</p><pre><code class="language-c">
+	If we have 4 processes: with burst times 53, 8, 68, 24.
+	// We still run them in order but only for time quantum (20 for this question).
+	We run:
+	    P_1 from 0 to 20
+	    P_2 from 20 to 28  // didn't need the whole quantum 
+	    P_3 from 28 to 48, P_4 from 48 to 68, P_1 from 68 to 88
+	    P_3 from 88 to 108, P_4 from 108 to 112
+	    P_1 from 112 to 125, P_3 from 125 to 145, P_3 from 145 to 153
+	// What is the waiting time for each process? 
+	P_1: (68 - 20) + (112 - 88) = 72
+	P_2: (20 - 0) = 20
+	P_3: (28 - 0) + (88 - 48) + (125 - 108) = 85
+	P_4: (48 - 0) + (108 - 68) = 85
+	Average waiting time: 66.25
+	Average completion time: (28 + 112 + 125 + 153) / 4 = 104.5 
+	</code></pre>
+<p>Overall, round robin is better for short jobs and is more fair. The context switching time will add up for long jobs.</p>
+<p><b>How do we implement RR in the kernel?</b></p>
+<p>We use our FIFO ready queue. We use a timer interrupt to send the previous job to the back of the queue.</p>
+<p><i>How do we choose the time slice?</i> If it's too big, then the response time suffers. If it's infinite, then we are back to a FIFO queue. If it's too small, then less operations per second (less throughput) happening. </p>
+<h4 id="h30">Comparing RR and FCFS </h4>
+<ul>
+<li>assuming zero cost switching time, is RR always better than FCFS? average completion time is worse under RR because we're constantly switching</li>
+<li>with RR, we must share cache state and memory between all jobs, but with FSFC we can devote it entirely to one job, therefore the total time for RR is longer even if we have a zero-cost switch</li>
+<li>RR is between the best case and worst case FCFS times, it may not give best result, but it will always be <i>better than worst FCFS</i></li>
+<li>RR moderates and helps short jobs to run with better timeliness because scheduling matters more for short jobs than long jobs</li>
+<li>if all jobs have the same amount of time, then RR and FCFS finish at the same time</li>
+</ul>
+<h4 id="h31">Strict Priority Scheduling</h4>
+<p>We want higher priority jobs to run in preference to low priority jobs. </p>
+<p><b>Issues</b>: starvation (lower priority jobs don't get to run because of higher priority jobs), deadlock (when a low priority task has a lock needed by the high priority task) </p>
+<p><b><em>Priority Inversion</em></b>: </p>
+<p><i><em><code>INSERT DESCRIPTION HERE</code></em></i></p>
+<p>Strict priority is not fair. <b>How do we implement fairness?</b> Give each priority queue some fraction of the CPU (like an express lane). We could increase the priority of the jobs that don't get service.</p>
+<h4 id="h32">Shortest Job First (SJF) </h4>
+<ul>
+<li>run whichever job has the least amount of computation to do (also called shortest time to completion first - STCF)</li>
+</ul>
+<h4 id="h33">Shortest Remaining Time First (SRTF) </h4>
+<ul>
+<li>preemptive version of SJF</li>
+<li>if a job arrives and has shorter time to completion than the remaining time on the current job, immediately preempt CPU</li>
+</ul>
+<h4 id="h34">Comparing SRTF with FCFS</h4>
+<ul>
+<li>what if all jobs are the same length? SRTF becomes the same as FCFS, FCFS is best we can do if all jobs are the same length </li>
+<li>what if jobs have varying length? with SRTF, short jobs will not be stuck behind long ones</li>
+</ul>
+<h4 id="h35">Shortest Run Time First (SRTF) </h4>
+<ul>
+<li>SRTF can leads to starvation if many small jobs </li>
+<li>Pros: optimal average response time</li>
+<li>Con: unfair, can't predict the future so technically impossible</li>
+<li>How do we predict future? build model of past, if program was random, no point in predicting OR ask the user ahead of time </li>
+<li>Make SRTF <em>adaptive</em> where we change policy based on past behavior </li>
+<li>Use an estimator on previous CPU bursts </li>
+<li>Estimate next time burst such as using exponential averaging </li>
+<li>Downside: if prediction model costs more than what you're scheduling then you're burning out of time and cycles</li>
+<li>How do we handle simultaneous mix of different types of apps? How to best schedule them? How do we recognize one from the other? </li>
+<li>Apps that sleep a lot and have short bursts must be interactive apps (they should get high priority).</li>
+<li>Apps that compute a lot should get lower priority since they won't notice intermittent bursts from interactive apps.</li>
+</ul>
+<h4 id="h36">Multi Level Feedback Scheduling </h4>
+<ul>
+<li>Each queue has its own scheduling algorithm (can be RR, FCFS) </li>
+<li>Also needs to do scheduling between queues like <em>fixed priority scheduling</em> (serve from highest to lowest) but this could cause starvation so we can give each queue an amount of CPU time instead (70% to highest, 20% to next, etc) - approximate SRTF </li>
+<li>Things at top run with higher priority because they have shorter CPU bursts</li>
+<li>Things at the bottom run for longer CPU time so we give it lower priority  </li>
+<li>A way of approximating SRTF because short things go up, long things go down.</li>
+<li>We give priority to tasks at the top. </li>
+<li>I/O is always given higher priority (like <code>printf</code>) so we could potentially foil these plans by adding that in </li>
+<li>High priority queues are often considered background tasks. </li>
+<li>CPU bound ones drop, short running I/O bound </li>
+<li>User can foil CPU (add in a bunch of I/O or print statements means that we could run much faster)</li>
+<li>How to adjust job's priority: job starts in the highest priority queue, if timeout expires, drop one level, otherwise, push up one level</li>
+</ul>
+<h4 id="h37">Case Study: O(1) Scheduler</h4>
+<ul>
+<li>140 levels of priority (lower = higher)</li>
+<li>40 for user tasks (set by nice, which gives it lower priority)</li>
+<li>100 for realtime/kernel</li>
+<li>two seperate priority queues, active and expired </li>
+<li>real time has higher priority than user tasks </li>
+<li>lots of heuristics to determine moving around the tasks </li>
+</ul>
+<h4 id="h38">Multi Core Scheduling</h4>
+<ul>
+<li>Not a huge difference from single core scheduling</li>
+<li>helpful to have per-core data structures for scheduling (limit context switching, greater cache coherence) </li>
+<li><i>Affinity scheduling</i>: once a thread is scheduled on a CPU, OS tries to reschedule it on the same CPU, allows us to reuse cache, predict branches </li>
+</ul>
+<p>Spinlock: doesn't put calling thread to sleep, it just busy waits </p>
+<ul>
+<li>when do we want this: waiting for limited number of threads </li>
+</ul><pre><code class="language-c">
+	int value = 0;     // free 
+	acquire() {
+	    while(test&set(&value)) { }  // spin while busy 
+	}
+	release() {
+	    value = 0;   // atomic store 
+	}
+	</code></pre>
+<ul>
+<li><em>gang scheduling</em> for <b>parallel applications</b> - when multiple threads work together on a multi core system, try to schedule them together </li>
+</ul>
+<h3 id="h39">Real Time Scheduling</h3>
+<p>We don't care about running fast, we want to predict performance. What is the guarenteed worst case? When car slams on brake, car needs to brake deadline needs to be met. </p>
+<p>Each task has a hard real-time that it must meet. Ideally we want to determine this in advance. (EDF and rate monitononic scheduling - RMS)</p>
+<p>Soft real time means that we need to attempt to meet deadlines with high probability (constant bandwidth server - CBS)</p>
+<p>Tasks have deadlines (D) and known computation times (C).</p>
+<p>Task arrives when arrow goes up, occurs for time C, and needs to finish by deadline D.</p>
+<p>They are also periodic so C keeps repeating.</p>
+<h4 id="h40">Earliest Deadline First (EDF)</h4>
+<p>Tasks are <b>periodic</b> with period <code>P</code> and computation <code>C</code> in each period, <span class='math'>\(\((P_i, C_i\))\)</span> for each task <code>i</code></p>
+<ul>
+<li>Preemptive priority-based dynamic scheduling: each task is assigned a current priority based on how close the absolute deadline is </li>
+<li>scheduler will always schedule the active task with the closest absolute deadline</li>
+<li>for <code>n</code> tasks with computation time <code>C</code> and deadline <code>D</code>, a feasible schedule exists if sum of ratio <span class='math'>\(C_i/D_i\)</span> is <code><= 1</code>.</li>
+</ul>
+<h4 id="h41">Starvation </h4>
+<ul>
+<li>starvation means that a thread fails to make progress for an indefinite period of time </li>
+<li>starvation is not the same as deadlock because starvation can resolve, deadlocks are unresolvable</li>
+<li>causes of starvation: scheduling policy never runs a particular thread on the CPU, threads wait for each other or are spinning in a way that will never be resolved </li>
+<li></li>
+</ul>
+        <p style="padding-bottom: 60px"></p>
+        <a class="top" href="#top"><button class="orange">⬆</button></a>
+    </body>
+    </html>
+    
