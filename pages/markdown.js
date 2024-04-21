@@ -18,7 +18,7 @@ export default function Markdown() {
         <div className={styles.leftColumn}>
         </div>
         <div className={styles.rightColumn}>
-          <h3>Markdown Parser</h3>
+          <h3>🗒️ Markdown Parser</h3>
           <p className={styles.contentTag}>Python</p>
           <p className={styles.contentTag}>React</p>&nbsp;&nbsp;
           <a className={styles.links} href="">Github ↗</a>
@@ -26,7 +26,7 @@ export default function Markdown() {
           <p>I've always been pretty interested in tools for thought and ways to design for better learning. This spring I was motivated to make my own markdown parser after realizing there were a lot more features I wanted in my notes than Notion could provide. I also wanted to create the ultimate learning device and embed the ability to make flashcards within my markdown notes.</p>
           <h4>v1</h4>
           <div className={styles.imageContainer}>
-            <Image src={osexample} alt="os example" width={700} className={styles.mobileImage}/>
+            <Image src={osexample} alt="os example" width={650} className={styles.mobileImage}/>
           </div>
           <p>Version 1 of the markdown parser involved a simple python script that converted a md file into an html page and table of contents. I manually wrote the script to parse each line of md using my own stylistic choices sometimes, but mostly following normal markdown conventions. I also included latex and code support using MathJAX and Prism.</p>
           <p>However, this version required writing markdown, running the Python script, and reloading the html each time. Not ideal for taking a page of notes in lecture. I also wanted to include more features like hovering over a word to get its definition, automatic highlighting, inline conversion of markdown, comments, and a better table of contents.</p>

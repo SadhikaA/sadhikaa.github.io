@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"../node_modules/next-video/dist/components/players/default-player.js -> @mux/mux-player-react\":{\"id\":\"../node_modules/next-video/dist/components/players/default-player.js -> @mux/mux-player-react\",\"files\":[\"static/chunks/node_modules_mux_mux-player-react_dist_index_mjs.js\"]}}"

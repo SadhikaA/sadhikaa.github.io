@@ -18,7 +18,7 @@ export default function Markdown() {
         <div className={styles.leftColumn}>
         </div>
         <div className={styles.rightColumn}>
-          <h3>UCB Society of Women Engineers Website</h3>
+          <h3>🟣 UCB Society of Women Engineers Website</h3>
           <p className={styles.contentTag}>Next.js</p>
           <p className={styles.contentTag}>React</p>&nbsp;&nbsp;
           <a className={styles.links} href="">Github ↗</a>
