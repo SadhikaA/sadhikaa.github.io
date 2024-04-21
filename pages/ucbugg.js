@@ -2,7 +2,6 @@ import styles from '../components/layout.module.css';
 import Layout from '../components/layout';
 import Head from 'next/head';
 import Image from 'next/image';
-import Video from 'next-video';
 
 import character from '../images/ucbugg/character.png';
 import rig from '../images/ucbugg/rig.png';

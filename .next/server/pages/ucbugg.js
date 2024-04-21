@@ -208,17 +208,6 @@ module.exports = require("react/jsx-runtime");
 
 /***/ }),
 
-/***/ "next-video":
-/*!*****************************!*\
-  !*** external "next-video" ***!
-  \*****************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = import("next-video");;
-
-/***/ }),
-
 /***/ "path":
 /*!***********************!*\
   !*** external "path" ***!
