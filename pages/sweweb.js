@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import Head from 'next/head';
 import Image from 'next/image';
 
-// import app from '../images/ucbugg/app.png';
+import design from '../images/swe/design.jpg';
 
 export default function Markdown() {
   return (
@@ -23,12 +23,12 @@ export default function Markdown() {
           <p className={styles.contentTag}>React</p>&nbsp;&nbsp;
           <a className={styles.links} href="">Github ↗</a>
           <hr></hr>
-          <p>In the fall...</p>
-          <h4>Heading</h4>
-          {/* <div className={styles.imageContainer}>
-            <Image src={magnet} alt="magnetometer" width={350} className={styles.mobileImage}/>
-          </div> */}
-          <p>I build the app...</p>
+          <p>As webmaster and secretary of the UC Berkeley SWE section, I wanted to update our website from its previous design to show new faces, new projects, and work with a more modern tech stack.</p>
+          <h4>Design</h4>
+          <p>I started by designing what I wanted the new website to look like, determining which parts we wanted to keep from the original, and what we wanted the new one to look like.</p>
+          <div className={styles.imageContainer}>
+            <Image src={design} alt="design" width={550} className={styles.mobileImage}/>
+          </div>
         </div>
       </Layout>
     </>
