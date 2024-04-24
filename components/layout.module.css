@@ -94,31 +94,38 @@
 }
 
 .tagGraphics {
-    background-color: #974aa5;
+    background-color: rgb(139, 126, 200);
+    /* background-color: #974aa5; */
 }
 
 .tagHardware {
-    background-color: #2196F3;
+    background-color: rgb(209, 77, 65);
+    /* background-color: #2196F3; */
 }
 
 .tagDesign {
-    background-color: #FF6F00;
+    background-color: rgb(208, 162, 21);
+    /* background-color: #FF6F00; */
 }
 
 .tagWeb {
-    background-color: #4CAF50;
+    background-color: rgb(58, 169, 159);
+    /* background-color: #4CAF50; */
 }
 
 .tagiOS {
-    background-color: #D53D4F;
+    background-color: rgb(67, 133, 190);
+    /* background-color: #D53D4F; */
 }
 
 .tagWriting {
-    background-color: #3D52D5;
+    background-color: rgb(135, 154, 57);
+    /* background-color: #3D52D5; */
 }
 
 .tagMLAI {
-    background-color: #b27e06;
+    background-color: rgb(206, 93, 151);
+    /* background-color: #b27e06; */
 }
 
 .linkP {

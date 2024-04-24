@@ -2,5 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/sweweb": "pages/sweweb.js"
+  "/": "pages/index.js",
+  "/sweweb": "pages/sweweb.js",
+  "/berkeley": "pages/berkeley.js"
 }
