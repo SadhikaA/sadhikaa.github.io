@@ -24,7 +24,7 @@ export default function Markdown() {
           <a className={styles.links} href="">Github ↗</a>
           <hr></hr>
           <p>As webmaster and secretary of the UC Berkeley SWE section, I wanted to update our website from its previous design to show new faces, new projects, and work with a more modern tech stack.</p>
-          <h4>Design</h4>
+          <h4 id="design">Design</h4>
           <p>I started by designing what I wanted the new website to look like, determining which parts we wanted to keep from the original, and what we wanted the new one to look like.</p>
           <div className={styles.imageContainer}>
             <Image src={design} alt="design" width={550} className={styles.mobileImage}/>

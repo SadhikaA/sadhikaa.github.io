@@ -26,6 +26,13 @@ export default function Layout({ children }) {
         <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p>
         <p className={styles.heading}>portfolio</p>
         <ul>
+          {/* <li>
+            <p className={styles.date}>MAY 2024</p>
+            <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
+            <Link href="/voyager">
+              <p className={styles.linkP}>building a AR navigation app</p>
+            </Link>
+          </li> */}
           <li>
             <p className={styles.date}>MAR 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>

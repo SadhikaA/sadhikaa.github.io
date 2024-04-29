@@ -21,10 +21,17 @@
     overflow-y: auto; 
 }
 
-@media (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
     .container {
         grid-template-columns: 1fr;
-        overflow-y: scroll; 
+        margin: 0;
+    }
+    .leftColumn {
+        overflow-y: auto;
+    }
+    .mobileImage {
+      width: 80%;
+      height: auto; 
     }
 }
 
@@ -164,13 +171,6 @@
     border-radius: 10px;
 }
 
-@media only screen and (max-width: 1000px) {
-    .mobileImage {
-      width: 80%;
-      height: auto; 
-    }
-  }
-
 .contentTag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -184,4 +184,17 @@
     text-decoration: none;
     display: inline-block;
     margin-right: 5px;
+}
+
+.contentsLink {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border: none;
+    background-color: black;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    color: #6fb9ff;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    line-height: 130%;
 }

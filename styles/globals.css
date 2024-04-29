@@ -39,10 +39,10 @@ h3 {
 }
 
 h4 {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: #dfdfdf;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(233, 233, 233);
   letter-spacing: 0.4px;
   margin-bottom: 0;
 }
