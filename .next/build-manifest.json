@@ -30,6 +30,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/sweweb.js"
     ],
+    "/ucbugg": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/ucbugg.js"
+    ],
     "/voyager": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

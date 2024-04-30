@@ -4,5 +4,6 @@
   "/_document": "pages/_document.js",
   "/sweweb": "pages/sweweb.js",
   "/voyager": "pages/voyager.js",
-  "/markdown": "pages/markdown.js"
+  "/markdown": "pages/markdown.js",
+  "/ucbugg": "pages/ucbugg.js"
 }
