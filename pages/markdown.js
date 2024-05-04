@@ -38,7 +38,6 @@ export default function Markdown() {
           table of contents on the side<br></br>
           one page at a time<br></br>
           good use of visuals to detail the notes</p>
-          {/* examples: https://nicolbolas.github.io/oldtut/Basics/Tut01%20Following%20the%20Data.html & https://phillipi.github.io/6.882/2020/notes/6.036_notes.pdf */}
         </div>
       </Layout>
     </>
