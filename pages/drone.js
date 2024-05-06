@@ -49,11 +49,11 @@ export default function Drone() {
           <h4 id="results">Results</h4>
           <p>I got to work on the code and design of many of the parts below as well: including the EKF  and IMU code.</p>
           <div className={styles.imageContainer}>
-            <Image src={chart} alt="chart" width={500} className={styles.mobileImage}/>
+            <Image src={chart} alt="chart" width={450}/>
           </div>
           <p>Overall, we built this over a few days, working intensely on debugging and getting our drone to work. It was pretty cool to implement the topics I had learnt in my embedded systems class in a real-world setting. I learned a lot about hardware and sensors as well and got me into thinking about the future of IoT and bluetooth devices.</p>
           <div className={styles.imageContainer}>
-            <Image src={drone} alt="drone" width={200} className={styles.mobileImage}/>
+            <Image src={drone} alt="drone" width={300}/>
           </div>
         </div>
       </Layout>

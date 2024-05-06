@@ -24,13 +24,21 @@ export default function Layout({ children }) {
         </div>
         <p className={styles.heading}>about</p>
         <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in interface design, operating systems, and computer graphics. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p>
+        {/* <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm am intern at Apple on the Vision Pro Apps team. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p> */}
         <p className={styles.heading}>portfolio</p>
         <ul>
           {/* <li>
             <p className={styles.date}>MAY 2024</p>
+            <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
+            <Link href="/graphics">
+              <p className={styles.linkP}>graphics projects</p>
+            </Link>
+          </li>
+          <li>
+            <p className={styles.date}>APR 2024</p>
             <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
             <Link href="/voyager">
-              <p className={styles.linkP}>building a AR navigation app</p>
+              <p className={styles.linkP}>AR navigation and event app</p>
             </Link>
           </li> */}
           <li>
@@ -38,14 +46,22 @@ export default function Layout({ children }) {
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/sweweb">
-              <p className={styles.linkP}>redesigning the UC Berkeley SWE website</p>
+              <p className={styles.linkP}>redesign of the UC Berkeley SWE website</p>
             </Link>
           </li>
+          {/* <li>
+            <p className={styles.date}>FEB 2024</p>
+            <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
+            <Link href="/coach">
+              <p className={styles.linkP}>using ML and AR to improve tennis strokes</p>
+            </Link>
+          </li> */}
           <li>
             <p className={styles.date}>FEB 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
+            <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/markdown">
-              <p className={styles.linkP}>creating my own markdown parser</p>
+              <p className={styles.linkP}>markdown to textbook parser</p>
             </Link>
           </li> 
           <li>
@@ -59,14 +75,14 @@ export default function Layout({ children }) {
             <p className={styles.date}>DEC 2023</p>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/ucbugg">
-              <p className={styles.linkP}>making an animated short</p>
+              <p className={styles.linkP}>3D animated short</p>
             </Link>
           </li> 
           <li>
             <p className={styles.date}>DEC 2023</p>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/drone">
-              <p className={styles.linkP}>building a GPS-navigated drone</p>
+              <p className={styles.linkP}>GPS-navigated drone</p>
             </Link>
           </li>
         </ul>
