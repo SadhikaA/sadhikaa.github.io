@@ -34,13 +34,13 @@ export default function Layout({ children }) {
               <p className={styles.linkP}>CS 184 graphics assignments</p>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <p className={styles.date}>APR 2024</p>
             <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
             <Link href="/voyager">
               <p className={styles.linkP}>AR navigation and event app</p>
             </Link>
-          </li>
+          </li> */}
           <li>
             <p className={styles.date}>MAR 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>

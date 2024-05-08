@@ -7,6 +7,7 @@ import launch from '../images/voyager/cory.png';
 import markers from '../images/voyager/markers.png';
 import events from '../images/voyager/events.png';
 import map from '../images/voyager/map.png';
+import arview from '../images/voyager/arview.png';
 
 export default function Voyager() {
   return (
@@ -43,18 +44,22 @@ export default function Voyager() {
           <div className={styles.imageContainer}>
             <Image src={map} alt="map" width={400} className={styles.mobileImage}/>
           </div>
-          <h4 id="ar">ARKit and Geo Anchors</h4>
-          <p>First, I had to check if geographical anchors were supported for Berkeley, as there are a handful of cities across the world where they are supported. Luckily, there are many cities and counties in California which have been mapped by LiDAR and I was able to pass the first check.</p>
           <h4 id="spline">Spline</h4>
           <p>I designed these AR markers in Spline, to add a unique touch to advertising of events. I added some more common Berkeley events as designs. The goal is for these AR markers to be displayed next to the location of the event, allowing for users to quickly see what's going on nearby.</p>
           <div className={styles.imageContainer}>
             <Image src={markers} alt="markers" width={700} className={styles.mobileImage}/>
           </div>
+          <h4 id="ar">ARKit and Geo Anchors</h4>
+          <p>First, I had to check if geographical anchors were supported for Berkeley, as there are a handful of cities across the world where they are supported. Luckily, there are many cities and counties in California which have been mapped by LiDAR and I was able to pass the first check.</p>
+          <p>I then added these markers as location anchors to the specific places where an event was happening. However, because Spline didn't convert to USDZ format for free, I used existing USDZ files in Reality Composer Pro.</p>
           <h4 id="results">Results</h4>
           <p>These were the final screens from the app, which include placing an event and using it during the daylight to see the AR anchor displayed at the location.</p>
           <div className={styles.imageContainer}>
             <Image src={launch} alt="launch" width={300} className={styles.mobileImage}/>
             <Image src={events} alt="events" width={300} className={styles.mobileImage}/>
+          </div>
+          <div className={styles.imageContainer}>
+            <Image src={arview} alt="arview" width={300} className={styles.mobileImage}/>
           </div>
           <p>This app was mostly a SwiftUI prototype, with no server or database pulling in any list of events and no unique users. Instead, it was a test to see if this was something feasible/interesting to pursue and build an app for my own personal use case for fun! </p>
         </div>
