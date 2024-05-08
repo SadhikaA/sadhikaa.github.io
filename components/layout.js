@@ -27,11 +27,11 @@ export default function Layout({ children }) {
         {/* <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm am intern at Apple on the Vision Pro Apps team. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p> */}
         <p className={styles.heading}>portfolio</p>
         <ul>
-          {/* <li>
+          <li>
             <p className={styles.date}>MAY 2024</p>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/graphics">
-              <p className={styles.linkP}>graphics projects</p>
+              <p className={styles.linkP}>CS 184 graphics assignments</p>
             </Link>
           </li>
           <li>
@@ -40,7 +40,7 @@ export default function Layout({ children }) {
             <Link href="/voyager">
               <p className={styles.linkP}>AR navigation and event app</p>
             </Link>
-          </li> */}
+          </li>
           <li>
             <p className={styles.date}>MAR 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
@@ -49,13 +49,6 @@ export default function Layout({ children }) {
               <p className={styles.linkP}>redesign of the UC Berkeley SWE website</p>
             </Link>
           </li>
-          {/* <li>
-            <p className={styles.date}>FEB 2024</p>
-            <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
-            <Link href="/coach">
-              <p className={styles.linkP}>using ML and AR to improve tennis strokes</p>
-            </Link>
-          </li> */}
           <li>
             <p className={styles.date}>FEB 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
