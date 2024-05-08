@@ -44,13 +44,13 @@ export default function Voyager() {
           <h4 id="spline">Spline</h4>
           <p>I designed these AR markers in Spline, to add a unique touch to advertising of events. I added some more common Berkeley events as designs. The goal is for these AR markers to be displayed next to the location of the event, allowing for users to quickly see what's going on nearby.</p>
           <div className={styles.imageContainer}>
-            <Image src={markers} alt="markers" width={500} className={styles.mobileImage}/>
+            <Image src={markers} alt="markers" width={700} className={styles.mobileImage}/>
           </div>
           <h4 id="results">Results</h4>
           <p>These were the final screens from the app, which include placing an event, walking around to get there, and using it during the daylight to see the AR anchor displayed at the location.</p>
           <div className={styles.imageContainer}>
-            <Image src={launch} alt="launch" width={200} className={styles.mobileImage}/>
-            <Image src={launch} alt="launch" width={200} className={styles.mobileImage}/>
+            <Image src={launch} alt="launch" width={300} className={styles.mobileImage}/>
+            <Image src={launch} alt="launch" width={300} className={styles.mobileImage}/>
           </div>
           <p>This app was mostly a SwiftUI prototype, with no server or database pulling in any list of events and no unique users. Instead, it was a test to see if this was something feasible/interesting to pursue and build an app for my own personal use case for fun! </p>
         </div>
