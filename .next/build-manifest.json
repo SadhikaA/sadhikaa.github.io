@@ -25,11 +25,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/berkeley": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/berkeley.js"
-    ],
     "/graphics": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

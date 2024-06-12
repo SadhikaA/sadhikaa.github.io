@@ -103,3 +103,16 @@ textarea {
   letter-spacing: 0.3px;
   line-height: 130%;
 }
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  line-height: 100%;
+  background-color: rgb(50, 50, 50);
+  color: white;
+  padding: 3px 3px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}

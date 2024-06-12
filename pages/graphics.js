@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import Head from 'next/head';
 import Image from 'next/image';
 
+import basic_test4_pixel from '../images/graphics/hw1/basic_test4_pixel.png';
 
 export default function Graphics() {
 return (
@@ -59,10 +60,17 @@ return (
             <hr></hr>
             <p></p>
             <h3 id="1">Rasterization</h3>
+            <p>In this homework, the goal was to implement a simple rasterizer with features such as drawing triangles, supersampling, hierarchal transforms, and texture mapping with antialiasing, resulting in a functional vector graphics renderer. I learnt quite a bit about each of the sampling algorithms and texture mapping algorithms implemented throughout the project. I also learnt more about the sampling pipeline and how to represent the abstractions of sample buffer, pixels, texels, and coordinate systems through the data structures used in this project.</p>
             <h4 id="1a">Drawing Single-Color Triangles</h4>
-            {/* <div className={styles.imageContainer}>
-    <Image src={osexample} alt="os example" width={550} className={styles.mobileImage}/>
-</div> */}
+            <p>In order to rasterize triangles to the frame buffer, I check if the center of each pixel is within the triangle. The <code>rasterize_triangle</code> function takes in coordinates for each of the three corners of the triangle. My implementation first determines what the smallest bounding box (calculated by determining the lowest and highest x and y values that the triangle covered) around the triangle. Then, it iterates through each pixel in the bounding box and checks if the center of the pixel is within the triangle. We check if the center of the pixel <code>(x + 0.5, y + 0.5)</code> is in the triangle by checking to see that it is within the three edges of the triangle. If it is, the pixel is filled in with the color of the triangle. This handles coordinates received in the clockwise direction, but to include coordinates in the counter-clockwise direction, I reversed the inequality check.</p>
+
+            <p>This algorithm is no worse than traversing each sample individually in the bounding box of the triangle and determining if it's in the triangle because we still iterate through all the points in the bounding box. There is no optimization or short circuiting that reduces the number of pixels traversed.</p>
+            <div className={styles.imageContainer}>
+                <Image src={basic_test4_pixel} alt="basic_test4_pixel" width={400} className={styles.mobileImage}/>
+            </div>
+            <h4 id="1b">Antialiasing by Supersampling</h4>
+            <p>In this task, I implemented supersampling by updating the <code>sample_buffer</code> data structure and modifying certain algorithms. Supersampling is useful because it allows us to antialias and reduce the jaggies in our images, making pixels seem smoother zoomed out. The modifications I made to the rasterization pipeline was to first change the size of the <code>sample_buffer</code> to include the number of samples we wanted to sample, <code>width * height * sample_rate</code>. Now, each <code>(x, y)</code> pixel will be represented by a sample_rate number of samples that will be averaged in order to downsample to determine the color of the original pixel. I added a new <code>fill_sample</code> function which fills in the color of a specific sample for an <code>(x, y)</code> pixel and updates its color in the sample_buffer by using a new indexing method: <code>sample_buffer[sample_rate * (y * width + x) + s]</code>. I updated the <code>fill_pixel</code> sample to stay consistent for points and lines by calling <code>fill_sample</code> for the number of samples in the pixel, effectively making sure that all samples have the same color. In <code>rasterize_triangle</code>, I now iterated through each sample, rather than pixel to check if we were within bounds, and called <code>fill_sample</code> instead of <code>fill_pixel</code>. Finally, in <code>resolve_to_framebuffer</code>, I updated the frame buffer by getting all samples that corresponded to an <code>(x, y)</code> pixel and averaging the RGB values of all the samples to get the final color, which was then resolved to the framebuffer target.</p>
+
             {/* <p>https://cal-cs184-student.github.io/hw-webpages-sp24-SadhikaA/</p> */}
             <h3 id="2">Mesh Geometry</h3>
             <h3 id="3">Ray Tracing</h3>

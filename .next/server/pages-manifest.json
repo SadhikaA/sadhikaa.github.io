@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/graphics": "pages/graphics.js",
+  "/voyager": "pages/voyager.js",
   "/berkeley": "pages/berkeley.js",
-  "/voyager": "pages/voyager.js"
+  "/graphics": "pages/graphics.js"
 }
