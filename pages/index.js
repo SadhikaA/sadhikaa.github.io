@@ -17,7 +17,7 @@ export default function Home() {
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.iframeContainer}>
-            {/* <iframe src='https://my.spline.design/miniroomcopy-05a620742bb6e9d82b49f1076cffcd72/' frameborder='0' width='100%' height='100%'></iframe> */}
+            <iframe src='https://my.spline.design/miniroomcopy-05a620742bb6e9d82b49f1076cffcd72/' frameborder='0' width='100%' height='100%'></iframe>
           </div>
         </div>
       </Layout>
