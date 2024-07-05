@@ -44,10 +44,16 @@ export default function Voyager() {
           <div className={styles.imageContainer}>
             <Image src={map} alt="map" width={400} className={styles.mobileImage}/>
           </div>
+          <div className={styles.imageContainer}>
+            <caption>Add events/See events</caption>
+          </div>
           <h4 id="spline">Spline</h4>
           <p>I designed these AR markers in Spline, to add a unique touch to advertising of events. I added some more common Berkeley events as designs. The goal is for these AR markers to be displayed next to the location of the event, allowing for users to quickly see what's going on nearby.</p>
           <div className={styles.imageContainer}>
             <Image src={markers} alt="markers" width={700} className={styles.mobileImage}/>
+          </div>
+          <div className={styles.imageContainer}>
+            <caption>Sample marker tags</caption>
           </div>
           <h4 id="ar">ARKit and Geo Anchors</h4>
           <p>First, I had to check if geographical anchors were supported for Berkeley, as there are a handful of cities across the world where they are supported. Luckily, there are many cities and counties in California which have been mapped by LiDAR and I was able to pass the first check.</p>

@@ -45,6 +45,9 @@ export default function Drone() {
           <div className={styles.imageContainer}>
             <Image src={app} alt="app" width={600} className={styles.mobileImage}/>
           </div>
+          <div className={styles.imageContainer}>
+                <caption>iOS app to control the drone</caption>
+            </div>
           <p>When the user moves the joystick on the application, a value corresponding to the change in yaw, pitch and roll is written to its respective characteristic along with the current scale value. Given the interrupt based system, the BLE interrupt handler on the flight controller caches the updated value and uses the value multiplied by the scale factor to perform calculations for motor and PID control. The app sends sensor data on a time-based interval which allows the controller to respond to the most recent value selected.</p>
           <h4 id="results">Results</h4>
           <p>I got to work on the code and design of many of the parts below as well: including the EKF  and IMU code.</p>
@@ -55,6 +58,9 @@ export default function Drone() {
           <div className={styles.imageContainer}>
             <Image src={drone} alt="drone" width={300}/>
           </div>
+          <div className={styles.imageContainer}>
+                <caption>Final drone</caption>
+            </div>
         </div>
       </Layout>
     </>

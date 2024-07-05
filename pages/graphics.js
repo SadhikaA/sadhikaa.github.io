@@ -4,6 +4,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import basic_test4_pixel from '../images/graphics/hw1/basic_test4_pixel.png';
+import test4_1 from '../images/graphics/hw1/test4_1.png';
+import test4_4 from '../images/graphics/hw1/test4_4.png';
+import test4_9 from '../images/graphics/hw1/test4_9.png';
+import test4_16 from '../images/graphics/hw1/test4_16.png';
+import robot from '../images/graphics/hw1/robot.png';
 
 export default function Graphics() {
 return (
@@ -66,11 +71,29 @@ return (
 
             <p>This algorithm is no worse than traversing each sample individually in the bounding box of the triangle and determining if it's in the triangle because we still iterate through all the points in the bounding box. There is no optimization or short circuiting that reduces the number of pixels traversed.</p>
             <div className={styles.imageContainer}>
-                <Image src={basic_test4_pixel} alt="basic_test4_pixel" width={400} className={styles.mobileImage}/>
+                <Image src={basic_test4_pixel} alt="basic_test4_pixel" width={200} className={styles.mobileImage}/>
             </div>
             <h4 id="1b">Antialiasing by Supersampling</h4>
             <p>In this task, I implemented supersampling by updating the <code>sample_buffer</code> data structure and modifying certain algorithms. Supersampling is useful because it allows us to antialias and reduce the jaggies in our images, making pixels seem smoother zoomed out. The modifications I made to the rasterization pipeline was to first change the size of the <code>sample_buffer</code> to include the number of samples we wanted to sample, <code>width * height * sample_rate</code>. Now, each <code>(x, y)</code> pixel will be represented by a sample_rate number of samples that will be averaged in order to downsample to determine the color of the original pixel. I added a new <code>fill_sample</code> function which fills in the color of a specific sample for an <code>(x, y)</code> pixel and updates its color in the sample_buffer by using a new indexing method: <code>sample_buffer[sample_rate * (y * width + x) + s]</code>. I updated the <code>fill_pixel</code> sample to stay consistent for points and lines by calling <code>fill_sample</code> for the number of samples in the pixel, effectively making sure that all samples have the same color. In <code>rasterize_triangle</code>, I now iterated through each sample, rather than pixel to check if we were within bounds, and called <code>fill_sample</code> instead of <code>fill_pixel</code>. Finally, in <code>resolve_to_framebuffer</code>, I updated the frame buffer by getting all samples that corresponded to an <code>(x, y)</code> pixel and averaging the RGB values of all the samples to get the final color, which was then resolved to the framebuffer target.</p>
-
+            <div className={styles.imageContainer}>
+                <Image src={test4_1} alt="basic_test4_pixel" width={150} className={styles.mobileImage}/>
+                <Image src={test4_4} alt="basic_test4_pixel" width={150} className={styles.mobileImage}/>
+                <Image src={test4_9} alt="basic_test4_pixel" width={150} className={styles.mobileImage}/>
+                <Image src={test4_16} alt="basic_test4_pixel" width={150} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>Sample rates of 1, 4, 9, and 16</caption>
+            </div>
+            <h4 id="1c">Transforms</h4>
+            <div className={styles.imageContainer}>
+                <Image src={robot} alt="robot" width={350} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>Cubedude stands on their head</caption>
+            </div>
+            <h4 id="1d">Barycentric Coordinates</h4>
+            <p>Barycentric coordinates work by determining our color based on the distance each point is from each vertex. As we can see with our triangle, each vertex is red, green, or blue. We end up with a gradient triangle as our final image because for each point not at the vertices, we calculate a certain weight of red, green, and blue based on distance and end up with a weighted sum of RGB colors within the triangle.</p>
+            <p>We calculate the barycentric coordinates by solving for the value of each our new color coordinate system (<code>alpha</code>, <code>beta</code>, and <code>gamma</code>) based on the current <code>(x, y)</code> coordinate. This allows us to assign colors based on the strength of how close each of the points are too the . We then calculate the color by interpolating across the colors passed in to the function to get a weighted sum: <code>alpha * c0 + beta * c1 + gamma * c2</code>. This is our new value for the color at the point <code>(x, y)</code> so we call <code>fill_sample</code> with the new color.</p>
             {/* <p>https://cal-cs184-student.github.io/hw-webpages-sp24-SadhikaA/</p> */}
             <h3 id="2">Mesh Geometry</h3>
             <h3 id="3">Ray Tracing</h3>

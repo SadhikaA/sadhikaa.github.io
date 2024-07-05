@@ -62,6 +62,11 @@ export default function Berkeley() {
                                 <li><a href="#engin157ac" className={styles.contentsLink}>ENGIN 157AC</a></li>
                             </ul>
                             <li><a href="#sem7" className={styles.contentsLink}>Semester 7 - Fall 2024</a></li>
+                            <ul style={{ paddingLeft: '20px' }}>
+                                <li><a href="#cs189" className={styles.contentsLink}>CS 189</a></li>
+                                <li><a href="#nwmediac262" className={styles.contentsLink}>NWMEDIA C262</a></li>
+                                <li><a href="#philos3" className={styles.contentsLink}>PHILOS 3</a></li>
+                            </ul>
                         </ul>
                     <hr></hr>
                     <h3 id="sem1">Semester 1 - Fall 2021</h3>
@@ -123,9 +128,9 @@ export default function Berkeley() {
                     <h3 id="sem7">Semester 7 - Fall 2024</h3>
                     <h4 id="cs189">COMPSCI 189: Machine Learning</h4>
                     <p></p>
-                    <h4 id="nwmedia">NWMEDIA C262: Theory and Practice of Tangible User Interfaces</h4>
+                    <h4 id="nwmediac262">NWMEDIA C262: Theory and Practice of Tangible User Interfaces</h4>
                     <p></p>
-                    <h4 id="philo3">PHILOS 3: Philosophy of Mind</h4>
+                    <h4 id="philos3">PHILOS 3: Philosophy of Mind</h4>
                     <p></p>
                 </div>
             </Layout>

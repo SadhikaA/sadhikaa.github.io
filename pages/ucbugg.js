@@ -45,14 +45,23 @@ export default function UCBUGG() {
             <Image src={storyboard2} alt="storyboard2" width={200} className={styles.mobileImage}/>
             <Image src={final} alt="storyboard" width={200} className={styles.mobileImage}/>
           </div>
+          <div className={styles.imageContainer}>
+              <caption>Storyboard</caption>
+          </div>
           <p>The first few weeks were spent on learning how to model in Maya and designing character sheets. Here were some draft character sheets I drew up based on the stylistic choices from the storyboard:</p>
           <div className={styles.imageContainer}>
             <Image src={character} alt="character" width={350} className={styles.mobileImage}/>
+          </div>
+          <div className={styles.imageContainer}>
+              <caption>Character sheets</caption>
           </div>
           <h4 id="mod">Modeling & Rigging</h4>
           <p>Modeling was one of the first more challenging aspects of Maya, for example, making sure the parent and child controllers corresponded correctly turned out to be extremely important for animation later on. After the character sheets were approved, we started modeling the characters in Maya. The key to modeling was becoming familiar with the keys and being able to make sure that the meshes had no holes in them and creating the design we wanted, while having good edge flow.</p>
           <div className={styles.imageContainer}>
             <Image src={rig} alt="rig" width={450} className={styles.mobileImage}/>
+          </div>
+          <div className={styles.imageContainer}>
+              <caption>Final character rig</caption>
           </div>
           <h4 id="shade">Shading & Lighting</h4>
           <p>I worked on the toon shading for the flower character. Toon shading was easier to work with and fit better with the themes and inspiration we were going with. I also wanted to learn toon shading after seeing Marvel's <i>What If</i>, which used cel-shaded animation.</p>
@@ -60,11 +69,17 @@ export default function UCBUGG() {
           <div className={styles.imageContainer}>
             <Image src={toon} alt="toon" width={450} className={styles.mobileImage}/>
           </div>
+          <div className={styles.imageContainer}>
+              <caption>Shading of our character</caption>
+          </div>
           <h4 id="animate">Animation</h4>
           <p>Overall, it was really important to stay organized with this project. We had a production schedule which split up specific shots for each member in the group. I was assigned to do an eleven second portion where the mushroom character turned and walked over to the flower character.</p>
           <p>The challenging portion of this involved determining how best to animate a walk cycle and time the keyframes such that it looked natural. I redid the animation at least twenty times until it looked somewhat realistic. I also learned about how to pan the camera around so that it was ready for the next set of shots. The final animation that I worked on can be viewed in the video.</p>
           <div className={styles.imageContainer}>
             <Image src={walk} alt="walk" width={350} className={styles.mobileImage}/>
+          </div>
+          <div className={styles.imageContainer}>
+              <caption>Sample walk cycle</caption>
           </div>
           <h4 id="render">Rendering</h4>
           <p>Rendering and compositing was done with Pixar Renderman and Adobe Illustrator. Rendering took a lot longer than expected and I stayed up at night to push the next set of frames to be rendered in order to complete the animation on time. After some music and final edits, we were finally finished!</p>

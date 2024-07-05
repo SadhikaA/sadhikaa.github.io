@@ -99,7 +99,7 @@
     padding-right: 6px;
     font-size: 12px;
     letter-spacing: 0.3px;
-    line-height: 130%;
+    line-height: 140%;
     font-weight: 500;
     text-decoration: none;
 }
@@ -144,7 +144,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     letter-spacing: 0.3px;
-    line-height: 130%;
+    line-height: 140%;
     text-decoration: underline dotted;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
@@ -165,7 +165,7 @@
     color: rgb(230, 213, 99);
     font-size: 14px;
     letter-spacing: 0.3px;
-    line-height: 130%;
+    line-height: 140%;
 }
 
 .imageContainer {
@@ -200,5 +200,5 @@
     color: #6fb9ff;
     font-size: 13px;
     letter-spacing: 0.3px;
-    line-height: 130%;
+    line-height: 140%;
 }
