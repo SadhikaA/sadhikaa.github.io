@@ -9,6 +9,16 @@ import test4_4 from '../images/graphics/hw1/test4_4.png';
 import test4_9 from '../images/graphics/hw1/test4_9.png';
 import test4_16 from '../images/graphics/hw1/test4_16.png';
 import robot from '../images/graphics/hw1/robot.png';
+import bary from '../images/graphics/hw1/bary.png';
+import bary_triangle from '../images/graphics/hw1/bary_triangle.png';
+import nearest_1_side from '../images/graphics/hw1/nearest_1_side.png';
+import nearest_16_side from '../images/graphics/hw1/nearest_16_side.png';
+import nearest_linear from '../images/graphics/hw1/nearest_linear.png';
+import nearest_nearest from '../images/graphics/hw1/nearest_nearest.png';
+import bilinear_1_side from '../images/graphics/hw1/bilinear_1_side.png';
+import bilinear_16_side from '../images/graphics/hw1/bilinear_16_side.png';
+import zero_linear from '../images/graphics/hw1/zero_linear.png';
+import zero_nearest from '../images/graphics/hw1/zero_nearest.png';
 
 export default function Graphics() {
 return (
@@ -94,6 +104,34 @@ return (
             <h4 id="1d">Barycentric Coordinates</h4>
             <p>Barycentric coordinates work by determining our color based on the distance each point is from each vertex. As we can see with our triangle, each vertex is red, green, or blue. We end up with a gradient triangle as our final image because for each point not at the vertices, we calculate a certain weight of red, green, and blue based on distance and end up with a weighted sum of RGB colors within the triangle.</p>
             <p>We calculate the barycentric coordinates by solving for the value of each our new color coordinate system (<code>alpha</code>, <code>beta</code>, and <code>gamma</code>) based on the current <code>(x, y)</code> coordinate. This allows us to assign colors based on the strength of how close each of the points are too the . We then calculate the color by interpolating across the colors passed in to the function to get a weighted sum: <code>alpha * c0 + beta * c1 + gamma * c2</code>. This is our new value for the color at the point <code>(x, y)</code> so we call <code>fill_sample</code> with the new color.</p>
+            <div className={styles.imageContainer}>
+                <Image src={bary} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={bary_triangle} alt="robot" width={250} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>Barycentric circle and triangle</caption>
+            </div>
+            <h4 id="1d">"Pixel Sampling" for Texture Mapping</h4>
+            <p>With texture mapping, the goal is to interpolate to find the texture coordinate <code>(u, v)</code> for each <code>(x, y)</code> coordinate. We can do this using nearest and bilinear sampling methods.</p>
+            <p>I implemented texture mapping by calculating the <code>uv</code> coordinates based on the barycentric coordinates that had been calculated. I initialized the <code>SampleParams</code> struct with the <code>uv</code> values and then sampled from the texture based on which sampling method we wanted to use. The <code>sample</code> function returns a color which can then be used to fill the sample.</p>
+            <p>In the <code>sample_nearest</code> function, I found the nearest pixel to our <code>uv</code> coordinate and then returned the color of that pixel on the mipmap. To implement <code>sample_bilinear</code>, I got the nearest 4 texels to our <code>uv</code> coordinate. After, getting the colors, I linearly interpolated in both directions and then did a final interpolation of the two interpolations to get the final color value.</p>
+            <div className={styles.imageContainer}>
+                <Image src={nearest_1_side} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={nearest_16_side} alt="robot" width={250} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>Nearest with sample_rate 1 and 16</caption>
+            </div>
+            <div className={styles.imageContainer}>
+                <Image src={bilinear_1_side} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={bilinear_16_side} alt="robot" width={250} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>Bilinear with sample_rate 1 and 16</caption>
+            </div>
+            <p>Based on these images, a higher sampling rate helps create a blurring effect that reduces jaggies no matter which sampling method is used for texture mapping. Bilinear seems to be better at blending nearby texels as we zoom in and creates the illusion of straight lines even without a higher sampling rate. Combining both bilinear sampling and high sampling rate allows us to get smooth and clear details even when zoomed in quite a bit. The tradeoffs are that bilinear sampling takes more time to render. If we have an image with lots of finer detail, bilinear sampling will be able to preserve these details much more than nearest sampling.</p>
+            <h4 id="1e">"Level Sampling" with mipmaps for Texture Mapping</h4>
+            <p>In level sampling, we add the calculation of samples that represent the downsampled image that we can use to improve the resolution and pick better texture samples that correspond with the amount of aliasing occuring.The modifications in the calculation include calculating derivatives that quantify the difference between texture coordinates that are near each other. In order to make these changes smoother, I used linear interpolation again to smooth out the shifts between mipmap levels. The <code>sample</code> function is modified to allow for both pixel sampling and level sampling to get trilinear texture filtering.</p>
             {/* <p>https://cal-cs184-student.github.io/hw-webpages-sp24-SadhikaA/</p> */}
             <h3 id="2">Mesh Geometry</h3>
             <h3 id="3">Ray Tracing</h3>
