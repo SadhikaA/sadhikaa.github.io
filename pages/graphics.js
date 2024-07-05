@@ -63,6 +63,11 @@ import teapot from '../images/graphics/hw2/teapot.png';
 import cow0 from '../images/graphics/hw2/cow0.png';
 import cow1 from '../images/graphics/hw2/cow1.png';
 
+/* HW 3 Images */
+import rayB from '../images/graphics/hw3/rayB.png';
+import rayD from '../images/graphics/hw3/rayD.png';
+import rayS from '../images/graphics/hw3/rayS.png';
+
 export default function Graphics() {
 return (
 <>
@@ -305,7 +310,20 @@ return (
                 <Image src={crumpled6} alt="robot" width={100} className={styles.mobileImage}/>
             </div>
             <h3 id="3">Ray Tracing</h3>
+            <p>In this homework, I learnt about how to generate and represent rays and intersect them with triangles and spheres. After this, I worked on implementing bounding volume hierarchy. After this, was direct and global illumination where I was directly able to see and implement different bounce setups. I also enjoyed working on Russian Roulette sampling and adaptive sampling because it made the concepts we learnt much better. I faced a few bugs with the first few tasks in speeding up computation but I found that I was able to resolve them with a bit of debugging. Overall, I thought that this was a really interesting homework because I was able to implement many of the algorithms that we had only learnt about in class.</p>
             <h4 id="3a">Ray Generation and Scene Intersection</h4>
+            <p>The ray generation algorithm implemented allow us to transform coordinates of an image from <code>(x, y)</code> to be coordinates for a Ray in the world space. In order to this, I first converted the <code>(x, y)</code> coordinates to be in the domain <code>[-1, 1]</code> instead of <code>[0, 1]</code>. I then accounted for the field of view calculations, taking into account the fact that <code>hFov</code> and <code>vFov</code> were in radians, not degrees. Finally, I used the <code>c2w</code> matrix to calculate the position of the virtual axis-aligned sensor with respect to our new coordinates. I calculated the normalized version of this vector and then returned the <code>Ray</code> that started from the given <code>pos</code> vector to this newly calculated world space vector.</p>
+            <p>To generate pixel samples, for each sample, I picked a random sample by calling <code>gridSampler-{'>'}get_sample()</code>. I then call <code>generateRay</code> on the sampled coordinates, making sure to normalize by the width and the height of the image. For each ray generated in the loop, I call <code>est_radiance_global_illumination</code> and sum up the total illumination from all the rays. I then take the average based on the number of samples and return a final call to <code>update_pixel</code> to render this pixel with the color.</p>
+            <p>In order to calculate ray-triangle intersection, I followed the Möller-Trumbore intersection algorithm. In order to use this algorithm, I first calculated a set of variables to make the calculations easier, specifically: <code>E1</code>, <code>E2</code>, <code>S</code>, <code>S1</code>, and <code>S2</code>. I then calculated the inverse determinant and multiplied this by the matrix: <span class='math'>\([S2 \cdot E2, S1 \cdot S, S2 \cdot D]^T\)</span>. This gave me the final matrix, <span class='math'>\([t, b1, b2]^T\)</span>. After getting the values for <code>t</code>, <code>b1</code>, and <code>b2</code>, I tested all of them to make sure that they were within <code>(0, 1)</code>. I repeated this same calculation for the <code>intersect</code> function, but also added updates to the <code>isect</code> variable, by calculating a normal vector based on our values for <code>b1</code>, <code>b2</code>, and <code>1 - b1 - b2</code>.</p>
+            <p>In order to calculate ray-sphere intersection, I followed the description from the slides and generated a quadratic equation for the intersection of the ray and the sphere. In order to simplify the calculations, I returned <code>false</code> if the determinant was less than zero because we want only positive roots. I then followed the same steps as ray-triangle intersection to assign values to our intersection. I also made sure to update the max clipping frame with <code>t</code>.</p>
+            <div className={styles.imageContainer}>
+                <Image src={rayS} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={rayD} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={rayB} alt="robot" width={250} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>ray-sphere intersection / dragon normal shading / banana normal shading</caption>
+            </div>
             <h4 id="3b">Bounding Volume Hierarchy</h4>
             <h4 id="3c">Direct Illumination</h4>
             <h4 id="3d">Global Illumination</h4>

@@ -10,6 +10,9 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" sizes="any"/>
         <link rel="favicon" href="/favicon.png"/>
         <link rel="apple-touch-icon" href="/favicon.png"/>
+        <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js">
+      </script>
       </Head>
       <Component {...pageProps} />
     </>
