@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/voyager": "pages/voyager.js",
-  "/graphics": "pages/graphics.js",
-  "/sweweb": "pages/sweweb.js"
+  "/sweweb": "pages/sweweb.js",
+  "/graphics": "pages/graphics.js"
 }
