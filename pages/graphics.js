@@ -81,7 +81,7 @@ return (
 
             <p>This algorithm is no worse than traversing each sample individually in the bounding box of the triangle and determining if it's in the triangle because we still iterate through all the points in the bounding box. There is no optimization or short circuiting that reduces the number of pixels traversed.</p>
             <div className={styles.imageContainer}>
-                <Image src={basic_test4_pixel} alt="basic_test4_pixel" width={200} className={styles.mobileImage}/>
+                <Image src={basic_test4_pixel} alt="basic_test4_pixel" width={250} className={styles.mobileImage}/>
             </div>
             <h4 id="1b">Antialiasing by Supersampling</h4>
             <p>In this task, I implemented supersampling by updating the <code>sample_buffer</code> data structure and modifying certain algorithms. Supersampling is useful because it allows us to antialias and reduce the jaggies in our images, making pixels seem smoother zoomed out. The modifications I made to the rasterization pipeline was to first change the size of the <code>sample_buffer</code> to include the number of samples we wanted to sample, <code>width * height * sample_rate</code>. Now, each <code>(x, y)</code> pixel will be represented by a sample_rate number of samples that will be averaged in order to downsample to determine the color of the original pixel. I added a new <code>fill_sample</code> function which fills in the color of a specific sample for an <code>(x, y)</code> pixel and updates its color in the sample_buffer by using a new indexing method: <code>sample_buffer[sample_rate * (y * width + x) + s]</code>. I updated the <code>fill_pixel</code> sample to stay consistent for points and lines by calling <code>fill_sample</code> for the number of samples in the pixel, effectively making sure that all samples have the same color. In <code>rasterize_triangle</code>, I now iterated through each sample, rather than pixel to check if we were within bounds, and called <code>fill_sample</code> instead of <code>fill_pixel</code>. Finally, in <code>resolve_to_framebuffer</code>, I updated the frame buffer by getting all samples that corresponded to an <code>(x, y)</code> pixel and averaging the RGB values of all the samples to get the final color, which was then resolved to the framebuffer target.</p>
@@ -132,10 +132,40 @@ return (
             <p>Based on these images, a higher sampling rate helps create a blurring effect that reduces jaggies no matter which sampling method is used for texture mapping. Bilinear seems to be better at blending nearby texels as we zoom in and creates the illusion of straight lines even without a higher sampling rate. Combining both bilinear sampling and high sampling rate allows us to get smooth and clear details even when zoomed in quite a bit. The tradeoffs are that bilinear sampling takes more time to render. If we have an image with lots of finer detail, bilinear sampling will be able to preserve these details much more than nearest sampling.</p>
             <h4 id="1e">"Level Sampling" with mipmaps for Texture Mapping</h4>
             <p>In level sampling, we add the calculation of samples that represent the downsampled image that we can use to improve the resolution and pick better texture samples that correspond with the amount of aliasing occuring.The modifications in the calculation include calculating derivatives that quantify the difference between texture coordinates that are near each other. In order to make these changes smoother, I used linear interpolation again to smooth out the shifts between mipmap levels. The <code>sample</code> function is modified to allow for both pixel sampling and level sampling to get trilinear texture filtering.</p>
-            {/* <p>https://cal-cs184-student.github.io/hw-webpages-sp24-SadhikaA/</p> */}
+            <p>Now that the sampling technique can be modified using pixel sampling, level sampling, and <code>sample_rate</code>, I've found that the pixel sampling and level sampling take longer to render than changes to <code>sample_rate</code>. Antialiasing seems better with level sampling and supersampling. I think level sampling and pixel sampling work better when we are aiming to have our textures be smoother as we zoom in. Zooming in is definitely the greatest memory usage and speed in terms of having the ability to render everything at a specific framerate.</p>
+            <div className={styles.imageContainer}>
+                <Image src={zero_nearest} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={zero_linear} alt="robot" width={250} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>[L_ZERO and P_NEAREST] and [L_ZERO and P_LINEAR]</caption>
+            </div>
+            <div className={styles.imageContainer}>
+                <Image src={nearest_nearest} alt="robot" width={250} className={styles.mobileImage}/>
+                <Image src={nearest_linear} alt="robot" width={250} className={styles.mobileImage}/>
+            </div>
+            <div className={styles.imageContainer}>
+                <caption>[L_NEAREST and P_NEAREST] and [L_NEAREST and P_LINEAR]</caption>
+            </div>
             <h3 id="2">Mesh Geometry</h3>
+            <h4 id="2a">Bezier Curves with 1D de Casteljau Subdivision</h4>
+            <h4 id="2b">Bezier Curves with Seperable 1D de Casteljau</h4>
+            <h4 id="2c">Area-Weighted Vertex Normals</h4>
+            <h4 id="2d">Edge Flip</h4>
+            <h4 id="2e">Edge Split</h4>
+            <h4 id="2f">Loop Subdivision for Mesh Upsampling</h4>
             <h3 id="3">Ray Tracing</h3>
+            <h4 id="3a">Ray Generation and Scene Intersection</h4>
+            <h4 id="3b">Bounding Volume Hierarchy</h4>
+            <h4 id="3c">Direct Illumination</h4>
+            <h4 id="3d">Global Illumination</h4>
+            <h4 id="3e">Adaptive Sampling</h4>
             <h3 id="4">Animation</h3>
+            <h4 id="4a">Masses and Springs</h4>
+            <h4 id="4b">Simulation via Numerical Integration</h4>
+            <h4 id="4c">Handling Collisions</h4>
+            <h4 id="4d">Handling Self-Collisions</h4>
+            <h4 id="4e">Shaders</h4>
         </div>
     </Layout>
 </>
