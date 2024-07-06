@@ -1,39 +1,88 @@
-import styles from '../components/layout.module.css';
+import styles from '../components/notes_layout.module.css';
 import Layout from '../components/notes_layout';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Notes() {
-  return (
-    <>
-      <Head>
-        <title>Notebook</title>
-        <link
-          rel="icon"
-          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
-      </Head>
-      <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
-          <p className={styles.contentTag}>Computer Graphics / Introduction</p>
-          <h3>Drawing Triangles</h3>
-          <p className={styles.links}>Subtitle</p>
-          <hr></hr>
-          <p>I've always been pretty interested in tools for thought and ways to design for better learning. This spring I was motivated to make my own markdown parser after realizing there were a lot more features I wanted in my notes than Notion could provide. I also wanted to create the ultimate learning device and embed the ability to make flashcards within my markdown notes.</p>
-          <h4>v1</h4>
-          <p>Version 1 of the markdown parser involved a simple python script that converted a md file into an html page and table of contents. I manually wrote the script to parse each line of md using my own stylistic choices sometimes, but mostly following normal markdown conventions. I also included latex and code support using MathJAX and Prism.</p>
-          <p>However, this version required writing markdown, running the Python script, and reloading the html each time. Not ideal for taking a page of notes in lecture. I also wanted to include more features like hovering over a word to get its definition, automatic highlighting, inline conversion of markdown, comments, and a better table of contents.</p>
-          <h4>v2</h4>
-          <p>Feature list: </p>
-          <p>vocab word highlighting + hover for definition?<br></br>
-          comments (cornell notes/footnotes type)<br></br>
-          large margins for readability<br></br>
-          table of contents on the side<br></br>
-          one page at a time<br></br>
-          good use of visuals to detail the notes</p>
-        </div>
-      </Layout>
-    </>
-  );
+    const title = 'Notebook';
+    const tableOfContents = [];
+
+    return (
+        <>
+            <Head>
+                <title>Notebook</title>
+                <link
+                    rel="icon"
+                    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
+            </Head>
+            <Layout title={title} tableOfContents={tableOfContents}>
+                <div className={styles.leftColumn}>
+                </div>
+                <div className={styles.rightColumn}>
+                    <div className={styles.rightColumn}>
+                        <div className={styles.bookGrid}>
+                            <BookCover
+                                title="Computer Graphics"
+                                backgroundColor="linear-gradient(135deg, #98b9df, #135afe)"
+                                boxShadow="4px 4px 2px rgba(28, 95, 158, 0.5)"
+                                link="/notes/computer-graphics"
+                            />
+                            <BookCover
+                                title="Machine Learning"
+                                backgroundColor="linear-gradient(135deg, #f98b9d, #f135af)"
+                                boxShadow="4px 4px 2px rgba(158, 28, 95, 0.5)"
+                                link="/notes/machine-learning"
+                            />
+                            <BookCover
+                                title="Artificial Intelligence"
+                                backgroundColor="linear-gradient(135deg, #dfb998, #fe5a13)"
+                                boxShadow="4px 4px 2px rgba(158, 95, 28, 0.5)"
+                                link="/notes/artificial-intelligence"
+                            />
+                            <BookCover
+                                title="Human-Computer Interaction"
+                                backgroundColor="linear-gradient(135deg, #b998df, #5a13fe)"
+                                boxShadow="4px 4px 2px rgba(95, 28, 158, 0.5)"
+                                link="/notes/human-computer-interaction"
+                            />
+                            <BookCover
+                                title="Software Engineering"
+                                backgroundColor="linear-gradient(135deg, #df98d2, #fe13d5)"
+                                boxShadow="4px 4px 2px rgba(158, 28, 133, 0.5)"
+                                link="/notes/software-engineering"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </Layout>
+        </>
+    );
 }
+
+const BookCover = ({ title, backgroundColor, link, boxShadow }) => {
+    const bookCoverStyle = {
+        width: '60px',
+        height: '90px',
+        background: backgroundColor,
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        boxShadow: boxShadow,
+        borderTopRightRadius: '10px',
+        borderBottomRightRadius: '10px',
+        borderTopLeftRadius: '4px',
+        borderBottomLeftRadius: '4px',
+        padding: '20px',
+        marginTop: '20px',
+    };
+
+    return (
+        <div style={bookCoverStyle}>
+            <Link href={link} className={styles.bookLink}><div className={styles.bookTitle}>{title}</div></Link> 
+        </div>
+    );
+};
