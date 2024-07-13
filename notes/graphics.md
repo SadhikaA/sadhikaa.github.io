@@ -7,7 +7,6 @@
 - break down into lots of subtopics if needed, don’t be afraid of too much nesting 
 - definitions/vocab words should be callouts, this emphasizes what needs to be learnt and can become a flashcard later 
 - todos will be marked in **red**
-
 </aside>
 
 # Introduction

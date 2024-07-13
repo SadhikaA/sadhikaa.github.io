@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/notes": "pages/notes.js",
   "/": "pages/index.js",
-  "/graphics": "pages/graphics.js"
+  "/notes/computer-graphics": "pages/notes/computer-graphics.js",
+  "/notes": "pages/notes.js"
 }
