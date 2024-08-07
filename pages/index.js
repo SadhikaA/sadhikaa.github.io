@@ -8,6 +8,7 @@ export default function Home() {
       <Head>
         <title>Sadhika Akula</title>
         <meta name="description" content="personal website of Sadhika Akula" />
+        <meta content="environment" url="f1_racetrack.png"/>
         <link rel="icon" href="/favicon.ico" sizes="any"/>
         <link rel="favicon" href="/favicon.png"/>
         <link rel="apple-touch-icon" href="/favicon.png"/>
