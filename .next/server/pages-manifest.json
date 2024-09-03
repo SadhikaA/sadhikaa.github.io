@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/notes/computer-graphics": "pages/notes/computer-graphics.js",
-  "/notes": "pages/notes.js"
+  "/notes": "pages/notes.js",
+  "/": "pages/index.js"
 }

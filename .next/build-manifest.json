@@ -30,10 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/notes/computer-graphics": [
+    "/notes": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/notes/computer-graphics.js"
+      "static/chunks/pages/notes.js"
     ]
   },
   "ampFirstPages": []
