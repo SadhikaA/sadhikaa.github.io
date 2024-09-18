@@ -36,6 +36,7 @@ export default function Graphics() {
                     <h3>Drawing Triangles</h3>
                     <hr></hr>
                     <p>Normal text</p><p className={styles.links}>vocab word</p>
+                    <p id="rasterization">Rasterization</p>
                 </div>
             </Layout>
         </>
