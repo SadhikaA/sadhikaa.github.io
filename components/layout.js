@@ -30,7 +30,7 @@ export default function Layout({ children }) {
         <Link href="/notes">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Notes</p>
         </Link> */}
-        <p className={styles.heading}>portfolio</p>
+        {/* <p className={styles.heading}>portfolio</p>
         <ul>
           <li>
             <p className={styles.date}>MAY 2024</p>
@@ -83,7 +83,7 @@ export default function Layout({ children }) {
               <p className={styles.linkP}>GPS-navigated drone</p>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className={styles.rightColumn}>
         {children}
