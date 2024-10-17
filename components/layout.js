@@ -25,29 +25,21 @@ export default function Layout({ children }) {
         <p className={styles.heading}>about</p>
         <p>Hi! I'm a senior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in tangible interfaces, machine learning, and philosophy. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p>
         {/* <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm am an engineer at Apple on the Vision Pro Safari team. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress, outside of work.</p> */}
-        {/* <p className={styles.heading}>notes</p>
+        <p className={styles.heading}>notes</p>
         <Link href="/notes">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Notes</p>
         </Link>
         <Link href="/bookshelf">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Bookshelf</p>
         </Link>
-        <p className={styles.heading}>portfolio</p> */}
-        {/* <ul>
+        <p className={styles.heading}>portfolio</p>
+        <ul>
           <li>
             <p className={styles.date}>DEC 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/berkeley">
               <p className={styles.linkP}>bus tangible user interface</p>
-            </Link>
-          </li>
-          <li>
-            <p className={styles.date}>NOV 2024</p>
-            <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
-            <p className={`${styles.tag} ${styles.tagWriting}`}>writing</p>
-            <Link href="/berkeley">
-              <p className={styles.linkP}>magic ink based design inspiration</p>
             </Link>
           </li>
           <li>
@@ -94,14 +86,6 @@ export default function Layout({ children }) {
             </Link>
           </li>
           <li>
-            <p className={styles.date}>FEB 2024</p>
-            <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
-            <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
-            <Link href="/markdown">
-              <p className={styles.linkP}>markdown parser</p>
-            </Link>
-          </li> 
-          <li>
             <p className={styles.date}>JAN 2024</p>
             <p className={`${styles.tag} ${styles.tagWriting}`}>writing</p>
             <Link href="/berkeley">
@@ -122,7 +106,7 @@ export default function Layout({ children }) {
               <p className={styles.linkP}>GPS-navigated drone</p>
             </Link>
           </li>
-        </ul> */}
+        </ul>
       </div>
       <div className={styles.rightColumn}>
         {children}
