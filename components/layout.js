@@ -25,7 +25,7 @@ export default function Layout({ children }) {
         <p className={styles.heading}>about</p>
         <p>Hi! I'm a senior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in tangible interfaces, machine learning, and philosophy. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p>
         {/* <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm am an engineer at Apple on the Vision Pro Safari team. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress, outside of work.</p> */}
-        <p className={styles.heading}>notes</p>
+        {/* <p className={styles.heading}>notes</p>
         <Link href="/notes">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Notes</p>
         </Link>
@@ -47,7 +47,7 @@ export default function Layout({ children }) {
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/sweweb">
-              <p className={styles.linkP}>new UC Berkeley SWE website</p>
+              <p className={styles.linkP}>UC Berkeley SWE design projects</p>
             </Link>
           </li>
           <li>
@@ -106,7 +106,7 @@ export default function Layout({ children }) {
               <p className={styles.linkP}>GPS-navigated drone</p>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className={styles.rightColumn}>
         {children}
