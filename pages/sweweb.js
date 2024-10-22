@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import design from '../images/swe/design.jpg';
-import exec from '../images/swe/exec.jpg';
+import exec from '../images/swe/exec.JPG';
 import poster from '../images/swe/poster.png';
 import tote from '../images/swe/tote.png';
 import week1 from '../images/swe/week1.png';
