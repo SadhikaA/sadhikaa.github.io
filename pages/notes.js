@@ -1,0 +1,36 @@
+import styles from '../components/layout.module.css';
+import Layout from '../components/layout';
+import Head from 'next/head';
+import Image from 'next/image';
+
+export default function Notebook() {
+  return (
+    <>
+      <Head>
+        <title>Notebook</title>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
+      </Head>
+      <Layout>
+        <div className={styles.leftColumn}>
+        </div>
+        <div className={styles.rightColumn}>
+          <h3>📓 Notes</h3>
+          <hr></hr>
+          <ul>
+            <li><a href="#philos" className={styles.contentsLink}>Philosophy</a></li>
+            <li><a href="#brain" className={styles.contentsLink}>Brain, Mind, and Behavior</a></li>
+            <li><a href="#kannada" className={styles.contentsLink}>Kannada</a></li>
+            <li><a href="#telugu" className={styles.contentsLink}>Telugu</a></li>
+            <li><a href="#sanskrit" className={styles.contentsLink}>Sanskrit</a></li>
+            <li><a href="#french" className={styles.contentsLink}>French</a></li>
+          </ul>
+          <h4 id="philos">Philosophy</h4>
+          <p className={styles.contentTag}>subtitle tag</p>
+          <p>currently reading</p>
+        </div>
+      </Layout>
+    </>
+  );
+}

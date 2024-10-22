@@ -24,22 +24,21 @@ export default function Layout({ children }) {
         </div>
         <p className={styles.heading}>about</p>
         <p>Hi! I'm a senior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in tangible interfaces, machine learning, and philosophy. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress.</p>
-        {/* <p>Hi! I'm a junior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm am an engineer at Apple on the Vision Pro Safari team. I also enjoy reading, playing tennis, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress, outside of work.</p> */}
-        {/* <p className={styles.heading}>notes</p>
+        {/* <p>Hi! I'm a software engineer at Apple working on the Vision Pro. Previously, I graduated from UC Berkeley and studied Electrical Engineering and Computer Science. In my spare time, I can be found reading, playing tennis, attempting latte art, and learning new languages. This website serves as a way to log my work and keep track of what I've built or in progress, outside of work.</p> */}
+        {/* <p className={styles.heading}>portfolio</p>
         <Link href="/notes">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Notes</p>
         </Link>
         <Link href="/bookshelf">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Bookshelf</p>
         </Link>
-        <p className={styles.heading}>portfolio</p>
         <ul>
           <li>
             <p className={styles.date}>DEC 2024</p>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/berkeley">
-              <p className={styles.linkP}>bus tangible user interface</p>
+              <p className={styles.linkP}>tangible user interface final project</p>
             </Link>
           </li>
           <li>
