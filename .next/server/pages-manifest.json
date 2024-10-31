@@ -3,7 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/ucbugg": "pages/ucbugg.js",
-  "/portfolio": "pages/portfolio.js",
   "/": "pages/index.js",
-  "/graphics": "pages/graphics.js"
+  "/portfolio": "pages/portfolio.js"
 }

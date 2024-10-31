@@ -31,11 +31,6 @@ self.__BUILD_MANIFEST = {
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/portfolio.js"
-    ],
-    "/ucbugg": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/ucbugg.js"
     ]
   },
   "ampFirstPages": []
