@@ -27,10 +27,20 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/portfolio": [
+    "/graphics": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/portfolio.js"
+      "static/chunks/pages/graphics.js"
+    ],
+    "/notes": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/notes.js"
+    ],
+    "/sweweb": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/sweweb.js"
     ]
   },
   "ampFirstPages": []

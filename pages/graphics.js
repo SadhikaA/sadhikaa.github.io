@@ -324,7 +324,7 @@ return (
             <div className={styles.imageContainer}>
                 <caption>ray-sphere intersection / dragon normal shading / banana normal shading</caption>
             </div>
-            <h4 id="3b">Bounding Volume Hierarchy</h4>
+            {/* <h4 id="3b">Bounding Volume Hierarchy</h4>
             <h4 id="3c">Direct Illumination</h4>
             <h4 id="3d">Global Illumination</h4>
             <h4 id="3e">Adaptive Sampling</h4>
@@ -333,7 +333,7 @@ return (
             <h4 id="4b">Simulation via Numerical Integration</h4>
             <h4 id="4c">Handling Collisions</h4>
             <h4 id="4d">Handling Self-Collisions</h4>
-            <h4 id="4e">Shaders</h4>
+            <h4 id="4e">Shaders</h4> */}
     </Layout>
 </>
 );

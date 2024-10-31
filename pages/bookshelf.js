@@ -13,6 +13,8 @@ export default function Bookshelf() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
+        <a href="/" className={styles.pages}>/</a>
+          <hr></hr>
           <h3>📚 Bookshelf</h3>
           <hr></hr>
           <ul>
@@ -20,8 +22,6 @@ export default function Bookshelf() {
           </ul>
           <p>Log of books I've read, starting from March 2024.</p>
           <h4 id="2024">2024</h4>
-          <p className={styles.contentTag}>The Hitchhiker's Guide to the Galaxy - Douglas Adams</p>
-          <p>currently reading</p>
           <p className={styles.contentTag}>Slouching Towards Bethelhem - Joan Didion</p>
           <p>I picked this book up since I enjoy rereading Didion's short but famous piece, On Self-Respect. As someone from California, the descriptions of San Francisco and Central California are really interesting to read about.</p>
           <p className={styles.contentTag}>Portraits of the Mind - Carl Schoonover</p>

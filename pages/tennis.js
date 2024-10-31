@@ -13,9 +13,8 @@ export default function Tennis() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
+        <a href="/" className={styles.pages}>/</a>
+        <hr></hr>
           <h3>👟 Lessons from Tennis</h3>
           <hr></hr>
           <p>Inspired by <a className={styles.links} href="https://rileywilson.co/posts/2021-09-13-tennis/">this blog post</a>, I thought I would write some of my own generalizations that I’ve learnt on things that translate off the court.</p>
@@ -39,7 +38,6 @@ export default function Tennis() {
           <p>With current technology (see SwingVision), it's now extremely easy to be able to record yourself and watch professional tennis players online and learn on your own. There are thousands of videos on tennis at all levels and pattern matching your game to someone else is a good place to start. Learn to notice key changes and put yourself in player's shoes to really be able to understand the mental and physical aspects of playing tennis.</p>
           <h4>Have Fun</h4>
           <p>It is much easier to play if you are enjoying what you're doing. After all, you're usually playing for low stakes (unless you're in a Grand Slam) so there is nothing stopping you from experimenting and constantly learning.</p>
-        </div>
       </Layout>
     </>
   );
