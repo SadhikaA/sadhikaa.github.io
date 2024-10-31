@@ -13,9 +13,6 @@ export default function Bookshelf() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
           <h3>📚 Bookshelf</h3>
           <hr></hr>
           <ul>
@@ -35,7 +32,6 @@ export default function Bookshelf() {
           <p>I didn't know what to expect reading this book, it definitely got better as I progressed through the book since the first half is a lot of background. I particularly enjoyed Dostoesvky's writing style and ability to capture the situation, the characters, the emotions, all at once without overdoing anything. Certain quotes really struck with me along with the characters of Mitya + Grushenka, Kolya, and Smerdyakov. I also thoroughly enjoyed the drama of the court case and the fact that there was no real conclusion to some of the characters.</p>
           <p className={styles.contentTag}>Tomorrow, Tomorrow, and Tomorrow - Gabrielle Zevin</p>
           <p>A good deep dive into the struggles of working on a technical project with people you are close to, but also a great story about friendship. The last third of the book was difficult to be as passionate about the plot compared to the first two thirds of the book. I enjoy revisiting this book as a litmus test to see how my perspective changes over time.</p>
-        </div>
       </Layout>
     </>
   );

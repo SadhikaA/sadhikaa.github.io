@@ -2,6 +2,7 @@ import styles from '../components/layout.module.css';
 import Layout from '../components/layout';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Notebook() {
   return (
@@ -13,9 +14,6 @@ export default function Notebook() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
           <h3>📓 Notes</h3>
           <hr></hr>
           <ul>
@@ -28,8 +26,15 @@ export default function Notebook() {
           </ul>
           <h4 id="philos">Philosophy</h4>
           <p className={styles.contentTag}>subtitle tag</p>
-          <p>currently reading</p>
-        </div>
+          <p>notebooks go here</p>
+          <ul>
+          <li>
+            <p className={styles.date}>DEC 2024</p>
+            <Link href="/berkeley">
+              <p className={styles.linkP}>berkeley class reviews</p>
+            </Link>
+          </li>
+        </ul>
       </Layout>
     </>
   );

@@ -12,6 +12,11 @@ self.__BUILD_MANIFEST = {
     "static/chunks/main-app.js"
   ],
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -22,15 +27,15 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/racquets": [
+    "/portfolio": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/racquets.js"
+      "static/chunks/pages/portfolio.js"
     ],
-    "/tennis": [
+    "/sweweb": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/tennis.js"
+      "static/chunks/pages/sweweb.js"
     ]
   },
   "ampFirstPages": []
