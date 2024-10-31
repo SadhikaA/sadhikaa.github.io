@@ -68,13 +68,13 @@ export default function Home() {
             <Link href="/printing">
               <p className={styles.linkP}>3D printing experiments</p>
             </Link>
-          </li>
+          </li> */}
           <li>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/lasercut">
               <p className={styles.linkP}>laser cutting experiments</p>
             </Link>
-          </li> */}
+          </li>
           <li>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/graphics">
