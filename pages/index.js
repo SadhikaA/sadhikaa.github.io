@@ -71,7 +71,7 @@ export default function Home() {
           </li> */}
           <li>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
-            <Link href="/lasercut">
+            <Link href="/laser">
               <p className={styles.linkP}>laser cutting experiments</p>
             </Link>
           </li>

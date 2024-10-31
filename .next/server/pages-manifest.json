@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/notes": "pages/notes.js",
-  "/": "pages/index.js",
-  "/sweweb": "pages/sweweb.js",
-  "/graphics": "pages/graphics.js",
-  "/tennis": "pages/tennis.js"
+  "/portfolio": "pages/portfolio.js",
+  "/laser": "pages/laser.js"
 }
