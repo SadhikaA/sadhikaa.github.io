@@ -2,7 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/sweweb": "pages/sweweb.js",
   "/": "pages/index.js",
-  "/portfolio": "pages/portfolio.js"
+  "/sweweb": "pages/sweweb.js",
+  "/portfolio": "pages/portfolio.js",
+  "/drone": "pages/drone.js",
+  "/ucbugg": "pages/ucbugg.js",
+  "/graphics": "pages/graphics.js"
 }

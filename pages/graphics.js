@@ -78,9 +78,9 @@ return (
             href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
     </Head>
     <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
+        <a href="/" className={styles.pages}>/</a>
+        <a href="/portfolio" className={styles.pages}>portfolio</a>
+        <hr></hr>
             <h3>🫖 Computer Graphics Projects</h3>
             <p className={styles.contentTag}>CGL (C Graphics Lib)</p>
             <hr></hr>
@@ -334,7 +334,6 @@ return (
             <h4 id="4c">Handling Collisions</h4>
             <h4 id="4d">Handling Self-Collisions</h4>
             <h4 id="4e">Shaders</h4>
-        </div>
     </Layout>
 </>
 );

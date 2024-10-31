@@ -20,9 +20,9 @@ export default function UCBUGG() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
+        <a href="/" className={styles.pages}>/</a>
+        <a href="/portfolio" className={styles.pages}>portfolio</a>
+        <hr></hr>
           <h3>🍄 Animated Short</h3>
           <p className={styles.contentTag}>Maya</p>
           <p className={styles.contentTag}>Pixar RenderMan</p>
@@ -84,7 +84,6 @@ export default function UCBUGG() {
           <h4 id="render">Rendering</h4>
           <p>Rendering and compositing was done with Pixar Renderman and Adobe Illustrator. Rendering took a lot longer than expected and I stayed up at night to push the next set of frames to be rendered in order to complete the animation on time. After some music and final edits, we were finally finished!</p>
           <p>In the same semester, I worked on both this and my drone project, making the end of the semester pretty hectic, but I got two great learning experiences out of it in hardware and animation.</p>
-        </div>
       </Layout>
     </>
   );

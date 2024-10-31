@@ -18,9 +18,9 @@ export default function Drone() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='100'>🌊</text></svg>" />
       </Head>
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
+        <a href="/" className={styles.pages}>/</a>
+        <a href="/portfolio" className={styles.pages}>portfolio</a>
+        <hr></hr>
           <h3>🚁 Swift Flight: Stabilized Drone</h3>
           <p className={styles.contentTag}>Arduino</p>
           <p className={styles.contentTag}>SwiftUI</p>
@@ -61,7 +61,6 @@ export default function Drone() {
           <div className={styles.imageContainer}>
                 <caption>Final drone</caption>
             </div>
-        </div>
       </Layout>
     </>
   );
