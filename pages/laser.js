@@ -28,7 +28,7 @@ export default function Laser() {
             <li><a href="#coasters" className={styles.contentsLink}>Coasters</a></li>
             <li><a href="#name_tags" className={styles.contentsLink}>Name Tags & Business Cards</a></li>
           </ul>
-          <p>Random laser cutting projects throughout fall 2024 and spring 2025.</p>
+          <p>Random laser cutting projects throughout 2023 and 2024.</p>
           <h4 id="coasters">Coasters</h4>
           <p>I started making coasters for my friends.</p>
           <div className={styles.imageContainer}>
