@@ -14,9 +14,12 @@ export default function Notebook() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
+        <a href="/" className={styles.pages}>/</a>
+        <hr></hr>
           <h3>📓 Notes</h3>
           <hr></hr>
           <ul>
+            <li><a href="#hci" className={styles.contentsLink}>Human Computer Interaction</a></li>
             <li><a href="#philos" className={styles.contentsLink}>Philosophy</a></li>
             <li><a href="#brain" className={styles.contentsLink}>Brain, Mind, and Behavior</a></li>
             <li><a href="#kannada" className={styles.contentsLink}>Kannada</a></li>

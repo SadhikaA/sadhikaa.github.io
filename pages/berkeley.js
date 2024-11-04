@@ -12,9 +12,9 @@ export default function Berkeley() {
                     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
             </Head>
             <Layout>
-                <div className={styles.leftColumn}>
-                </div>
-                <div className={styles.rightColumn}>
+                <a href="/" className={styles.pages}>/</a>
+        <a href="/notes" className={styles.pages}>notes</a>
+          <hr></hr>
                     <h3>🐻 Berkeley Course Reviews</h3>
                     <hr></hr>
                         <ul>
@@ -85,7 +85,7 @@ export default function Berkeley() {
                     <p>This was the first DeCal (a class led by Berkeley students) I took where we got a high-level overview a new topic within EECS each week, discussing classes, research opportunities, and subtopics. While taking the class, I thought that the content we covered was extremely broad but in future semesters it was a lot more helpful to look back on the slides and find useful information. The topics we covered were machine learning, video and image processing, computer graphics, security and cryptography, CS theory, computer architecture, devices and analog circuits, controls, embedded systems, robotics, and human computer interaction.</p>
                     <h3 id="sem2">Semester 2 - Spring 2022</h3>
                     <h4 id="cs61b">COMPSCI 61B: Data Structures and Algorithms</h4>
-                    <p>I took this class with Professor Hilfinger who retired after this semester so it made the class more special. This class was focused on data structures and algorithms in Java. My favorite part about this class were the projects which were extremely time consuming but rewarding. All of them were hard but 2 stood out: Enigma and Gitlet. Enigma was about recreating the Enigma encryption machine of World War II, debugging this project required computing ciphers by hand. Gitlet was about recreating entire Git commands on a smaller version control system. Together, these projects started my passion for CS history and learning more about Alan Turing, Ada Lovelace, and others and also a greater appreciation for Git.</p>
+                    <p>I took this class with Professor Hilfinger who actually retired after this semester, and I really enjoyed being able to take the last iteration of the his verison of the course. This class was focused on data structures and algorithms in Java. My favorite part about this class were the projects which were extremely time consuming but rewarding. All of them were hard but 2 stood out: Enigma and Gitlet. Enigma was about recreating the Enigma encryption machine of World War II, debugging this project required computing ciphers by hand. Gitlet was about recreating entire Git commands on a smaller version control system. Together, these projects started my passion for CS history and learning more about Alan Turing, Ada Lovelace, and others and also a greater appreciation for Git.</p>
                     <h4 id="eecs16b">EECS 16B: Designing Information Systems and Devices II</h4>
                     <p>This class felt a lot more coherent than EECS 16A, because we were able to directly apply the ideas that we learnt. The labs were the best part and culminated in a voice controlled robot car, that combined software and hardware by using PCA to determine the commands and with circuits that were build from scratch. My favorite section in the class was learning about control as well as the analog and digital divide and how essential that was to the development of modern technology.</p>
                     <h4 id="sasianr5b">SASIAN R5B: India in the Writer's Eye</h4>
@@ -135,7 +135,13 @@ export default function Berkeley() {
                     <p></p>
                     <h4 id="ugba135">UGBA 135: Personal Finance</h4>
                     <p></p>
-                </div>
+                    <h3 id="sem8">Semester 8 - Spring 2024</h3>
+                    <h4 id="cs189">COMPSCI 160: User Interface & Design</h4>
+                    <p></p>
+                    <h4 id="infoc262">NEU C61: Brain, Mind, and Behavior</h4>
+                    <p></p>
+                    <h4 id="philos3">PHYSED 1: Boxing</h4>
+                    <p></p>
             </Layout>
         </>
     );

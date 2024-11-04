@@ -19,9 +19,9 @@ export default function Voyager() {
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>" />
       </Head>
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.rightColumn}>
+        <a href="/" className={styles.pages}>/</a>
+        <a href="/portfolio" className={styles.pages}>portfolio</a>
+        <hr></hr>
           <h3>🧭 Berkeley ARscape</h3>
           <p className={styles.contentTag}>SwiftUI</p>
           <p className={styles.contentTag}>MapKit</p>
@@ -68,7 +68,6 @@ export default function Voyager() {
             <Image src={arview} alt="arview" width={300} className={styles.mobileImage}/>
           </div>
           <p>This app was mostly a SwiftUI prototype, with no server or database pulling in any list of events and no unique users. Instead, it was a test to see if this was something feasible/interesting to pursue and build an app for my own personal use case for fun! </p>
-        </div>
       </Layout>
     </>
   );
