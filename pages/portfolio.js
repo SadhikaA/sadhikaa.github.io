@@ -41,13 +41,13 @@ export default function Home() {
               <p className={styles.linkP}>tangible user interface final project</p>
             </Link>
           </li> */}
-          <li>
+          {/* <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
             <Link href="/sweweb">
               <p className={styles.linkP}>UC Berkeley SWE design projects</p>
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/sweweb">
@@ -60,7 +60,7 @@ export default function Home() {
               <p className={styles.linkP}>3D printing experiments</p>
             </Link>
           </li> */}
-          <li>
+          {/* <li>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/laser">
               <p className={styles.linkP}>laser cutting experiments</p>
@@ -71,14 +71,14 @@ export default function Home() {
             <Link href="/graphics">
               <p className={styles.linkP}>CS 184 graphics assignments</p>
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
             <Link href="/voyager">
               <p className={styles.linkP}>AR navigation and event app</p>
             </Link>
           </li> */}
-          <li>
+          {/* <li>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/ucbugg">
               <p className={styles.linkP}>3D animated short</p>
@@ -89,7 +89,7 @@ export default function Home() {
             <Link href="/drone">
               <p className={styles.linkP}>GPS-navigated drone</p>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </Layout>
     </>
