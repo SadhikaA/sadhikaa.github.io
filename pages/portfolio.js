@@ -32,7 +32,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <p className={styles.heading}>portfolio</p>
+        {/* <p className={styles.heading}>portfolio</p> */}
         <ul>
           {/* <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
