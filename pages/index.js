@@ -35,7 +35,7 @@ export default function Home() {
       <p className={styles.heading}>about</p>
         <p>Hi! I'm a senior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in tangible interfaces, machine learning, and philosophy. I also enjoy reading, playing tennis, and learning new languages. This website is my space to document projects and share what I've built or are currently working on.</p>
         {/* <p>Hi! I'm a software engineer at Apple working on the Vision Pro. Previously, I graduated from UC Berkeley and studied Electrical Engineering and Computer Science. In my spare time, I can be found reading, playing tennis, attempting latte art, and learning new languages. This website is my space to document projects and share what I've built.</p> */}
-        <p className={styles.heading}>portfolio</p>
+        {/* <p className={styles.heading}>portfolio</p> */}
         {/* <Link href="/notes">
           <p className={`${styles.tag} ${styles.tagGraphics}`}>Notes</p>
         </Link>
