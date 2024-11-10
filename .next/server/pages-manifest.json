@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/sweweb": "pages/sweweb.js",
-  "/": "pages/index.js",
-  "/notes": "pages/notes.js"
+  "/portfolio": "pages/portfolio.js"
 }

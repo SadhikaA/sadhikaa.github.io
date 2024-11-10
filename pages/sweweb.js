@@ -14,6 +14,16 @@ import flyer2 from '../images/swe/flyer2.png';
 import flyer3 from '../images/swe/flyer3.png';
 import tshirt from '../images/swe/tshirt.jpg';
 import sweatshirt from '../images/swe/sweatshirt.jpg';
+import homefigma from '../images/swe/homefigma.png';
+import involvedfigma from '../images/swe/involvedfigma.png';
+import originalhome from '../images/swe/originalhome.png';
+import originalinvolved from '../images/swe/originalinvolved.png';
+import originaloutreach from '../images/swe/originaloutreach.png';
+import originalcorporate from '../images/swe/originalcorporate.png';
+import newhome from '../images/swe/newhome.png';
+import newinvolved from '../images/swe/newinvolved.png';
+import newoutreach from '../images/swe/newoutreach.png';
+import newcorporate from '../images/swe/newcorporate.png';
 
 export default function Markdown() {
   return (
@@ -37,7 +47,7 @@ export default function Markdown() {
         <p>As Webmaster and Secretary of the UC Berkeley SWE section, I worked on various design and marketing projects throughout my junior and senior year.</p>
         <h4 id="design">Design and Marketing</h4>
         <div className={styles.imageContainer}>
-          <Image src={exec} alt="exec" width={400} className={styles.mobileImage} />
+          <Image src={exec} alt="exec" width={500} className={styles.mobileImage} />
         </div>
         <div className={styles.imageContainer}>
           <caption>laser cut name tags</caption>
@@ -51,7 +61,14 @@ export default function Markdown() {
           <caption>various flyers</caption>
         </div>
         <div className={styles.imageContainer}>
-          <Image src={poster} alt="exec" width={550} className={styles.mobileImage} />
+          <Image src={week1} alt="exec" width={350} className={styles.mobileImage} />
+          <Image src={week2} alt="exec" width={350} className={styles.mobileImage} />
+        </div>
+        <div className={styles.imageContainer}>
+          <caption>welcome week flyers</caption>
+        </div>
+        <div className={styles.imageContainer}>
+          <Image src={poster} alt="exec" width={720} className={styles.mobileImage} />
         </div>
         <div className={styles.imageContainer}>
           <caption>general marketing poster</caption>
@@ -68,6 +85,38 @@ export default function Markdown() {
         <p>I started by designing what I wanted the new website to look like, determining which parts we wanted to keep from the original, and what we wanted the new one to look like.</p>
         <div className={styles.imageContainer}>
           <Image src={design} alt="design" width={550} className={styles.mobileImage} />
+        </div>
+        <p>I then converted this design into a Figma design.</p>
+        <div className={styles.imageContainer}>
+          <Image src={homefigma} alt="homefigma" width={350} className={styles.mobileImage} />
+          <Image src={involvedfigma} alt="involvedfigma" width={350} className={styles.mobileImage} />
+        </div>
+        <p>In the end, I combined parts of these two design changes that I liked and settled on converting the existing webpage into one that was more modern, readable, and focused on simplicity of information.</p>
+        <div className={styles.imageContainer}>
+          <Image src={originalhome} alt="old" width={350} className={styles.mobileImage} />
+          <Image src={newhome} alt="new" width={350} className={styles.mobileImage} />
+        </div>
+        <div className={styles.imageContainer}>
+          <caption>original and new home page</caption>
+        </div>
+        <div className={styles.imageContainer}>
+          <Image src={originalinvolved} alt="old" width={350} className={styles.mobileImage} />
+          <Image src={newinvolved} alt="new" width={350} className={styles.mobileImage} />
+        </div>
+        <div className={styles.imageContainer}>
+          <caption>original and new involved page</caption>
+        </div>
+        <div className={styles.imageContainer}>
+          <Image src={newcorporate} alt="new" width={550} className={styles.mobileImage} />
+        </div>
+        <div className={styles.imageContainer}>
+          <caption>new corporate page</caption>
+        </div>
+        <div className={styles.imageContainer}>
+          <Image src={newoutreach} alt="new" width={550} className={styles.mobileImage} />
+        </div>
+        <div className={styles.imageContainer}>
+          <caption>new outreach page</caption>
         </div>
       </Layout>
     </>
