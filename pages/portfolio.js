@@ -16,23 +16,10 @@ export default function Home() {
         <link rel="apple-touch-icon" href="/favicon.png"/>
       </Head>
       <Layout>
-      <div className={styles.header}>
-          <Link href="/">
-            <h2 className={styles.linkH}>Sadhika Akula</h2>
-          </Link>
-          <div className={styles.icons}>
-            <a href="https://github.com/SadhikaA" className={styles.icon}>
-              <FaGithub size={30} />
-            </a>
-            <a href="https://www.linkedin.com/in/sadhika-akula/" className={styles.icon}>
-              <FaLinkedin size={30} />
-            </a>
-            <a href="mailto:sadhika.akula@berkeley.edu" className={styles.icon}>
-              <FaEnvelope size={30} />
-            </a>
-          </div>
-        </div>
-        <p className={styles.heading}>portfolio</p>
+        <a href="/" className={styles.pages}>/</a>
+        <hr></hr>
+        <h3>💻 Projects</h3>
+        <hr></hr>
         <ul>
           <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>

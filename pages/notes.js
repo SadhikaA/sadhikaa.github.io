@@ -16,25 +16,35 @@ export default function Notebook() {
       <Layout>
         <a href="/" className={styles.pages}>/</a>
         <hr></hr>
-          <h3>📓 Notes</h3>
-          <hr></hr>
-          <ul>
-            <li><a href="#hci" className={styles.contentsLink}>Human Computer Interaction</a></li>
-            <li><a href="#philos" className={styles.contentsLink}>Philosophy</a></li>
-            <li><a href="#brain" className={styles.contentsLink}>Brain, Mind, and Behavior</a></li>
-            <li><a href="#kannada" className={styles.contentsLink}>Kannada</a></li>
-            <li><a href="#telugu" className={styles.contentsLink}>Telugu</a></li>
-            <li><a href="#sanskrit" className={styles.contentsLink}>Sanskrit</a></li>
-            <li><a href="#french" className={styles.contentsLink}>French</a></li>
-          </ul>
-          <h4 id="philos">Philosophy</h4>
-          <p className={styles.contentTag}>subtitle tag</p>
-          <p>notebooks go here</p>
-          <ul>
+        <h3>📓 Writing</h3>
+        <hr></hr>
+        <h4>Notebooks</h4>
+        <p>replace with actual folder icons</p>
+        <ul>
+          <li><a href="/philosophy" className={styles.contentsLink}>Philosophy</a></li>
+          <li><a href="/finance" className={styles.contentsLink}>Finance</a></li>
+          <li><a href="/making" className={styles.contentsLink}>Making</a></li>
+          <li><a href="#brain" className={styles.contentsLink}>Brain, Mind, and Behavior</a></li>
+        </ul>
+        <h4>Blog Posts</h4>
+        <p></p>
+        <ul>
           <li>
             <p className={styles.date}>DEC 2024</p>
             <Link href="/berkeley">
               <p className={styles.linkP}>berkeley class reviews</p>
+            </Link>
+          </li>
+          <li>
+            <p className={styles.date}>MAY 2021</p>
+            <Link href="/tennis">
+              <p className={styles.linkP}>life lessons from tennis</p>
+            </Link>
+          </li>
+          <li>
+            <p className={styles.date}>OCT 2020</p>
+            <Link href="/racquets">
+              <p className={styles.linkP}>racquet review</p>
             </Link>
           </li>
         </ul>

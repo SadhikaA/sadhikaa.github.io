@@ -8,6 +8,7 @@ import coaster_AH from '../images/laser/coaster_AH.png';
 import coaster_SA from '../images/laser/coaster_SA.png';
 import coaster_VO from '../images/laser/coaster_VO.png';
 import card from '../images/laser/card.png';
+import keychain from '../images/laser/keychain.png';
 
 export default function Laser() {
   return (
@@ -32,18 +33,22 @@ export default function Laser() {
           <h4 id="coasters">Coasters</h4>
           <p>I started making coasters for my friends.</p>
           <div className={styles.imageContainer}>
-          <Image src={coaster_AH} alt="exec" width={200} className={styles.mobileImage} />
-          <Image src={coaster_VO} alt="exec" width={200} className={styles.mobileImage} />
-          <Image src={coaster_SA} alt="exec" width={200} className={styles.mobileImage} />
-        </div>
+          <Image src={coaster_AH} alt="coaster" width={200} className={styles.mobileImage} />
+          <Image src={coaster_VO} alt="coaster" width={200} className={styles.mobileImage} />
+          <Image src={coaster_SA} alt="coaster" width={200} className={styles.mobileImage} />
+          </div>
           <h4 id="name_tags">Name Tags & Business Cards</h4>
           <p>Name tags for our SWE conference, if I were to make these again, I would shorten the width. I would also make the business card out of acrylic next time.</p>
           <div className={styles.imageContainer}>
             <Image src={exec} alt="exec" width={400} className={styles.mobileImage} />
-            </div>
-            <div className={styles.imageContainer}>
-            <Image src={card} alt="exec" width={400} className={styles.mobileImage} />
-            </div>
+          </div>
+          <div className={styles.imageContainer}>
+            <Image src={card} alt="card" width={400} className={styles.mobileImage} />
+          </div>
+          <p>Keychains for SWE's mini university program:</p>
+          <div className={styles.imageContainer}>
+            <Image src={keychain} alt="keychain" width={600} className={styles.mobileImage} />
+          </div>
       </Layout>
     </>
   );
