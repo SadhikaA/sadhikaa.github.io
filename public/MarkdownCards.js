@@ -3,55 +3,98 @@ import React, { useEffect, useState } from 'react';
 // Card Component
 const Card = ({ word, description }) => (
   <div style={styles.card}>
-    {/* Image
-  {image && <img src={image} alt="Card Visual" style={styles.image} />} */}
-
-    {/* Two Parts: Word and Definition */}
     <div style={styles.content}>
       <div style={styles.wordSection}>
-        <h2 style={styles.word}>&nbsp;{word}</h2>
+        <h2 style={styles.word}><span style={styles.highlight}>{word}</span></h2>
       </div>
     </div>
-
-    {/* Description */}
-    <p style={styles.description}>{description}</p>
+    {/* Render the description with bolded words */}
+    <p style={styles.description}>{parseMarkdown(description)}</p>
   </div>
 );
 
-const MarkdownCards = () => {
+// Function to parse Markdown for bold (**word**)
+const parseMarkdown = (text) => {
+  const regex = /\*\*(.*?)\*\*/g; // Matches text between ** **
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    // Add text before the match
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    // Add the bolded text
+    parts.push(<strong key={match.index}>{match[1]}</strong>);
+    lastIndex = regex.lastIndex;
+  }
+
+  // Add the remaining text after the last match
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+};
+
+const MarkdownCards = ({ fileName }) => {
   const [cards, setCards] = useState([]);
+  const [headings, setHeadings] = useState([]);
 
   useEffect(() => {
-    // Load and process the Markdown file
     const fetchMarkdown = async () => {
-      const response = await fetch('../philoscards.md'); // Replace with your Markdown file path
-      const text = await response.text();
+      if (!fileName) return;
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) {
+          throw new Error(`Failed to load file: ${response.statusText}`);
+        }
+        const text = await response.text();
 
-      // Split by blank lines and group into pairs
-      const lines = text.trim().split('\n\n');
-      const parsedCards = lines.map((block) => {
-        const [word, ...descriptionParts] = block.split('\n');
-        return {
-          word: word.trim(),
-          description: descriptionParts.join(' ').trim(),
-        };
-      });
+        const lines = text.trim().split('\n\n');
+        const parsedCards = [];
+        const parsedHeadings = [];
 
-      setCards(parsedCards);
+        // Process each block
+        lines.forEach((block) => {
+          if (block.startsWith('####')) {
+            // Extract heading (remove #### and trim)
+            parsedHeadings.push(block.replace(/^####\s*/, '').trim());
+          } else {
+            // Process as a card
+            const [word, ...descriptionParts] = block.split('\n');
+            parsedCards.push({
+              word: word.trim(),
+              description: descriptionParts.join(' ').trim(),
+            });
+          }
+        });
+
+        setCards(parsedCards);
+        setHeadings(parsedHeadings);
+      } catch (error) {
+        console.error('Error fetching markdown file:', error);
+      }
     };
 
     fetchMarkdown();
-  }, []);
+  }, [fileName]);
 
   return (
     <div>
+      {/* Render headings */}
+      {headings.map((heading, index) => (
+        <h4 key={`heading-${index}`} id={`heading-${index}`}>{heading}</h4>
+      ))}
+
+      {/* Render cards */}
       {cards.map((card, index) => (
-        <Card key={index} word={card.word} description={card.description} />
+        <Card key={`card-${index}`} word={card.word} description={card.description} />
       ))}
     </div>
   );
 };
-
 
 const styles = {
   card: {
@@ -72,9 +115,6 @@ const styles = {
     fontWeight: '600',
     fontStyle: 'normal',
     letterSpacing: '0px',
-    padding: '2px 4px',
-    backgroundColor: '#f7f8fa',
-    borderRadius: '4px',
     color: '#222',
     marginBottom: '10px',
     marginTop: '0px',
@@ -88,15 +128,12 @@ const styles = {
     borderRadius: '8px',
     margin: '0',
   },
-  image: {
-    width: '100%',
-    height: '180px',
-    objectFit: 'cover',
-    borderRadius: '12px',
-    marginBottom: '15px',
+  highlight: {
+    color: '#000',
+    backgroundColor: '#FFFACD',
+    padding: '2px 6px',
+    borderRadius: '4px',
   },
 };
-
-
 
 export default MarkdownCards;

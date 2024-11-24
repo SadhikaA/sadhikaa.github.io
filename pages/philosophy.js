@@ -21,10 +21,9 @@ export default function Notebook() {
           <h3>🧠 Philosophy</h3>
           <hr></hr>
           <ul>
-            <li><a href="#mind" className={styles.contentsLink}>Philosophy of Mind</a></li>
+            <li><a href="#heading-0" className={styles.contentsLink}>Philosophy of Mind</a></li>
           </ul>
-          <h4 id="mind">Philosophy of Mind</h4>
-          <MarkdownCards />
+          <MarkdownCards fileName="../philoscards.md"  />
       </Layout>
     </>
   );

@@ -14,6 +14,7 @@ export default function Tennis() {
       </Head>
       <Layout>
         <a href="/" className={styles.pages}>/</a>
+        <a href="/notes" className={styles.pages}>writing</a>
         <hr></hr>
           <h3>👟 Lessons from Tennis</h3>
           <hr></hr>

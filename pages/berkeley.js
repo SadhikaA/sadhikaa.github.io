@@ -13,7 +13,7 @@ export default function Berkeley() {
             </Head>
             <Layout>
                 <a href="/" className={styles.pages}>/</a>
-        <a href="/notes" className={styles.pages}>notes</a>
+        <a href="/notes" className={styles.pages}>writing</a>
           <hr></hr>
                     <h3>🐻 Berkeley Course Reviews</h3>
                     <hr></hr>

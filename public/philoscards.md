@@ -1,3 +1,5 @@
+#### Philosophy of Mind
+
 mind-body problem/dualism
 how do our mental states and thinking create/cause/relate to our physical states
 

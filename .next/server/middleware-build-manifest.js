@@ -12,11 +12,6 @@ self.__BUILD_MANIFEST = {
     "static/chunks/main-app.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -27,15 +22,20 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/finance": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/finance.js"
+    ],
     "/notes": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/notes.js"
     ],
-    "/portfolio": [
+    "/philosophy": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/portfolio.js"
+      "static/chunks/pages/philosophy.js"
     ]
   },
   "ampFirstPages": []
