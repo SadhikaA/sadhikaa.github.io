@@ -18,7 +18,7 @@ export default function Notebook() {
         <a href="/" className={styles.pages}>/</a>
         <a href="/notes" className={styles.pages}>writing</a>
         <hr></hr>
-          <h3>🖍️ Making</h3>
+          <h3>🖍️ Fabrication</h3>
           <hr></hr>
           <ul>
             <li><a href="#heading-0" className={styles.contentsLink}>Laser Cutting</a></li>

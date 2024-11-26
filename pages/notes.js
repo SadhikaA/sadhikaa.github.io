@@ -23,7 +23,7 @@ export default function Notes() {
         <ul>
           <li><a href="/philosophy" className={styles.contentsLink}>Philosophy</a></li>
           <li><a href="/finance" className={styles.contentsLink}>Finance</a></li>
-          <li><a href="/making" className={styles.contentsLink}>Making</a></li>
+          <li><a href="/making" className={styles.contentsLink}>Fabrication</a></li>
           <li><a href="/machinelearning" className={styles.contentsLink}>Machine Learning</a></li>
         </ul>
         <h4>Blog Posts</h4>
