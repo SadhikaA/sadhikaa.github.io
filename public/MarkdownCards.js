@@ -13,9 +13,9 @@ const Card = ({ word, description }) => (
   </div>
 );
 
-// Function to parse Markdown for bold (**word**)
+// Function to parse Markdown for bold (**word**) and italic (*word*)
 const parseMarkdown = (text) => {
-  const regex = /\*\*(.*?)\*\*/g; // Matches text between ** **
+  const regex = /(\*\*(.*?)\*\*|\*(.*?)\*)/g; // Matches **bold** or *italic*
   const parts = [];
   let lastIndex = 0;
   let match;
@@ -25,8 +25,14 @@ const parseMarkdown = (text) => {
     if (match.index > lastIndex) {
       parts.push(text.slice(lastIndex, match.index));
     }
-    // Add the bolded text
-    parts.push(<strong key={match.index}>{match[1]}</strong>);
+
+    // Check whether it's bold or italic
+    if (match[1].startsWith('**')) {
+      parts.push(<strong key={match.index}>{match[2]}</strong>);
+    } else if (match[1].startsWith('*')) {
+      parts.push(<em key={match.index}>{match[3]}</em>);
+    }
+
     lastIndex = regex.lastIndex;
   }
 
@@ -98,7 +104,7 @@ const MarkdownCards = ({ fileName }) => {
 
 const styles = {
   card: {
-    width: '300px',
+    width: '50vw',
     padding: '20px',
     borderRadius: '10px',
     borderWidth: '2px',

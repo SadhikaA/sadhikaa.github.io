@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/notes": "pages/notes.js",
-  "/philosophy": "pages/philosophy.js",
-  "/finance": "pages/finance.js"
+  "/making": "pages/making.js"
 }

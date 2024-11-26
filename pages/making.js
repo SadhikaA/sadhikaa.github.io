@@ -21,10 +21,10 @@ export default function Notebook() {
           <h3>🖍️ Making</h3>
           <hr></hr>
           <ul>
-            <li><a href="#retire" className={styles.contentsLink}>Retirement Accounts</a></li>
+            <li><a href="#heading-0" className={styles.contentsLink}>Laser Cutting</a></li>
+            <li><a href="#heading-1" className={styles.contentsLink}>3D Printing</a></li>
           </ul>
-          <h4 id="retire">Retirement Accounts</h4>
-          <MarkdownCards fileName="../financecards.md" />
+          <MarkdownCards fileName="../makingcards.md" />
       </Layout>
     </>
   );
