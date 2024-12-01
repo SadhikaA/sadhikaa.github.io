@@ -68,6 +68,11 @@ export default function Berkeley() {
                                 <li><a href="#philos3" className={styles.contentsLink}>PHILOS 3</a></li>
                                 <li><a href="#ugba135" className={styles.contentsLink}>UGBA 135</a></li>
                             </ul>
+                            <li><a href="#sem7" className={styles.contentsLink}>Semester 8 - Spring 2024</a></li>
+                            <ul style={{ paddingLeft: '20px' }}>
+                                <li><a href="#cs160" className={styles.contentsLink}>CS 160</a></li>
+                                <li><a href="#neuc61" className={styles.contentsLink}>NEU C61</a></li>
+                            </ul>
                         </ul>
                     <hr></hr>
                     <h3 id="sem1">Semester 1 - Fall 2021</h3>
@@ -128,19 +133,17 @@ export default function Berkeley() {
                     <p>This class covered aspects of engineering and how it influences environment and society, and whether or not it exacerbates existing issues. The class challenged ideas of growth, progress, capitalism, community, and made me reconcile with the impacts of being an engineer and engineering projects.</p>
                     <h3 id="sem7">Semester 7 - Fall 2024</h3>
                     <h4 id="cs189">COMPSCI 189: Machine Learning</h4>
-                    <p></p>
+                    <p>This class covered various machine learning algorithms, implementing them in code, and in the homeworks. It reinforced many of the ideas from EECS 127 and CS 188.</p>
                     <h4 id="infoc262">INFO C262: Theory and Practice of Tangible User Interfaces</h4>
-                    <p></p>
+                    <p>This class covered working with many electronics to build small input/output interfaces based on things like touch, sound, force, etc. Throughout the class, we learnt about various tangible user projects that existed in public. My final project was creating a musical lean-on bench and I enjoyed working on it. Overall, a great class in HCI and understanding electronics.</p>
                     <h4 id="philos3">PHILOS 3: Philosophy of Mind</h4>
-                    <p></p>
+                    <p>This was my first philosophy class, and I enjoyed exploring the wide range of concepts we covered, including qualia, consciousness, the mind-brain problem, and discussions of well-known philosophical papers on these topics. The open-ended nature of philosophy and the absence of definitive answers to existential questions made it challenging to approach from an engineering mindset. However, I appreciated the thought-provoking discussions and scenarios we delved into.</p>
                     <h4 id="ugba135">UGBA 135: Personal Finance</h4>
-                    <p></p>
+                    <p>This was a useful class to take as a senior and delved into the how-tos of being a financially stable adult. I learnt a lot about many different topics within personal finance.</p>
                     <h3 id="sem8">Semester 8 - Spring 2024</h3>
-                    <h4 id="cs189">COMPSCI 160: User Interface & Design</h4>
+                    <h4 id="cs160">COMPSCI 160: User Interface & Design</h4>
                     <p></p>
-                    <h4 id="infoc262">NEU C61: Brain, Mind, and Behavior</h4>
-                    <p></p>
-                    <h4 id="philos3">PHYSED 1: Boxing</h4>
+                    <h4 id="neuc61">NEU C61: Brain, Mind, and Behavior</h4>
                     <p></p>
             </Layout>
         </>

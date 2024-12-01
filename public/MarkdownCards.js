@@ -12,9 +12,9 @@ const Card = ({ word, description }) => (
   </div>
 );
 
-// Function to parse Markdown for bold (**word**) and italic (*word*)
+// Function to parse Markdown for bold (**word**), italic (*word*), and code (`word`)
 const parseMarkdown = (text) => {
-  const regex = /(\*\*(.*?)\*\*|\*(.*?)\*)/g;
+  const regex = /(\*\*(.*?)\*\*|\*(.*?)\*|`(.*?)`)/g;
   const parts = [];
   let lastIndex = 0;
   let match;
@@ -27,6 +27,8 @@ const parseMarkdown = (text) => {
       parts.push(<strong key={match.index}>{match[2]}</strong>);
     } else if (match[1].startsWith('*')) {
       parts.push(<em key={match.index}>{match[3]}</em>);
+    } else if (match[1].startsWith('`')) {
+      parts.push(<code key={match.index} style={styles.inlineCode}>{match[4]}</code>);
     }
     lastIndex = regex.lastIndex;
   }
@@ -134,6 +136,14 @@ const styles = {
     backgroundColor: '#FFFACD',
     padding: '2px 6px',
     borderRadius: '4px',
+  },
+  inlineCode: {
+    padding: '3px 4px',
+    borderRadius: '4px',
+    backgroundColor: '#f8d7da',
+    fontFamily: 'JetBrains Mono, monospace',
+    fontSize: '0.9em',
+    color: '#d6336c',
   },
 };
 

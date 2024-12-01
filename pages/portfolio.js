@@ -21,13 +21,13 @@ export default function Home() {
         <h3>💻 Projects</h3>
         <hr></hr>
         <ul>
-          <li>
+          {/* <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/berkeley">
               <p className={styles.linkP}>tangible user interface final project</p>
             </Link>
-          </li>
+          </li> */}
           <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
@@ -35,12 +35,12 @@ export default function Home() {
               <p className={styles.linkP}>UC Berkeley SWE design projects</p>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/sweweb">
               <p className={styles.linkP}>chai animation</p>
             </Link>
-          </li>
+          </li> */}
           <li>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
             <Link href="/printing">
@@ -59,12 +59,12 @@ export default function Home() {
               <p className={styles.linkP}>CS 184 graphics assignments</p>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <p className={`${styles.tag} ${styles.tagiOS}`}>iOS</p>
             <Link href="/voyager">
               <p className={styles.linkP}>AR navigation and event app</p>
             </Link>
-          </li>
+          </li> */}
           <li>
             <p className={`${styles.tag} ${styles.tagGraphics}`}>graphics</p>
             <Link href="/ucbugg">

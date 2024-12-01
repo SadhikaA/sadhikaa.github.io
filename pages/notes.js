@@ -19,13 +19,13 @@ export default function Notes() {
         <h3>📓 Writing</h3>
         <hr></hr>
         <h4>Notebooks</h4>
-        <p>replace with actual folder icons</p>
+        {/* <p>replace with actual folder icons</p>
         <ul>
           <li><a href="/philosophy" className={styles.contentsLink}>Philosophy</a></li>
           <li><a href="/finance" className={styles.contentsLink}>Finance</a></li>
           <li><a href="/making" className={styles.contentsLink}>Fabrication</a></li>
           <li><a href="/machinelearning" className={styles.contentsLink}>Machine Learning</a></li>
-        </ul>
+        </ul> */}
         <h4>Blog Posts</h4>
         <p></p>
         <ul>

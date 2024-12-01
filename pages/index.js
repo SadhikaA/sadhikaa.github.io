@@ -34,6 +34,8 @@ export default function Home() {
         </div>
       <p className={styles.heading}></p>
         <p>Hi! I'm a senior at UC Berkeley studying Electrical Engineering and Computer Science. I'm interested in the intersection of human-computer interaction, computer graphics, and future hardware. Currently, I'm taking classes in tangible interfaces, machine learning, and philosophy. I also enjoy reading, playing tennis, and learning new languages. This website is my space to document projects and share what I've built or are currently working on.</p>
+        <a href="/notes" className={styles.pages}>/writing</a>
+        <a href="/portfolio" className={styles.pages}>/portfolio</a>
         {/* <p>Hi! I'm a software engineer at Apple working on the Vision Pro. Previously, I graduated from UC Berkeley and studied Electrical Engineering and Computer Science. In my spare time, I can be found reading, playing tennis, attempting latte art, and learning new languages. This website is my space to document projects and share what I've built.</p> */}
         {/* <p className={styles.heading}>portfolio</p> */}
         {/* <Link href="/notes">
