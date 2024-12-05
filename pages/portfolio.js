@@ -21,13 +21,13 @@ export default function Home() {
         <h3>💻 Projects</h3>
         <hr></hr>
         <ul>
-          {/* <li>
+          <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagHardware}`}>hardware</p>
-            <Link href="/berkeley">
+            <Link href="/tui">
               <p className={styles.linkP}>tangible user interface final project</p>
             </Link>
-          </li> */}
+          </li>
           <li>
             <p className={`${styles.tag} ${styles.tagDesign}`}>design</p>
             <p className={`${styles.tag} ${styles.tagWeb}`}>web</p>
