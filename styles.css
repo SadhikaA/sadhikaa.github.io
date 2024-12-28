@@ -2,13 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-
-@font-face {
-    font-family: 'Commit Mono';
-    src: url('/sadhikaa.github.io/fonts/commitmono-400-regular-webfont.woff') format('woff'), 
-            url('/sadhikaa.github.io/fonts/commitmono-400-regular-webfont.woff2') format('woff2');
-}
-
 .container {
     display: grid;
     margin: 8vw 28vw;
@@ -43,21 +36,21 @@ p {
 }
 
 h1 {
-    font-family: 'Commit Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 25px;
     font-weight: 400;
     margin-bottom: 0px;
 }
 
 h2 {
-    font-family: 'Commit Mono', monospace;
+    font-family:  'JetBrains Mono', monospace;
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 0px;
 }
 
 .pages {
-    font-family: 'Commit Mono';
+    font-family:  'JetBrains Mono', monospace;
     font-size: 12px;
     color: black;
     font-weight: 500;
@@ -95,7 +88,7 @@ i {
 }
 
 .date {
-    font-family: 'Commit Mono', monospace;
+    font-family:  'JetBrains Mono', monospace;
     padding: 4px 7px;
     font-size: 12px;
     letter-spacing: 0.3px;
