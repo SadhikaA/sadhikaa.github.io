@@ -5,16 +5,13 @@
 
 @font-face {
     font-family: 'Commit Mono';
-    src: url('/fonts/CommitMono-400-Regular.otf') format('opentype');
+    src: url('/sadhikaa.github.io/fonts/CommitMono-400-Regular.otf') format('opentype');
 }
 
 .container {
     display: grid;
     margin: 8vw 28vw;
     padding: 20px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.3px;
-    line-height: 140%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -69,7 +66,6 @@ h2 {
     text-decoration: none;
     display: inline-block;
     text-align: center;
-    justify-content: center;
     align-items: center;
 }
 
@@ -115,8 +111,21 @@ hr {
     border-top: 3px solid #eaeaea;
 }
 
-.grid {
+.writing-grid {
     display: grid;
     grid-template-columns: 80px 300px; 
-    gap: 50px;
+    gap: 20px;
+    align-items: center;
+}
+
+.linkW {
+    padding-left: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 140%;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: black;
 }
