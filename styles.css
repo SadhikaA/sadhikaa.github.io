@@ -1,0 +1,122 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('/fonts/CommitMono-400-Regular.otf') format('opentype');
+}
+
+.container {
+    display: grid;
+    margin: 8vw 28vw;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+    line-height: 140%;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        margin: 4vw 4vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 2vw;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 2vw;
+        padding: 10px;
+    }
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 140%;
+}
+
+h1 {
+    font-family: 'Commit Mono', monospace;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-family: 'Commit Mono', monospace;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.pages {
+    font-family: 'Commit Mono';
+    font-size: 12px;
+    color: black;
+    font-weight: 500;
+    background-color: rgb(239, 239, 239);
+    padding: 4px 7px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.pages:hover {
+    background-color: #594bf2;
+    color: white;
+    i {
+        color: white;
+    }
+}
+
+.icons-grid {
+    display: grid;
+    grid-template-columns: 120px 120px 120px 50px 50px 50px; 
+    gap: 10px;
+}
+
+i {
+    font-size: 20px;
+    line-height: none;
+    color: black; 
+}
+
+.fas, .fab, .fa {
+    line-height: normal !important;
+}
+
+.date {
+    font-family: 'Commit Mono', monospace;
+    padding: 4px 7px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 120%;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 7px;
+    background-color: rgb(221, 221, 221);
+}
+
+hr {
+    width: 100%;  
+    border: none;
+    border-top: 3px solid #eaeaea;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 80px 300px; 
+    gap: 50px;
+}
