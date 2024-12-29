@@ -49,6 +49,25 @@ h2 {
     margin-bottom: 0px;
 }
 
+h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(66, 66, 66);
+    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
 .pages {
     font-family:  'JetBrains Mono', monospace;
     font-size: 12px;
@@ -159,4 +178,22 @@ li {
 li:hover {  
     cursor: pointer;
 }
-  
+
+.links {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: #654dfc;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 140%;
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: 60px 80px 300px; 
+    gap: 10px;
+    align-items: center;
+}
