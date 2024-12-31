@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Sadhika Akula</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <meta name="description" content="personal website of Sadhika Akula" />
+    <meta name="environment" content="url=f1_racetrack.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/icons/" sizes="any"/>
+    <link rel="favicon" href="/icons/favicon.png"/>
+    <link rel="apple-touch-icon" href="/favicon.png"/>
+</head>
+<body class="container">
+    <div class="header-proj-grid">
+        <a href="../index.html" class="pages">/home</a>
+        <a href="../projects.html" class="pages">/projects</a>
+    </div>
+    <h2>🧭 Berkeley ARscape</h2>
+    <div class="grid">
+        <p class="contentTag">SwiftUI</p>
+        <p class="contentTag">MapKit</p>
+        <p class="contentTag">ARKit</p>
+        <p class="contentTag">RealityKit</p>
+        <p class="contentTag">Spline</p>
+        <a class="links" href="">Github</a>
+    </div>
+    <hr></hr>
+    <ul>
+        <li><a href="#goal" class="tocLink">Goal</a></li>
+        <li><a href="#map" class="tocLink">MapKit</a></li>
+        <li><a href="#spline" class="tocLink">Spline</a></li>
+        <li><a href="#ar" class="tocLink">ARKit & Geo Anchors</a></li>
+        <li><a href="#results" class="tocLink">Results</a></li>
+    </ul>
+    <hr></hr>
+    <h3 id="goal">Goal</h3>
+    <p>My goal was to create an app that could help people find events on campus when they were already there. A quick look up with the camera could help you see events going on that day and even show you routes. I aimed to use AR to highlight a path to follow and then a marker displayed outside the building to highlight what event was going on. In the long term, I also wanted to add a feature to track attendance using the AR marker as well.</p>
+    <h3 id="map">MapKit</h3>
+    <p>The first step was designing the map and allowing users to add event. I created buttons for these actions, and limited the search area for the location of an event to Berkeley in order to make sure that I didn't show too many results.</p>
+    <div class="images">
+        <img src="../images/voyager/map.png" class="proj-image" style="width: 50%"> 
+        <p class="caption">add events/see events</p>   
+    </div>
+    <h3 id="spline">Spline</h3>
+    <p>I designed these AR markers in Spline, to add a unique touch to advertising of events. I added some more common Berkeley events as designs. The goal is for these AR markers to be displayed next to the location of the event, allowing for users to quickly see what's going on nearby.</p>
+    <div class="images">
+        <img src="../images/voyager/markers.png" class="proj-image" style="width: 80%"> 
+        <p class="caption">sample marker tags</p>   
+    </div>
+    <h3 id="ar">ARKit & Geo Anchors</h3>
+    <p>First, I had to check if geographical anchors were supported for Berkeley, as there are a handful of cities across the world where they are supported. Luckily, there are many cities and counties in California which have been mapped by LiDAR and I was able to pass the first check.</p>
+    <p>I then added these markers as location anchors to the specific places where an event was happening. However, because Spline didn't convert to USDZ format for free, I used existing USDZ files in Reality Composer Pro.</p>
+    <h3 id="results">Results</h3>
+    <p>These were the final screens from the app, which include placing an event and using it during the daylight to see the AR anchor displayed at the location.</p>
+    <div class="image-row">
+        <img src="../images/voyager/cory.png" class="proj-image" style="width: 33%">
+        <img src="../images/voyager/events.png" class="proj-image" style="width: 33%"> 
+        <img src="../images/voyager/arview.png" class="proj-image" style="width: 33%">
+    </div>
+</body>
+</html>
