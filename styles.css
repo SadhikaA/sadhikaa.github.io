@@ -2,18 +2,20 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
+* {
+  box-sizing: border-box;
+}
+
 .container {
   display: grid;
   margin: 6vw 28vw;
   background-color: #fafafa;
+  padding: 15px;
 }
 
 @media screen and (max-width: 1024px) {
   .container {
-    margin: 4vw 4vw;
-  }
-  .project-table {
-    width: 80vw;
+    margin: 4vw;
   }
 }
 
@@ -22,18 +24,13 @@
     margin: 2vw;
     padding: 15px;
   }
-  .project-table {
-    width: 200px;
-  }
 }
 
 @media screen and (max-width: 480px) {
   .container {
-    margin: 2vw;
-    padding: 10px;
-  }
-  .project-table {
-    width: 120vw;
+    max-width: 100%;
+    padding: 15px;
+    margin: auto; /* Center the container */
   }
 }
 
@@ -243,15 +240,21 @@ caption {
 }
 
 .project-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .project-container {
+    grid-template-columns: 1fr;
   }
+}
 
 .project-table {
   width: 100%;
   max-width: 600px;
-  border:rgb(216, 216, 216) solid 2px;
+  border: rgb(216, 216, 216) solid 2px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
@@ -274,8 +277,8 @@ caption {
   object-fit: cover;
 }
 
-.project-table:hover  {
-    transform: scale(1.01);
+.project-table:hover {
+  transform: scale(1.01);
 }
 
 .project-info {
@@ -283,7 +286,7 @@ caption {
 }
 
 .project-title {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -304,7 +307,7 @@ caption {
 }
 
 .tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.3px;
   line-height: 120%;
@@ -316,48 +319,48 @@ caption {
 }
 
 .tagGraphics {
-    background-color: rgb(139, 126, 200);
-    /* background-color: #974aa5; */
+  background-color: rgb(139, 126, 200);
+  /* background-color: #974aa5; */
 }
 
 .tagHardware {
-    background-color: rgb(209, 77, 65);
-    /* background-color: #2196F3; */
+  background-color: rgb(209, 77, 65);
+  /* background-color: #2196F3; */
 }
 
 .tagDesign {
-    background-color: rgb(208, 162, 21);
-    /* background-color: #FF6F00; */
+  background-color: rgb(208, 162, 21);
+  /* background-color: #FF6F00; */
 }
 
 .tagWeb {
-    background-color: rgb(58, 169, 159);
-    /* background-color: #4CAF50; */
+  background-color: rgb(58, 169, 159);
+  /* background-color: #4CAF50; */
 }
 
 .tagiOS {
-    background-color: rgb(67, 133, 190);
-    /* background-color: #D53D4F; */
+  background-color: rgb(67, 133, 190);
+  /* background-color: #D53D4F; */
 }
 
 .tagWriting {
-    background-color: rgb(135, 154, 57);
-    /* background-color: #3D52D5; */
+  background-color: rgb(135, 154, 57);
+  /* background-color: #3D52D5; */
 }
 
 .tagMLAI {
-    background-color: rgb(206, 93, 151);
-    /* background-color: #b27e06; */
+  background-color: rgb(206, 93, 151);
+  /* background-color: #b27e06; */
 }
 
 .expand-arrow {
-    transform: rotate(45deg);
-    text-decoration: none;
-    margin-left: 2px;
-    font-size: 16px;
+  transform: rotate(45deg);
+  text-decoration: none;
+  margin-left: 2px;
+  font-size: 16px;
 }
 
 .project {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
