@@ -17,24 +17,105 @@
     <h2>🚍 Nature Beats: An Urban Space Experience</h2>
     <hr></hr>
     <ul>
-        <li><a href="#sem6" class="tocLink">Semester 6 - Spring 2024</a></li>
+        <li><a href="#abstract" class="tocLink">Abstract</a></li>
+        <li><a href="#intro" class="tocLink">Introduction</a></li>
+        <li><a href="#related" class="tocLink">Related Work</a></li>
+        <li><a href="#exp" class="tocLink">Participant Experiences</a></li>
+        <li><a href="#prototypes" class="tocLink">Prototypes & Ideation</a></li>
         <ul style="padding-left: 20px;">
-            <li><a href="#cs162" class="tocLink">CS 162</a></li>
-            <li><a href="#cs184" class="tocLink">CS 184</a></li>
-            <li><a href="#engin157ac" class="tocLink">ENGIN 157AC</a></li>
+            <li><a href="#projector" class="tocLink">Projector</a></li>
+            <li><a href="#LED" class="tocLink">LED Matrix</a></li>
+            <li><a href="#soundscape" class="tocLink">Soundscape w/ Pressure Sensors</a></li>
         </ul>
-        <li><a href="#sem7" class="tocLink">Semester 7 - Fall 2024</a></li>
-        <ul style="padding-left: 20px;">
-            <li><a href="#cs189" class="tocLink">CS 189</a></li>
-            <li><a href="#infoc262" class="tocLink">INFO C262</a></li>
-            <li><a href="#philos3" class="tocLink">PHILOS 3</a></li>
-            <li><a href="#ugba135" class="tocLink">UGBA 135</a></li>
-        </ul>
+        <li><a href="details" class="tocLink">Project Details</a></li>
+        <li><a href="conclusions" class="tocLink">Conclusions & Future Work</a></li>
+        <li><a href="ack" class="tocLink">Acknowledgements</a></li>
+        <li><a href="ref" class="tocLink">References</a></li>
     </ul>
     <hr></hr>
-    <h3 id="sem1">Semester 1 - Fall 2021</h3>
-    <h4 id="cs61a">CS 61A</h4>
-    <p>One of the largest and most discussed courses at Berkeley, CS 61A challenged me as a freshman and I faced a steep learning curve even with prior coding experience. We covered three different programming languages (Python, SQL, Scheme) and multiple topics (abstraction, recursion, higher order functions, basic data structures). The key to the class was actively engaging with the information from labs, discussions, projects, and homeworks which provided varying levels of difficulty to step from one to the other to learn. The projects, much like my future CS classes, were my favorite part of the class. We built an automated typing software, Scheme interpreter, and various games.</p>
-    <h4 id="eecs16a">EECS 16A: Designing Information Systems and Devices I</h4>
+    <h3 id="abstract">Abstract</h3>
+    <p></p>
+    <h3 id="intro">Introduction</h3>
+    <p></p>
+    <h3 id="related">Related Work</h3>
+    <p>This work was inspired by various public space projects that include the <a href="https://natashasharma.co/the-wait-time-project">Wait in Time</a> project, which was a similar display at bus stop locations that allowed familiar strangers to interact with each other. We were also inspired by various musical stairs projects across the world that would allow for interaction with sound that wasn't expected and was created by the people themselves, which is mirrored in our interactive bench. Our projection experiments were inspired by Sony explorations in awakening the senses in a home environment. We translated this into using nature sounds for our bus stop rather than other sounds in order to create the nature soundscape that creates a more relaxing environment and does not increase sound pollution to an already loud environment. Finally, our LED explorations were inspired by the awe-inspiring Tokyo teamLab installations that created immersive environments around participants. We aimed to replicate something similar at bus stops, potentially serving as a subtle backdrop in a public space. 
+    </p>
+    <h3 id="exp">Participant Experiences</h3>
+    <p>The interactive bench offers participants an experience of sound generation through tactile engagement. Participants can interact with the surface using various bodily contact methods, primarily through hand touches and body positioning. The bench's four distinct sections, demarcated by unique felt patterns, provide clear visual and textural guidance for interaction. Participants can apply pressure using open palms, fingertips, or by leaning their body weight onto different areas of the surface.
+    </p>
+    <p>When participants make contact with the bench, underlying pressure sensors translate physical force into audio output and ambient lighting. Each section is mapped to a specific natural sound—wind chimes, creek, frog, and bird—which are triggered and modulated through the MAX MSP software and ambient lighting that illuminate colors of the respective section. The sound's volume corresponds directly to the pressure applied. A gentle touch might produce a soft, whisper-like sound, while a firmer press generates a more intense auditory expression. 
+    </p>
+    <div class="images">
+        <img src="../images/tui/press.JPG" class="proj-image" style="width: 70%"> 
+        <p class="caption">One participant using both their hands to trigger multiple sounds</p>   
+    </div>
+    <p>The design encourages both individual and collaborative interactions. Multiple participants can simultaneously engage with different sections of the bench, creating complex, layered soundscapes. Participants can explore various interaction techniques, such as rhythmic tapping, sustained pressure, or coordinated touches that blend multiple natural sounds into a unique auditory composition.
+    </p>
+    <p>The bench's design prioritizes an intuitive, seamless participant experience where the technological mechanisms remain invisible. The pressure-sensitive surface is mounted on a cardboard base with 3M circular tape acting as a spring. This approach allows participants to focus on the sensory experience of creating natural sounds. 
+    </p>
+    <h3 id="prototypes">Prototypes & Ideation</h3>
+    <p>Nature Beats underwent multiple iterations, continuous development, and extensive brainstorming sessions to take shape into its current design.
+    </p>
+    <h4 id="projector">Projector</h4>
+    <p>The initial iteration of this project, titled Bus, Stop, and Go, featured an interactive mat that users could step on to produce various sounds. A projector mounted on the bus stop sign would create a ripple effect around each person's foot as they interacted with the mat to play music. The idea was that people would need to collaborate with each other to produce more intricate music. However, before building any physical prototypes, feedback from our classmates and professor encouraged us to explore a more organic medium for interaction beyond a ground mat. This feedback inspired the development of our next concept, which incorporated an LED matrix.
+    </p>
+    <h4 id="LED">LED Matrix</h4>
+    <p>Going beyond a ground mat, we envisioned transforming the entire bus shelter into an interactive user experience. This iteration, named Bus, Stop, and Reflect, incorporated a grid of LEDs on the walls paired with mirrors to amplify and reflect the lights, creating captivating visual effects. Gesture sensors embedded within the LED matrices were designed to enable users to trigger dynamic lighting patterns and play nature-inspired sounds. While we imagined this iteration as a calming nature refuge, the reality of our first prototype fell short of that vision.
+    </p>
+    <div class="images">
+        <img src="../images/tui/matrix.png" class="proj-image" style="width: 50%"> 
+        <p class="caption">Prototype of LED matrix</p>   
+    </div>
+    <p>The lights in our prototype were harsh and intrusive, failing to achieve the calming effect we had envisioned. Feedback from our professor highlighted a conflict between our goals and execution: while we aimed to create a 'nature refuge,' the glaring lights instead conveyed a cold and overly technological atmosphere. This constructive feedback prompted us to reimagine and refine our concept, leading to the final iteration of our project.
+    </p>
+    <h4 id="soundscape">Soundscape w/ Pressure Sensors</h4>
+    <p>Our final iteration, Nature Beats, combined the pressure-triggered sounds from the first iteration with the LED elements from the second, while striving to create a more organic and engaging interaction that moved beyond simply stepping on a mat.
+    </p>
+    <p>Many bus stops feature lean-on or standing benches, offering a place for people to rest while waiting for their bus. Drawing inspiration from this concept, we designed an interactive lean-on bench for Nature Beats. Sitting on different spots triggers various nature sounds and subtle lighting effects. Additionally, the more people who sit on the bench, the more sounds are activated, creating a harmonious blend of natural melodies.
+    </p>
+    <p>To build this project, we initially planned to use capacitive sensors made with foil and wires. However, this approach proved unreliable, as the sensors often failed to actuate when triggered or activated unintentionally when no one was sitting on the bench. 
+    </p>
+    <div class="images">
+        <img src="../images/tui/foil.png" class="proj-image" style="width: 50%"> 
+        <p class="caption">Beneath the seats featured foil and thick 3M adhesive tape to act as a separator. Unfortunately, this approach did not work.</p>   
+    </div>
+    <p>After encountering these challenges, we pivoted to using force-sensitive resistors (FSRs) combined with a small cutout of 3M tape placed directly on top of each sensor. This design concentrated the force from sitting into the sensor area, resulting in consistent performance without any false positives or false negatives.
+    </p>
+    <p>The input from the FSRs was processed by Max, a music software that played sounds based on the amount of force detected. Simultaneously, the input was integrated with our code controlling the LED lights. When someone sat on a seat, the corresponding lights along that section illuminated, providing both visual and auditory feedback. This dual sensory design ensured that Nature Beats was inclusive and accessible to a wider range of users.
+    </p>
+    <div class="images">
+        <img src="../images/tui/max.JPG" class="proj-image" style="width: 60%"> 
+        <p class="caption">Max interface that controlled audio output based on pressure sensors</p>   
+    </div>
+    <h3 id="details">Project Details</h3>
+    <p>Nature Beats is an interactive surface designed to transform mundane public spaces into dynamic, engaging environments that foster social interaction and sensory reconnection. Rooted in urban social dynamics, the project addresses the pervasive challenge of social isolation by reimagining everyday infrastructure as a platform for playful, multisensory experiences. By defamiliarizing familiar surfaces like bus benches, Nature Beats introduces an unexpected and inviting intervention that encourages spontaneous social engagement. 
+    </p>
+    <p>The design emerges from an exploration of urban environmental challenges, particularly the emotional and sensory disconnect experienced in contemporary public spaces. Recognizing the increasing disconnection from natural stimuli in urban landscapes, the project aims to reintroduce elements of natural interaction through a vibrant interface. The surface is crafted with a deliberately playful aesthetic, featuring a rich palette of colored felt tiles. 
+    </p>
+    <p>Embedded pressure sensors detect nuanced touch and body movements, translating these interactions into audio-visual output. When participants engage with the surface—through gentle touches, firm presses, or full-body contact—the bench responds by generating natural sounds and subtle lighting effects. The interactive hardware serves multiple design objectives. Pressure sensors capture a range of touch, and if a reading above a threshold is detected, the output effects are activated. It is also possible for multiple seats to be activated simultaneously, allowing multiple users to create more complex melodies together.  
+    </p>
+    <div class="images">
+        <img src="../images/tui/lights.JPG" class="proj-image" style="width: 60%"> 
+        <p class="caption">LED lights light up behind each bench seat</p>   
+    </div>
+    <p>By challenging the traditional passive nature of public infrastructure, Nature Beats proposes a new model of urban interaction. The project reimagines public spaces as platforms for playful, sensory engagement, offering a counterpoint to the often sterile and isolating design of urban environments. The installation creates a small but significant intervention that encourages a momentary escape from the urban routine.
+    </p>
+    <h3 id="conclusions">Conclusions & Future Work</h3>
+    <p>After showcasing Nature Beats to our class, our team gained valuable insights on how users initially perceive and interact with the bench without any prior knowledge, as well as the features that encourage or discourage specific interactions. A common observation was that many participants hesitated to sit on the bench for two primary reasons: they did not immediately recognize it as a bench, and they felt it was too aesthetically pleasing to sit on. We realized that lean-on benches are more prevalent in specific regions of the United States, such as New York, and in other parts of the world, including Europe and Asia. Interestingly, this influenced how participants perceived Nature Beats. U.S. students, particularly those unfamiliar with lean-on bench designs, were more likely to struggle with identifying it as a bench, whereas international students demonstrated a higher rate of recognition due to their familiarity with similar designs. Additionally, the soft, colorful felt elements on the bench invited people to touch the seats with their hands but inadvertently discouraged them from sitting on it.
+    </p>
+    <p>Initially, the bench featured patches depicting the sound associated with each seat, such as a bird patch indicating bird calls. These visual cues made it relatively clear to users what to expect and where to put pressure on the seat. However, when we removed the patches to test a more exploratory interaction, users began touching all the colored squares expecting different sounds, often receiving no sound at all. The division of each seat into nine sections unintentionally created confusion, leading users to believe each section would produce distinct notes and not knowing which section actually did produce sound.
+    </p>
+    <p>Furthermore, we received direct feedback from participants that the bright lights and loud sounds at night could make women feel uncomfortable, as it could attract unwanted attention. This is a significant consideration, especially in cities like Berkeley, where safety concerns are prevalent, and it highlights an aspect we had not initially accounted for during the design process.
+    </p>
+    <p>In light of these observations and feedback, our future work will focus on refining Nature Beats to more closely resemble a traditional lean-on bench, without the colorful patches or visual indicators. This would encourage users to sit on the bench, creating an element of surprise when it lights up and plays sounds. This approach would also foster exploration and curiosity, as it would not be clear which seat created what sound. To address nighttime safety concerns, the bench could be programmed to function like a regular bench after dark, avoiding bright lights or loud sounds that could draw unwanted attention.
+    </p>
+    <h3 id="ack">Acknowledgements</h3>
+    <p>We would like to express our gratitude to Professor Kimiko Ryokai and our graduate student instructor Vivian Chan for their invaluable guidance and insightful feedback throughout the development of our project. Their continuous support and thoughtful advice were instrumental in shaping the evolution of Nature Beats, and we are incredibly proud of the final outcome.</p>
+    <p>We would also like to thank our classmates for their valuable feedback and the data they provided through their interactions with Nature Beats. Their engagement and constructive input played a key role in refining our ideas and enhancing the overall user experience.</p>
+    <p class="caption">Built this with my team from class, shoutout Allison, Karis, and Ankur!</p>   
+    <h3 id="ref">References</h3>
+    <p>[1] Sharma, Natasha. The Wait Time Project. Natasha Sharma, https://natashasharma.co/the-wait-time-project. Accessed 13 Dec. 2024.</p>
+    <p>[2] Sony Design. Hidden Senses. Sony Corporation, https://www.sony.com/en/SonyInfo/design/stories/hidden_senses/. Accessed 13 Dec. 2024.</p>
+    <p>[3] teamLab. teamLab Planets TOKYO. teamLab, https://www.teamlab.art/e/tokyo/. Accessed 13 Dec. 2024.</p>
 </body>
 </html>

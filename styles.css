@@ -1,6 +1,25 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
 
 .container {
   display: grid;
@@ -46,21 +65,24 @@ h1 {
 }
 
 h2 {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.3px;
+  line-height: 140%;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 0px;
   margin-top: 28px;
 }
 
 h3 {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   color: rgb(66, 66, 66);
   letter-spacing: 0.4px;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 h4 {
@@ -119,9 +141,13 @@ i {
   letter-spacing: 0.3px;
   font-weight: 500;
   text-decoration: none;
-  border-radius: 7px;
-  color: white;
-  background-color: rgb(82, 82, 82);
+  background-color: #ede9ff;
+  color: #3e2c8f;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #d3c8ff;
 }
 
 hr {
@@ -212,15 +238,6 @@ li:hover {
     align-items: center;
   }
 
-.imageContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
-  border-radius: 10px;
-  justify-items: center;
-}
-
 code {
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
@@ -234,18 +251,25 @@ code {
   display: inline-block;
 }
 
-caption {
+.caption {
   font-family: "Inter", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.3px;
   line-height: 130%;
-  color: #616161;
+  background-color: #ede9ff;
+  color: #3e2c8f;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #d3c8ff;
 }
 
 .project-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 25px;
 }
 
 @media (max-width: 768px) {
@@ -261,7 +285,7 @@ caption {
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  margin: 10px auto;
+  margin: 15px auto;
   font-family: "Inter", sans-serif;
   position: relative;
   transition: transform 0.3s ease;
@@ -282,6 +306,7 @@ caption {
 
 .project-table:hover {
   transform: scale(1.01);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .project-info {
@@ -290,6 +315,7 @@ caption {
 
 .project-title {
   font-family: "Inter", sans-serif;
+  font-style: normal;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -366,4 +392,21 @@ caption {
 .project {
   text-decoration: none;
   color: black;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.proj-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
 }
