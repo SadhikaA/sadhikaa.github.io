@@ -15,10 +15,16 @@
         <a href="../projects.html" class="pages">/projects</a>
     </div>
     <h2>🚍 Nature Beats: An Urban Space Experience</h2>
+    <div class="grid">
+        <p class="contentTag">Arduino</p>
+        <p class="contentTag">Sensors</p>
+        <p class="contentTag">Max</p>&nbsp;&nbsp;
+    </div>
     <hr></hr>
     <ul>
         <li><a href="#abstract" class="tocLink">Abstract</a></li>
         <li><a href="#intro" class="tocLink">Introduction</a></li>
+        <li><a href="#nature" class="tocLink">Nature Beats</a></li>
         <li><a href="#related" class="tocLink">Related Work</a></li>
         <li><a href="#exp" class="tocLink">Participant Experiences</a></li>
         <li><a href="#prototypes" class="tocLink">Prototypes & Ideation</a></li>
@@ -34,11 +40,20 @@
     </ul>
     <hr></hr>
     <h3 id="abstract">Abstract</h3>
-    <p></p>
+    <p>Nature Beats, is an interactive lean-on bench designed to enhance urban spaces by allowing users to generate nature-inspired sounds through physical interaction. By leaning or sitting, individuals activate a system that creates ambient soundscapes, fostering relaxation and community engagement. This project explores the intersection of tangible user interfaces, public spaces, and sensory experiences. The bench uses pressure-sensitive sensors to translate physical input into natural sounds, such as bird calls and flowing water, creating an immersive and dynamic auditory experience. By combining tactile engagement with audio-visual feedback, Nature Beats transforms passive waiting spaces into opportunities for active, playful, and shared interactions. 
+    </p>
     <h3 id="intro">Introduction</h3>
-    <p></p>
+    <p>Public spaces are ideal for creating passive interactions that enable public engagement while keeping individuals in charge of the experience. We considered various public spaces such as cafes, bus stops, playgrounds, as potential venues for our project. Ultimately, we chose bus stops as our primary location, because as university students, they are an ubiquitous part of the daily transportation experience. The repetitive routine of waiting for the bus with the same group of people, created an environment of familiar strangers who were mostly interacting with only their own devices. We wanted to create a public piece that would motivate people waiting at the bus stop to share the experience of being present with their fellow passengers and partake into a unique, short, shared experience. We thought of many mediums where we could create something that invited voluntary interaction and fit within the short timespan of waiting for the bus, including art, projections, and sound. Through experimentation, we ultimately decided to combine sound and art elements. 
+    </p>
+    <h3 id="nature">Nature Beats</h3>
+    <p>Consequently, Nature Beats transforms the typical standing, lean-on bench into a device that allows users to 'play' music with each other, or alone, while they wait for their ride. Leaning on different seat spots activates nature sounds (beats) and colored lights, creating an auditory and visual experience. The effects triggered by the initial interaction then prompts users to explore other parts of the bench, encouraging continued exploration and a desire to share the experience with those nearby. As a new group of passengers arrive, a cycle of awe, shared discovery, and playing of nature beats continues. 
+    </p>
+    <div class="images">
+        <img src="../images/tui/chairs.JPG" class="proj-image" style="width: 70%"> 
+        <p class="caption">Nature Beats, an interactive lean-on bench</p>   
+    </div>
     <h3 id="related">Related Work</h3>
-    <p>This work was inspired by various public space projects that include the <a href="https://natashasharma.co/the-wait-time-project">Wait in Time</a> project, which was a similar display at bus stop locations that allowed familiar strangers to interact with each other. We were also inspired by various musical stairs projects across the world that would allow for interaction with sound that wasn't expected and was created by the people themselves, which is mirrored in our interactive bench. Our projection experiments were inspired by Sony explorations in awakening the senses in a home environment. We translated this into using nature sounds for our bus stop rather than other sounds in order to create the nature soundscape that creates a more relaxing environment and does not increase sound pollution to an already loud environment. Finally, our LED explorations were inspired by the awe-inspiring Tokyo teamLab installations that created immersive environments around participants. We aimed to replicate something similar at bus stops, potentially serving as a subtle backdrop in a public space. 
+    <p>This work was inspired by various public space projects that include the <a href="https://natashasharma.co/the-wait-time-project" class="links">Wait in Time</a> project, which was a similar display at bus stop locations that allowed familiar strangers to interact with each other. We were also inspired by various musical stairs projects across the world that would allow for interaction with sound that wasn't expected and was created by the people themselves, which is mirrored in our interactive bench. Our projection experiments were inspired by <a href="https://www.sony.com/en/SonyInfo/design/stories/hidden_senses/" class="links">Sony explorations</a> in awakening the senses in a home environment. We translated this into using nature sounds for our bus stop rather than other sounds in order to create the nature soundscape that creates a more relaxing environment and does not increase sound pollution to an already loud environment. Finally, our LED explorations were inspired by the awe-inspiring <a href="https://www.teamlab.art/e/tokyo/" class="links">Tokyo teamLab</a> installations that created immersive environments around participants. We aimed to replicate something similar at bus stops, potentially serving as a subtle backdrop in a public space. 
     </p>
     <h3 id="exp">Participant Experiences</h3>
     <p>The interactive bench offers participants an experience of sound generation through tactile engagement. Participants can interact with the surface using various bodily contact methods, primarily through hand touches and body positioning. The bench's four distinct sections, demarcated by unique felt patterns, provide clear visual and textural guidance for interaction. Participants can apply pressure using open palms, fingertips, or by leaning their body weight onto different areas of the surface.
@@ -47,7 +62,7 @@
     </p>
     <div class="images">
         <img src="../images/tui/press.JPG" class="proj-image" style="width: 70%"> 
-        <p class="caption">One participant using both their hands to trigger multiple sounds</p>   
+        <p class="caption">Participants using their hands to trigger multiple sounds</p>   
     </div>
     <p>The design encourages both individual and collaborative interactions. Multiple participants can simultaneously engage with different sections of the bench, creating complex, layered soundscapes. Participants can explore various interaction techniques, such as rhythmic tapping, sustained pressure, or coordinated touches that blend multiple natural sounds into a unique auditory composition.
     </p>
@@ -77,7 +92,7 @@
     </p>
     <div class="images">
         <img src="../images/tui/foil.png" class="proj-image" style="width: 50%"> 
-        <p class="caption">Beneath the seats featured foil and thick 3M adhesive tape to act as a separator. Unfortunately, this approach did not work.</p>   
+        <p class="caption">foil and thick 3M adhesive tape to act as a separator, this approach did not work</p>   
     </div>
     <p>After encountering these challenges, we pivoted to using force-sensitive resistors (FSRs) combined with a small cutout of 3M tape placed directly on top of each sensor. This design concentrated the force from sitting into the sensor area, resulting in consistent performance without any false positives or false negatives.
     </p>
