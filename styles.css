@@ -118,7 +118,8 @@ h4 {
 .icons-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20px, max-content));
-  gap: 8px;
+  gap: 12px;
+  margin-top: 8px;
   justify-items: start; 
 }
 
