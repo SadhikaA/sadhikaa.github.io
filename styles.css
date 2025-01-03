@@ -117,10 +117,16 @@ h4 {
 
 .icons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20px, max-content));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(10px, max-content));
+  gap: 10px;
   margin-top: 8px;
   justify-items: start; 
+}
+
+@media (max-width: 600px) {
+  .icons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 }
 
 i {
