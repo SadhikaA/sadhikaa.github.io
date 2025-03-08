@@ -3,48 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
-.libre-baskerville-regular {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.libre-baskerville-bold {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.libre-baskerville-regular-italic {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-@media screen and (max-width: 480px) {
-  .container {
-    max-width: 100%;
-    padding: 10px;
-  }
-}
-
-.container {
-  margin: 6vw 26vw;
-  background-color: #fafafa;
-  padding: 15px;
-}
-
-@media screen and (max-width: 1024px) {
-  .container {
-    margin: 4vw;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    margin: 2vw;
-    padding: 15px;
-  }
+body {
+    margin: 0;
+    padding: 0;
 }
 
 p {
@@ -56,28 +17,25 @@ p {
 }
 
 h1 {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
   font-size: 25px;
   font-weight: 400;
   margin-bottom: 0px;
 }
 
 h2 {
-  font-family: "Inter", sans-serif;
-  letter-spacing: 0.3px;
-  line-height: 140%;
-  font-size: 20px;
-  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
   margin-bottom: 0px;
-  margin-top: 28px;
 }
 
 h3 {
   font-family: "Libre Baskerville", serif;
   font-style: italic;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
-  color: rgb(66, 66, 66);
+  color: white;
   letter-spacing: 0.4px;
   margin-bottom: 15px;
   margin-top: 15px;
@@ -92,26 +50,62 @@ h4 {
   margin-bottom: 0;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    height: 100vh;
+}
+
+.leftColumn {
+    margin-left: 20px;
+    padding: 30px 30px;
+    margin-right: 20px;
+    overflow-y: none; 
+}
+
+.rightColumn {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    background-color: black;
+    color: white;
+    padding-bottom: 20px;
+    overflow-y: auto; 
+}
+
+@media only screen and (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+    .leftColumn {
+        overflow-y: auto;
+    }
+    .imageContainer img {
+      width: auto;
+      height: auto; 
+    }
+}
+
 .pages {
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
-  color: black;
+  color: white;
   font-weight: 500;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(9, 9, 9);
   padding: 4px 7px;
-  border-radius: 5px;
+  border-radius: 6px;
   text-decoration: none;
   display: inline-block;
   text-align: center;
   align-items: center;
+  i {
+    color: white;
+  }
 }
 
 .pages:hover {
   background-color: #594bf2;
-  color: white;
-  i {
-    color: white;
-  }
 }
 
 .icons-grid {
@@ -120,6 +114,7 @@ h4 {
   gap: 10px;
   margin-top: 8px;
   justify-items: start; 
+  padding-bottom: 20px;
 }
 
 @media (max-width: 600px) {
@@ -188,7 +183,7 @@ hr {
   border: none;
   text-decoration: none;
   text-underline-offset: 4px;
-  color: #594bf2;
+  color: #6fb9ff;
   font-size: 13px;
   letter-spacing: 0.3px;
   line-height: 140%;
@@ -223,7 +218,7 @@ li:hover {
   text-decoration: underline dotted;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
-  color: #654dfc;
+  color: #6fb9ff;
   font-size: 14px;
   letter-spacing: 0.3px;
   line-height: 140%;
@@ -285,29 +280,60 @@ code {
 
 .project-table {
   width: 100%;
-  max-width: 600px;
   border: rgb(216, 216, 216) solid 2px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
   margin: 15px auto;
+  padding: 10px;
   font-family: "Inter", sans-serif;
   position: relative;
   transition: transform 0.3s ease;
 }
 
-.image-container {
-  width: 100%;
-  height: 140px;
-  overflow: hidden;
-  position: relative;
+.test-container {
+    display: flex;
+    width: 100%;
+    max-width: 100vw;
+    flex-direction: row;
 }
 
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.text-container {
+    flex: 1;
+    padding: 0;
+    align-items: center;
 }
+
+.image-container {
+    flex: 0 0 50%;
+    height: 4em;
+    display: flex;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+@media (max-width: 700px) {
+    .test-container {
+        flex-direction: column; /* Switch to vertical layout on smaller screens */
+    }
+
+    .image-container {
+        height: auto;
+        width: 100%; /* Make image container full width when in column layout */
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto; /* Maintain aspect ratio when in vertical layout */
+    }
+}
+
 
 .project-table:hover {
   transform: scale(1.01);
@@ -321,10 +347,10 @@ code {
 .project-title {
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.3px;
-  margin: 0 0 8px;
+  margin: 0 0 5px;
   color: black;
 }
 
@@ -409,23 +435,6 @@ code {
   margin-top: 10px;
 }
 
-.image-row{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.proj-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
 .contentTag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
@@ -439,11 +448,6 @@ code {
   text-decoration: none;
   display: inline-block;
   margin-right: 5px;
-}
-
-.book-container {
-  max-width: 100vw;
-  margin: 0 auto;
 }
 
 .carousel {
@@ -460,33 +464,6 @@ code {
   cursor: pointer;
 }
 
-.book-covers {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
-
-.book-cover {
-  font-family: "JetBrains Mono", monospace;
-  flex: 0 0 auto;
-  width: 120px;
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  padding: 10px;
-}
-
-.book-cover.main img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
 
 .review h1 {
   font-family: "Inter", sans-serif;
