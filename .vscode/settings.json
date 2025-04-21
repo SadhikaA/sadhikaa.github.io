@@ -1,3 +1,7 @@
 {
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5502, 
+    "vscode_custom_css.imports": [
+    "file:///Users/sakula/Documents/vscode.css",
+    ],
+    "vscode_custom_css.policy": true
 }
