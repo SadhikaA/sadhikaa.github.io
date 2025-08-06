@@ -189,6 +189,18 @@ hr {
   line-height: 140%;
 }
 
+a {
+  text-decoration: dotted underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  color: #6fb9ff;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  line-height: 140%;
+  font-weight: 500;
+}
+
 ul {
   list-style: none;
   padding: 0;
